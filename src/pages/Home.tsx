@@ -1,11 +1,11 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonList } from '@ionic/react';
 import { useEffect, useState } from 'react';
-import ExploreContainer from '../components/ExploreContainer';
+import RecipeCard from '../components/RecipeCard/RecipeCard';
 import './Home.css';
 const contentful = require('contentful');
 
 const Home: React.FC = () => {
-  const [contentfulData, setContentfulData] = useState();
+  const [contentfulData, setContentfulData] = useState([]);
 
   useEffect(() => {
     const client = contentful.createClient({
@@ -23,10 +23,6 @@ const Home: React.FC = () => {
       .catch(console.error);
   }, []);
 
-  useEffect(() => {
-    console.log(contentfulData);
-  }, [contentfulData]);
-
   return (
     <IonPage>
       <IonHeader>
@@ -40,7 +36,11 @@ const Home: React.FC = () => {
             <IonTitle size='large'>Blank</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer />
+        <IonList>
+          {contentfulData?.map((item: any, index) => {
+            return <RecipeCard data={item.fields} key={index} />;
+          })}
+        </IonList>
       </IonContent>
     </IonPage>
   );
