@@ -43,11 +43,11 @@
     "workbox-streams": "^5.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "ionic serve",
+    "build": "ionic build",
     "test": "react-scripts test --transformIgnorePatterns 'node_modules/(?!(@ionic/react|@ionic/react-router|@ionic/core|@stencil/core|ionicons)/)'",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",
+    "predeploy": "ionic build",
     "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
