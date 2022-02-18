@@ -1,0 +1,7 @@
+{
+  "name": "kaesediebe",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
