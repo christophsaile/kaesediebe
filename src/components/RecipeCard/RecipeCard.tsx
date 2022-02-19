@@ -12,7 +12,7 @@ interface Props {
 }
 
 const RecipeCard: React.FC<Props> = (data: any) => {
-  const { category, description, duration, image, ingredients, title, vegetarian } = data.data;
+  const { category, description, duration, image, title, vegetarian } = data.data;
 
   return (
     <IonCard>
