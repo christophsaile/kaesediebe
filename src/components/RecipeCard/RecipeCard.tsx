@@ -9,13 +9,14 @@ import './RecipeCard.css';
 
 interface Props {
   data: any;
+  id: string;
 }
 
-const RecipeCard: React.FC<Props> = (data: any) => {
-  const { category, description, duration, image, title, vegetarian } = data.data;
+const RecipeCard: React.FC<Props> = (props) => {
+  const { category, description, duration, image, title, vegetarian } = props.data;
 
   return (
-    <IonCard>
+    <IonCard routerLink={`recipe/${props.id}`}>
       {image && <img alt={image.fields.file.title} src={image.fields.file.url} />}
       <IonCardHeader>
         <IonCardSubtitle>

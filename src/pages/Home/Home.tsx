@@ -1,6 +1,6 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonList } from '@ionic/react';
 import { useEffect, useState } from 'react';
-import RecipeCard from '../components/RecipeCard/RecipeCard';
+import RecipeCard from '../../components/RecipeCard/RecipeCard';
 import './Home.css';
 const contentful = require('contentful');
 
@@ -25,11 +25,6 @@ const Home: React.FC = () => {
 
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Blank</IonTitle>
-        </IonToolbar>
-      </IonHeader>
       <IonContent fullscreen>
         <IonHeader collapse='condense'>
           <IonToolbar>
@@ -37,8 +32,8 @@ const Home: React.FC = () => {
           </IonToolbar>
         </IonHeader>
         <IonList>
-          {contentfulData?.map((item: any, index) => {
-            return <RecipeCard data={item.fields} key={index} />;
+          {contentfulData?.map((item: any) => {
+            return <RecipeCard data={item.fields} id={item.sys.id} key={item.sys.id} />;
           })}
         </IonList>
       </IonContent>
