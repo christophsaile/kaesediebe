@@ -1,38 +1,39 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonList } from '@ionic/react';
 import { useEffect, useState } from 'react';
+import { IRecipeFields } from '../../@types/generated/contentful';
+import { ContentfulClientApi, Entry } from 'contentful';
 import RecipeCard from '../../components/RecipeCard/RecipeCard';
 import './Home.css';
-const contentful = require('contentful');
 
-const Home: React.FC = () => {
-  const [contentfulData, setContentfulData] = useState([]);
+interface Props {
+  client: ContentfulClientApi;
+}
+
+const Home: React.FC<Props> = (props) => {
+  const [recipies, setRecipies] = useState<Entry<IRecipeFields>[]>();
 
   useEffect(() => {
-    const client = contentful.createClient({
-      space: process.env.REACT_APP_CONTENTFUL_SPACE_ID,
-      accessToken: process.env.REACT_APP_CONTENTFUL_DELIVERY_API_KEY,
-    });
-
+    const { client } = props;
     client
-      .getEntries({
+      .getEntries<IRecipeFields>({
         content_type: 'recipe',
       })
-      .then((entries: any) => {
-        setContentfulData(entries.items);
+      .then((entries) => {
+        setRecipies(entries.items);
       })
       .catch(console.error);
   }, []);
 
   return (
     <IonPage>
+      <IonHeader collapse='condense'>
+        <IonToolbar>
+          <IonTitle size='large'>Blank</IonTitle>
+        </IonToolbar>
+      </IonHeader>
       <IonContent fullscreen>
-        <IonHeader collapse='condense'>
-          <IonToolbar>
-            <IonTitle size='large'>Blank</IonTitle>
-          </IonToolbar>
-        </IonHeader>
         <IonList>
-          {contentfulData?.map((item: any) => {
+          {recipies?.map((item) => {
             return <RecipeCard data={item.fields} id={item.sys.id} key={item.sys.id} />;
           })}
         </IonList>

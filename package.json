@@ -9,6 +9,7 @@
     "@capacitor/haptics": "1.1.4",
     "@capacitor/keyboard": "1.2.2",
     "@capacitor/status-bar": "1.0.8",
+    "@contentful/rich-text-types": "^15.11.1",
     "@ionic/react": "^6.0.0",
     "@ionic/react-router": "^6.0.0",
     "@testing-library/jest-dom": "^5.11.9",
@@ -46,7 +47,9 @@
     "start": "ionic serve",
     "build": "ionic build --prod && echo '/* /index.html 200' > build/_redirects",
     "test": "react-scripts test --transformIgnorePatterns 'node_modules/(?!(@ionic/react|@ionic/react-router|@ionic/core|@stencil/core|ionicons)/)'",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "contentful-typescript-codegen": "contentful-typescript-codegen --output src/@types/generated/contentful.d.ts",
+    "dotenv": "^10.0.0"
   },
   "eslintConfig": {
     "extends": [
@@ -68,7 +71,9 @@
   },
   "devDependencies": {
     "@capacitor/cli": "3.4.1",
-    "@ionic/cli": "^6.18.1"
+    "@ionic/cli": "^6.18.1",
+    "contentful-management": "^8.1.3",
+    "contentful-typescript-codegen": "^3.2.3"
   },
   "description": "An Ionic project"
 }

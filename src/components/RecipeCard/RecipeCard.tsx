@@ -4,11 +4,13 @@ import {
   IonCardSubtitle,
   IonCardTitle,
   IonCardContent,
+  IonImg,
 } from '@ionic/react';
 import './RecipeCard.css';
+import { IRecipeFields } from '../../@types/generated/contentful';
 
 interface Props {
-  data: any;
+  data: IRecipeFields;
   id: string;
 }
 
@@ -17,7 +19,7 @@ const RecipeCard: React.FC<Props> = (props) => {
 
   return (
     <IonCard routerLink={`recipe/${props.id}`}>
-      {image && <img alt={image.fields.file.title} src={image.fields.file.url} />}
+      {image && <IonImg alt={image.fields.file.fileName} src={image.fields.file.url} />}
       <IonCardHeader>
         <IonCardSubtitle>
           {category}, {duration}, {vegetarian && 'veggi'}

@@ -1,6 +1,8 @@
 import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
+import { useState } from 'react';
+import { ContentfulClientApi } from 'contentful';
 import Home from './pages/Home/Home';
 
 /* Core CSS required for Ionic components to work properly */
@@ -25,16 +27,30 @@ import Recipe from './pages/Recipe/Recipe';
 
 setupIonicReact();
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet>
-        <Route path='/home' component={Home} />
-        <Redirect exact from='/' to='/home' />
-        <Route path='/recipe/:id' component={Recipe} />
-      </IonRouterOutlet>
-    </IonReactRouter>
-  </IonApp>
-);
+const App: React.FC = () => {
+  const [client] = useState<ContentfulClientApi>(() => {
+    const contentful = require('contentful');
+    const contentfulClient: ContentfulClientApi = contentful.createClient({
+      space: process.env.REACT_APP_CONTENTFUL_SPACE_ID,
+      accessToken: process.env.REACT_APP_CONTENTFUL_DELIVERY_API_KEY,
+    });
+    return contentfulClient;
+  });
+
+  return (
+    <IonApp>
+      <IonReactRouter>
+        <IonRouterOutlet>
+          <Route path='/home' render={() => <Home client={client} />} />
+          <Redirect exact from='/' to='/home' />
+          <Route
+            path='/recipe/:id'
+            render={(routerParams) => <Recipe client={client} {...routerParams} />}
+          />
+        </IonRouterOutlet>
+      </IonReactRouter>
+    </IonApp>
+  );
+};
 
 export default App;
