@@ -1,4 +1,14 @@
-import { IonCard, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import {
+  IonList,
+  IonItem,
+  IonLabel,
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+} from '@ionic/react';
+import { useEffect, useState } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import './Recipe.css';
 
@@ -8,15 +18,24 @@ interface Props
   }> {}
 
 const Recipe: React.FC<Props> = ({ match }) => {
+  const [recipeId, setRecipeId] = useState(match.params.id);
+  useEffect(() => {
+    console.log(recipeId);
+  }, [recipeId]);
+
   return (
     <IonPage>
       <IonContent fullscreen>
         <IonHeader collapse='condense'>
           <IonToolbar>
-            <IonTitle size='large'>Test {match.params.id}</IonTitle>
+            <IonTitle size='large'>Blank</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <IonCard></IonCard>
+        <IonList>
+          <IonItem>
+            <IonLabel>Pokémon Yellow {recipeId}</IonLabel>
+          </IonItem>
+        </IonList>
       </IonContent>
     </IonPage>
   );
