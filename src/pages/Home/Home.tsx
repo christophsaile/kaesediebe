@@ -31,7 +31,7 @@ const Home: React.FC<Props> = (props) => {
           <IonTitle size='large'>Blank</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen>
+      <IonContent className='ion-padding' fullscreen>
         <IonList>
           {recipies?.map((item) => {
             return <RecipeItem data={item.fields} id={item.sys.id} key={item.sys.id} />;

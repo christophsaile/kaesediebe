@@ -25,7 +25,6 @@ const RecipeItem: React.FC<Props> = (props) => {
       <IonThumbnail slot='start'>
         {image && <IonImg alt={image.fields.file.fileName} src={image.fields.file.url} />}
       </IonThumbnail>
-
       <IonLabel>
         <IonGrid>
           <IonRow>

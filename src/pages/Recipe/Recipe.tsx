@@ -9,6 +9,11 @@ import {
   IonList,
   IonItem,
   IonLabel,
+  IonGrid,
+  IonRow,
+  IonCol,
+  IonIcon,
+  IonChip,
 } from '@ionic/react';
 import { useEffect, useState } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
@@ -16,6 +21,7 @@ import './Recipe.css';
 import { IIngredientFields, IRecipeFields } from '../../@types/generated/contentful';
 import { ContentfulClientApi } from 'contentful';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { leafOutline, timeOutline, restaurantOutline } from 'ionicons/icons';
 
 interface Props
   extends RouteComponentProps<{
@@ -72,28 +78,51 @@ const Recipe: React.FC<Props> = (props) => {
 
   return (
     <IonPage>
-      <IonContent fullscreen>
+      <IonContent className='ion-padding' fullscreen>
         <IonImg
           alt={recipeDetails?.image?.fields.file.fileName}
           src={recipeDetails?.image?.fields.file.url}
         />
-        <h1>{recipeDetails?.title}</h1>
-        <div>
-          <p>{recipeDetails?.category}</p>
-          <p>{recipeDetails?.vegetarian}</p>
-        </div>
+        <h1>
+          {recipeDetails?.title}{' '}
+          <IonIcon
+            className='veggi-icon'
+            icon={recipeDetails?.vegetarian ? leafOutline : ''}
+          ></IonIcon>
+        </h1>
+        <IonRow>
+          <IonChip outline color='primary'>
+            <IonIcon icon={timeOutline}></IonIcon>
+            <IonLabel>{recipeDetails?.duration}</IonLabel>
+          </IonChip>
+          <IonChip outline color='primary'>
+            <IonIcon icon={restaurantOutline}></IonIcon>
+            <IonLabel>{recipeDetails?.category}</IonLabel>
+          </IonChip>
+        </IonRow>
         <h2>Zutaten</h2>
         <IonList>
           {ingredients?.map((item, index) => (
             <IonItem key={index}>
               <IonLabel>
-                <span>{item.amount}</span>
-                <span>{item.title}</span>
+                <IonGrid>
+                  <IonRow>
+                    <IonCol size='4'>{item.amount}</IonCol>
+                    <IonCol size='8'>{item.title}</IonCol>
+                  </IonRow>
+                </IonGrid>
               </IonLabel>
             </IonItem>
           ))}
         </IonList>
-        {recipeDetails?.description ? documentToReactComponents(recipeDetails.description) : ''}
+        {recipeDetails?.description ? (
+          <IonGrid>
+            <h2>Zubereitung</h2>
+            {documentToReactComponents(recipeDetails.description)}
+          </IonGrid>
+        ) : (
+          ''
+        )}
       </IonContent>
       <IonFooter>
         <IonToolbar>
