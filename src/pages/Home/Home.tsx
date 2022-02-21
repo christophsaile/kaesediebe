@@ -2,7 +2,7 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonList } from '@
 import { useEffect, useState } from 'react';
 import { IRecipeFields } from '../../@types/generated/contentful';
 import { ContentfulClientApi, Entry } from 'contentful';
-import RecipeCard from '../../components/RecipeCard/RecipeCard';
+import RecipeItem from '../../components/RecipeItem/RecipeItem';
 import './Home.css';
 
 interface Props {
@@ -34,7 +34,7 @@ const Home: React.FC<Props> = (props) => {
       <IonContent fullscreen>
         <IonList>
           {recipies?.map((item) => {
-            return <RecipeCard data={item.fields} id={item.sys.id} key={item.sys.id} />;
+            return <RecipeItem data={item.fields} id={item.sys.id} key={item.sys.id} />;
           })}
         </IonList>
       </IonContent>

@@ -42,7 +42,7 @@ export interface IRecipeFields {
   ingredients: Record<string, any>;
 
   /** Description */
-  description?: string | undefined;
+  description?: Document | undefined;
 
   /** Image */
   image?: Asset | undefined;
