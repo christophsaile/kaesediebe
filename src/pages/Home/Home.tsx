@@ -4,6 +4,7 @@ import { IRecipeFields } from '../../@types/generated/contentful';
 import { ContentfulClientApi, Entry } from 'contentful';
 import RecipeItem from '../../components/RecipeItem/RecipeItem';
 import './Home.css';
+import Filter from '../../components/Filter/Filter';
 
 interface Props {
   client: ContentfulClientApi;
@@ -37,6 +38,7 @@ const Home: React.FC<Props> = (props) => {
             return <RecipeItem data={item.fields} id={item.sys.id} key={item.sys.id} />;
           })}
         </IonList>
+        <Filter />
       </IonContent>
     </IonPage>
   );
