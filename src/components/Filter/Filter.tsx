@@ -27,6 +27,7 @@ const filterList: IFilterList[] = [
 ];
 
 const Filter: React.FC<Props> = (props) => {
+  const { setFilterList } = props;
   const [showModal, setShowModal] = useState(false);
   const [filterModal, setFilterModal] = useState(filterList);
 
@@ -44,9 +45,9 @@ const Filter: React.FC<Props> = (props) => {
 
   useEffect(() => {
     if (!showModal) {
-      props.setFilterList(filterModal);
+      setFilterList(filterModal);
     }
-  }, [showModal]);
+  }, [showModal, filterModal, setFilterList]);
 
   return (
     <>

@@ -20,20 +20,31 @@ const Home: React.FC<IProps> = (props) => {
   const [filters, setFilters] = useState<IFilterList[]>([]);
 
   useEffect(() => {
-    const { client } = props;
-    client
-      .getEntries<IRecipeFields>({
-        content_type: 'recipe',
-      })
-      .then((entries) => {
-        setRecipies(entries.items);
-      })
-      .catch(console.error);
-  }, []);
+    const fetchRecipes = (filter?: IFilterList[]) => {
+      const isVeggi = filter?.find((elem) => elem.val === 'Veggi');
+      const isCategory = filter?.filter((elem) => elem.val !== 'Veggi' && elem.isChecked === true);
+      let categoryList: string[] = [];
+      isCategory?.forEach((elem) => {
+        categoryList.push(elem.val);
+      });
+      const allCategories = 'Nudeln,Reis,Kartoffeln,Sonstiges';
 
-  useEffect(() => {
-    console.log('new Filter State', filters);
-  }, [filters]);
+      props.client
+        .getEntries<IRecipeFields>({
+          content_type: 'recipe',
+          'fields.category[in]': categoryList[0] ? categoryList.join() : allCategories,
+          'fields.vegetarian[in]': isVeggi?.isChecked ? 'true' : 'true,false',
+        })
+        .then((entries) => {
+          setRecipies(entries.items);
+        })
+        .catch(console.error);
+    };
+
+    if (filters[0]) {
+      fetchRecipes(filters);
+    }
+  }, [filters, props.client]);
 
   return (
     <IonPage>

@@ -51,7 +51,7 @@ const Recipe: React.FC<IProps> = (props) => {
         setRecipeDetails(entry.fields);
       })
       .catch(console.error);
-  }, [recipeId]);
+  }, [recipeId, client]);
 
   useEffect(() => {
     if (recipeDetails) {
@@ -74,7 +74,7 @@ const Recipe: React.FC<IProps> = (props) => {
         })
         .catch(console.error);
     }
-  }, [recipeDetails]);
+  }, [recipeDetails, client]);
 
   return (
     <IonPage>
