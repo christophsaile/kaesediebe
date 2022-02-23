@@ -1,6 +1,5 @@
 import {
-  IonBackdrop,
-  IonButton,
+  IonCheckbox,
   IonContent,
   IonFab,
   IonFabButton,
@@ -10,19 +9,32 @@ import {
   IonLabel,
   IonList,
   IonModal,
-  IonSegment,
-  IonSegmentButton,
-  IonToggle,
-  ToggleChangeEventDetail,
 } from '@ionic/react';
 import { filterOutline } from 'ionicons/icons';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Dispatch, SetStateAction } from 'react';
+import { IFilterList } from '../../pages/Home/Home';
 
-interface Props {}
+interface Props {
+  setFilterList: Dispatch<SetStateAction<IFilterList[]>>;
+}
+
+const filterList: IFilterList[] = [
+  { val: 'Veggi', isChecked: false },
+  { val: 'Nudeln', isChecked: false },
+  { val: 'Kartoffeln', isChecked: false },
+  { val: 'Reis', isChecked: false },
+  { val: 'Sonstiges', isChecked: false },
+];
 
 const Filter: React.FC<Props> = (props) => {
   const [showModal, setShowModal] = useState(false);
-  const [activeFilter, setActiveFilter] = useState<string[]>([]);
+  const [filterModal, setFilterModal] = useState(filterList);
+
+  const handleOnChange = (position: number) => {
+    let updatedState = [...filterModal];
+    updatedState[position].isChecked = !updatedState[position].isChecked;
+    setFilterModal(updatedState);
+  };
 
   useEffect(() => {
     document.addEventListener('ionBackdropTap', () => {
@@ -32,18 +44,9 @@ const Filter: React.FC<Props> = (props) => {
 
   useEffect(() => {
     if (!showModal) {
-      console.log(activeFilter);
+      props.setFilterList(filterModal);
     }
   }, [showModal]);
-
-  const checkIfFilterIsActive = (e: CustomEvent<ToggleChangeEventDetail<any>>) => {
-    const value = e.detail.value;
-    if (activeFilter.includes(value)) {
-      setActiveFilter(activeFilter.filter((item) => item !== value));
-    } else {
-      setActiveFilter((prevState) => [...prevState, value]);
-    }
-  };
 
   return (
     <>
@@ -56,14 +59,19 @@ const Filter: React.FC<Props> = (props) => {
         <IonContent scrollY={false} className='ion-padding'>
           <IonList>
             <IonItemDivider>Vegetarisch</IonItemDivider>
-            <IonItem>
-              <IonLabel>Checked: </IonLabel>
-              <IonToggle value={'veggi'} onIonChange={(e) => checkIfFilterIsActive(e)} />
-            </IonItem>
-            <IonItem>
-              <IonLabel>Checked: </IonLabel>
-              <IonToggle value={'nudeln'} onIonChange={(e) => checkIfFilterIsActive(e)} />
-            </IonItem>
+            {filterModal.map(({ val }, index) => {
+              return (
+                <IonItem key={index}>
+                  <IonLabel>{val}</IonLabel>
+                  <IonCheckbox
+                    slot='end'
+                    value={val}
+                    checked={filterModal[index].isChecked}
+                    onIonChange={() => handleOnChange(index)}
+                  />
+                </IonItem>
+              );
+            })}
           </IonList>
         </IonContent>
       </IonModal>

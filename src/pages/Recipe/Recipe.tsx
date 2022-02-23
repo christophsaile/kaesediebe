@@ -23,7 +23,7 @@ import { ContentfulClientApi } from 'contentful';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { leafOutline, timeOutline, restaurantOutline } from 'ionicons/icons';
 
-interface Props
+interface IProps
   extends RouteComponentProps<{
     id: string;
   }> {
@@ -38,7 +38,7 @@ interface IIngredientDissolved extends IIngredientFields {
   amount: string;
 }
 
-const Recipe: React.FC<Props> = (props) => {
+const Recipe: React.FC<IProps> = (props) => {
   const { match, client } = props;
   const [recipeId] = useState(match.params.id);
   const [recipeDetails, setRecipeDetails] = useState<IRecipeFields>();
@@ -80,6 +80,7 @@ const Recipe: React.FC<Props> = (props) => {
     <IonPage>
       <IonContent className='ion-padding' fullscreen>
         <IonImg
+          className='recipe-img'
           alt={recipeDetails?.image?.fields.file.fileName}
           src={recipeDetails?.image?.fields.file.url}
         />

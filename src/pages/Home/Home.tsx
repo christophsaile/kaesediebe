@@ -6,12 +6,18 @@ import RecipeItem from '../../components/RecipeItem/RecipeItem';
 import './Home.css';
 import Filter from '../../components/Filter/Filter';
 
-interface Props {
+interface IProps {
   client: ContentfulClientApi;
 }
 
-const Home: React.FC<Props> = (props) => {
+export interface IFilterList {
+  val: string;
+  isChecked: boolean;
+}
+
+const Home: React.FC<IProps> = (props) => {
   const [recipies, setRecipies] = useState<Entry<IRecipeFields>[]>();
+  const [filters, setFilters] = useState<IFilterList[]>([]);
 
   useEffect(() => {
     const { client } = props;
@@ -24,6 +30,10 @@ const Home: React.FC<Props> = (props) => {
       })
       .catch(console.error);
   }, []);
+
+  useEffect(() => {
+    console.log('new Filter State', filters);
+  }, [filters]);
 
   return (
     <IonPage>
@@ -38,7 +48,7 @@ const Home: React.FC<Props> = (props) => {
             return <RecipeItem data={item.fields} id={item.sys.id} key={item.sys.id} />;
           })}
         </IonList>
-        <Filter />
+        <Filter setFilterList={setFilters} />
       </IonContent>
     </IonPage>
   );
