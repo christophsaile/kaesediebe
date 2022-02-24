@@ -67,8 +67,11 @@ const Recipe: React.FC<IProps> = (props) => {
         })
         .then((entries) => {
           setIngredients(() =>
-            recipeDetails.ingredients.map((ingredient: IIngredientUnsolved, index: number) => {
-              return { amount: ingredient.amount, title: entries.items[index].fields.title };
+            recipeDetails.ingredients.map((ingredient: IIngredientUnsolved) => {
+              const itemName = entries.items.find(
+                (items) => items.sys.id === ingredient.ingredientId
+              );
+              return { amount: ingredient.amount, title: itemName?.fields.title };
             })
           );
         })
