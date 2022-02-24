@@ -22,6 +22,7 @@ import { IIngredientFields, IRecipeFields } from '../../@types/generated/content
 import { ContentfulClientApi } from 'contentful';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { leafOutline, timeOutline, restaurantOutline } from 'ionicons/icons';
+import IngredientList from '../../components/IngredientList/IngredientList';
 
 interface IProps
   extends RouteComponentProps<{
@@ -29,20 +30,11 @@ interface IProps
   }> {
   client: ContentfulClientApi;
 }
-interface IIngredientUnsolved {
-  amount: string;
-  ingredientId: string;
-}
-
-interface IIngredientDissolved extends IIngredientFields {
-  amount: string;
-}
 
 const Recipe: React.FC<IProps> = (props) => {
   const { match, client } = props;
   const [recipeId] = useState(match.params.id);
   const [recipeDetails, setRecipeDetails] = useState<IRecipeFields>();
-  const [ingredients, setIngredients] = useState<IIngredientDissolved[]>();
 
   useEffect(() => {
     client
@@ -53,32 +45,6 @@ const Recipe: React.FC<IProps> = (props) => {
       .catch(console.error);
   }, [recipeId, client]);
 
-  useEffect(() => {
-    if (recipeDetails) {
-      const getAllIngredientIds = recipeDetails.ingredients.map(
-        (ingredient: IIngredientUnsolved) => {
-          return ingredient.ingredientId;
-        }
-      );
-      client
-        .getEntries<IIngredientFields>({
-          content_type: 'ingredient',
-          'sys.id[in]': getAllIngredientIds.join(),
-        })
-        .then((entries) => {
-          setIngredients(() =>
-            recipeDetails.ingredients.map((ingredient: IIngredientUnsolved) => {
-              const itemName = entries.items.find(
-                (items) => items.sys.id === ingredient.ingredientId
-              );
-              return { amount: ingredient.amount, title: itemName?.fields.title };
-            })
-          );
-        })
-        .catch(console.error);
-    }
-  }, [recipeDetails, client]);
-
   return (
     <IonPage>
       <IonContent className='ion-padding' fullscreen>
@@ -88,7 +54,7 @@ const Recipe: React.FC<IProps> = (props) => {
           src={recipeDetails?.image?.fields.file.url}
         />
         <h1>
-          {recipeDetails?.title}{' '}
+          {recipeDetails?.title}
           <IonIcon
             className='veggi-icon'
             icon={recipeDetails?.vegetarian ? leafOutline : ''}
@@ -104,21 +70,7 @@ const Recipe: React.FC<IProps> = (props) => {
             <IonLabel>{recipeDetails?.category}</IonLabel>
           </IonChip>
         </IonRow>
-        <h2>Zutaten</h2>
-        <IonList>
-          {ingredients?.map((item, index) => (
-            <IonItem key={index}>
-              <IonLabel>
-                <IonGrid>
-                  <IonRow>
-                    <IonCol size='4'>{item.amount}</IonCol>
-                    <IonCol size='8'>{item.title}</IonCol>
-                  </IonRow>
-                </IonGrid>
-              </IonLabel>
-            </IonItem>
-          ))}
-        </IonList>
+        <IngredientList client={client} recipeDetails={recipeDetails} />
         {recipeDetails?.description ? (
           <IonGrid>
             <h2>Zubereitung</h2>
