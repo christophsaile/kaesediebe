@@ -6,23 +6,21 @@ import {
   IonBackButton,
   IonToolbar,
   IonImg,
-  IonList,
-  IonItem,
   IonLabel,
   IonGrid,
   IonRow,
-  IonCol,
   IonIcon,
   IonChip,
 } from '@ionic/react';
 import { useEffect, useState } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import './Recipe.css';
-import { IIngredientFields, IRecipeFields } from '../../@types/generated/contentful';
+import { IRecipeFields } from '../../@types/generated/contentful';
 import { ContentfulClientApi } from 'contentful';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { leafOutline, timeOutline, restaurantOutline } from 'ionicons/icons';
 import IngredientList from '../../components/IngredientList/IngredientList';
+import ShareButton from '../../components/ShareButton/ShareButton';
 
 interface IProps
   extends RouteComponentProps<{
@@ -79,6 +77,7 @@ const Recipe: React.FC<IProps> = (props) => {
         ) : (
           ''
         )}
+        <ShareButton id={recipeId} recipe={recipeDetails} />
       </IonContent>
       <IonFooter>
         <IonToolbar>
