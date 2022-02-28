@@ -2,4 +2,11 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  max-width: var(--ion-max-width);
+  margin: auto;
+}
+
+ion-header {
+  width: 200px;
+  margin: auto;
 }

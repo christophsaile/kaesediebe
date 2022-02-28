@@ -50,7 +50,7 @@ const Home: React.FC<IProps> = (props) => {
   return (
     <IonPage>
       <IonContent fullscreen>
-        <IonHeader className='ion-no-border ion-padding ion-margin-bottom'>
+        <IonHeader className='ion-no-border ion-padding'>
           <Logo></Logo>
         </IonHeader>
         <IonList className='home-grid'>
