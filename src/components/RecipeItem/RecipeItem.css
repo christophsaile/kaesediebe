@@ -1,5 +1,14 @@
-ion-thumbnail {
-  --border-radius: 4px;
+ion-card {
+  width: calc(50% - calc(var(--ion-margin) + var(--ion-margin) / 2));
+  margin-top: calc(var(--ion-margin) / 2);
+  margin-right: calc(var(--ion-margin) / 2);
+  margin-bottom: calc(var(--ion-margin) / 2);
+  margin-left: var(--ion-margin);
+}
+
+ion-card:nth-child(even) {
+  margin-right: var(--ion-margin);
+  margin-left: calc(var(--ion-margin) / 2);
 }
 
 .veggi-icon {

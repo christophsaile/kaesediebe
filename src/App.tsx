@@ -4,6 +4,7 @@ import { IonReactRouter } from '@ionic/react-router';
 import { useState } from 'react';
 import { ContentfulClientApi } from 'contentful';
 import Home from './pages/Home/Home';
+import Recipe from './pages/Recipe/Recipe';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -23,9 +24,11 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
-import Recipe from './pages/Recipe/Recipe';
+import './theme/global.css';
 
-setupIonicReact();
+setupIonicReact({
+  mode: 'ios',
+});
 
 const App: React.FC = () => {
   const [client] = useState<ContentfulClientApi>(() => {

@@ -1,12 +1,14 @@
 import {
-  IonItem,
-  IonThumbnail,
   IonLabel,
   IonImg,
   IonGrid,
   IonRow,
   IonIcon,
   IonChip,
+  IonCard,
+  IonCardHeader,
+  IonCardTitle,
+  IonCardContent,
 } from '@ionic/react';
 import './RecipeItem.css';
 import { IRecipeFields } from '../../@types/generated/contentful';
@@ -21,11 +23,13 @@ const RecipeItem: React.FC<Props> = (props) => {
   const { category, duration, image, title, vegetarian } = props.data;
 
   return (
-    <IonItem routerLink={`recipe/${props.id}`}>
-      <IonThumbnail slot='start'>
-        {image && <IonImg alt={image.fields.file.fileName} src={image.fields.file.url} />}
-      </IonThumbnail>
-      <IonLabel>
+    <IonCard routerLink={`recipe/${props.id}`}>
+      {image && <IonImg alt={image.fields.file.fileName} src={image.fields.file.url} />}
+      <IonCardHeader>
+        <IonCardTitle>{title}</IonCardTitle>
+      </IonCardHeader>
+
+      <IonCardContent>
         <IonGrid>
           <IonRow>
             <h2>{title}</h2>
@@ -42,8 +46,8 @@ const RecipeItem: React.FC<Props> = (props) => {
             </IonChip>
           </IonRow>
         </IonGrid>
-      </IonLabel>
-    </IonItem>
+      </IonCardContent>
+    </IonCard>
   );
 };
 

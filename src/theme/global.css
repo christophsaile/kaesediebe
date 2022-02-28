@@ -1,0 +1,14 @@
+:root {
+  --ion-padding: 16px;
+  --ion-margin: 16px;
+  --ion-background-color: #fcebb7;
+  --ion-background-color-rgb: rgb(252, 235, 183);
+  --colors: #ffab24;
+  --colors2: #558374;
+  --colors3: #fcebb7;
+}
+
+ion-app {
+  max-width: 992px;
+  margin: auto;
+}
