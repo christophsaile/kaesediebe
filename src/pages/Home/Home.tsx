@@ -1,11 +1,10 @@
-import { IonContent, IonHeader, IonPage, IonList } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonList, IonImg } from '@ionic/react';
 import { useEffect, useState } from 'react';
 import { IRecipeFields } from '../../@types/generated/contentful';
 import { ContentfulClientApi, Entry } from 'contentful';
 import RecipeItem from '../../components/RecipeItem/RecipeItem';
 import './Home.css';
 import Filter from '../../components/Filter/Filter';
-import { ReactComponent as Logo } from '../../logo.svg';
 
 interface IProps {
   client: ContentfulClientApi;
@@ -51,7 +50,7 @@ const Home: React.FC<IProps> = (props) => {
     <IonPage>
       <IonContent fullscreen>
         <IonHeader className='ion-no-border ion-padding'>
-          <Logo></Logo>
+          <IonImg src='/assets/icon/icon_transparent.png' />
         </IonHeader>
         <IonList className='home-grid'>
           {recipies?.map((item) => {
