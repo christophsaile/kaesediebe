@@ -56,7 +56,7 @@ const Recipe: React.FC<IProps> = (props) => {
             ) : (
               <IonImg src={'./assets/placeholder.png'} />
             )}
-            {recipeDetails?.vegetarian && <IonIcon size='small' icon={leafOutline} />}
+            {recipeDetails?.vegetarian && <IonIcon icon={leafOutline} />}
           </div>
           <IonCardHeader>
             <IonCardTitle>{recipeDetails?.title}</IonCardTitle>

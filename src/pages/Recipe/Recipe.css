@@ -18,10 +18,11 @@
 }
 
 .recipe .img-container ion-icon {
+  font-size: 22px;
   position: absolute;
   bottom: 0;
   right: 0;
-  color: rgb(145, 201, 177);
+  color: #55d32d;
   padding: var(--ion-padding-half);
 }
 
