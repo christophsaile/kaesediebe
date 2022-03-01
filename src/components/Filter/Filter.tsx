@@ -5,7 +5,6 @@ import {
   IonFabButton,
   IonIcon,
   IonItem,
-  IonItemDivider,
   IonLabel,
   IonList,
   IonModal,
@@ -13,13 +12,14 @@ import {
 import { filterOutline } from 'ionicons/icons';
 import { useEffect, useState, Dispatch, SetStateAction } from 'react';
 import { IFilterList } from '../../pages/Home/Home';
+import './Filter.css';
 
 interface Props {
   setFilterList: Dispatch<SetStateAction<IFilterList[]>>;
 }
 
 const filterList: IFilterList[] = [
-  { val: 'Veggi', isChecked: false },
+  { val: 'Vegetarisch', isChecked: false },
   { val: 'Nudeln', isChecked: false },
   { val: 'Kartoffeln', isChecked: false },
   { val: 'Reis', isChecked: false },
@@ -56,10 +56,9 @@ const Filter: React.FC<Props> = (props) => {
           <IonIcon icon={filterOutline} />
         </IonFabButton>
       </IonFab>
-      <IonModal showBackdrop={true} isOpen={showModal} initialBreakpoint={0.5}>
+      <IonModal showBackdrop={true} isOpen={showModal} initialBreakpoint={0.4}>
         <IonContent scrollY={false} className='ion-padding'>
           <IonList>
-            <IonItemDivider>Vegetarisch</IonItemDivider>
             {filterModal.map(({ val }, index) => {
               return (
                 <IonItem key={index}>

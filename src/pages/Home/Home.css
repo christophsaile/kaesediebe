@@ -1,9 +1,10 @@
-.home-grid {
+.home_grid {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   max-width: var(--ion-max-width);
   margin: auto;
+  padding: var(--ion-padding-half) 0 64px;
 }
 
 ion-header {

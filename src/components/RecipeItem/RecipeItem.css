@@ -1,16 +1,88 @@
-ion-card {
-  width: calc(50% - calc(var(--ion-margin) + var(--ion-margin) / 2));
-  margin-top: calc(var(--ion-margin) / 2);
-  margin-right: calc(var(--ion-margin) / 2);
-  margin-bottom: calc(var(--ion-margin) / 2);
+ion-card.ri {
+  position: relative;
+  width: calc(50% - calc(var(--ion-margin) + var(--ion-margin-half)));
+  margin-top: var(--ion-margin-half);
+  margin-right: var(--ion-margin-half);
+  margin-bottom: var(--ion-margin-half);
   margin-left: var(--ion-margin);
+  padding-bottom: 40px;
+  background-color: var(--ion-color-light);
 }
 
-ion-card:nth-child(even) {
+ion-card.ri:nth-child(even) {
   margin-right: var(--ion-margin);
-  margin-left: calc(var(--ion-margin) / 2);
+  margin-left: var(--ion-margin-half);
 }
 
-.veggi-icon {
-  padding-left: 6px;
+.ri ion-card-header {
+  padding: var(--ion-padding-half);
+}
+
+.ri ion-card-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  hyphens: auto;
+  font-size: 20px;
+}
+
+.ri .card-content-ios {
+  padding-inline: var(--ion-padding-half);
+}
+
+.ri .img-container {
+  position: relative;
+}
+
+.ri .img-container::before {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(330deg, rgba(0, 0, 0, 0.4) -50%, rgba(0, 0, 0, 0) 20%);
+}
+
+.ri .img-container ion-icon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: rgb(145, 201, 177);
+  padding: var(--ion-padding-half);
+}
+.ri ion-chip {
+  height: 26px;
+  padding: 6px;
+  font-size: 12px;
+}
+.ri .badges {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: var(--ion-padding-half);
+  padding-top: 0;
+}
+
+.ri .badges ion-chip {
+  --color: var(--ion-color-primary);
+  --background: rgba(var(--ion-color-primary-rgb), 0.08);
+  margin: 0;
+}
+
+.ri .badges ion-chip:first-child {
+  margin-left: 0;
+  margin-right: 2px;
+}
+
+.ri .badges ion-chip:last-child {
+  margin-right: 0;
+  margin-left: 2px;
+}
+
+.ri .badges ion-icon {
+  margin-inline: 0 2px;
 }

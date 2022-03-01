@@ -21,8 +21,10 @@ const Home: React.FC<IProps> = (props) => {
 
   useEffect(() => {
     const fetchRecipes = (filter?: IFilterList[]) => {
-      const isVeggi = filter?.find((elem) => elem.val === 'Veggi');
-      const isCategory = filter?.filter((elem) => elem.val !== 'Veggi' && elem.isChecked === true);
+      const isVeggi = filter?.find((elem) => elem.val === 'Vegetarisch');
+      const isCategory = filter?.filter(
+        (elem) => elem.val !== 'Vegetarisch' && elem.isChecked === true
+      );
       let categoryList: string[] = [];
       isCategory?.forEach((elem) => {
         categoryList.push(elem.val);
@@ -52,7 +54,7 @@ const Home: React.FC<IProps> = (props) => {
         <IonHeader className='ion-no-border ion-padding'>
           <IonImg src='/assets/icon/icon_transparent.png' />
         </IonHeader>
-        <IonList className='home-grid'>
+        <IonList className='home_grid'>
           {recipies?.map((item) => {
             return <RecipeItem data={item.fields} id={item.sys.id} key={item.sys.id} />;
           })}
