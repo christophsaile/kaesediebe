@@ -1,3 +1,41 @@
-.recipe-img::part(image) {
-  border-radius: 4px;
+.recipe ion-card {
+  margin-bottom: 74px;
+}
+
+.recipe .img-container {
+  position: relative;
+}
+
+.recipe .img-container::before {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(330deg, rgba(0, 0, 0, 0.4) -50%, rgba(0, 0, 0, 0) 20%);
+}
+
+.recipe .img-container ion-icon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: rgb(145, 201, 177);
+  padding: var(--ion-padding-half);
+}
+
+.recipe ion-card-title + p {
+  padding-top: var(--ion-padding);
+}
+
+.recipe p {
+  font-size: 17px;
+  color: black;
+}
+
+.recipe ol,
+.recipe ul {
+  padding-inline-start: 40px;
+  color: black;
 }

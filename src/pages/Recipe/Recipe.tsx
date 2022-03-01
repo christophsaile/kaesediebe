@@ -1,16 +1,16 @@
 import {
   IonContent,
   IonPage,
-  IonFooter,
-  IonButtons,
-  IonBackButton,
-  IonToolbar,
   IonImg,
   IonLabel,
-  IonGrid,
-  IonRow,
   IonIcon,
   IonChip,
+  IonCard,
+  IonCardHeader,
+  IonCardTitle,
+  IonFab,
+  IonFabButton,
+  IonCardContent,
 } from '@ionic/react';
 import { useEffect, useState } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
@@ -18,7 +18,7 @@ import './Recipe.css';
 import { IRecipeFields } from '../../@types/generated/contentful';
 import { ContentfulClientApi } from 'contentful';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { leafOutline, timeOutline, restaurantOutline } from 'ionicons/icons';
+import { leafOutline, timeOutline, restaurantOutline, chevronBackOutline } from 'ionicons/icons';
 import IngredientList from '../../components/IngredientList/IngredientList';
 import ShareButton from '../../components/ShareButton/ShareButton';
 
@@ -44,48 +44,52 @@ const Recipe: React.FC<IProps> = (props) => {
   }, [recipeId, client]);
 
   return (
-    <IonPage>
-      <IonContent className='ion-padding' fullscreen>
-        <IonImg
-          className='recipe-img'
-          alt={recipeDetails?.image?.fields.file.fileName}
-          src={recipeDetails?.image?.fields.file.url}
-        />
-        <h1>
-          {recipeDetails?.title}
-          <IonIcon
-            className='veggi-icon'
-            icon={recipeDetails?.vegetarian ? leafOutline : ''}
-          ></IonIcon>
-        </h1>
-        <IonRow>
-          <IonChip outline color='primary'>
-            <IonIcon icon={timeOutline}></IonIcon>
-            <IonLabel>{recipeDetails?.duration}</IonLabel>
-          </IonChip>
-          <IonChip outline color='primary'>
-            <IonIcon icon={restaurantOutline}></IonIcon>
-            <IonLabel>{recipeDetails?.category}</IonLabel>
-          </IonChip>
-        </IonRow>
-        <IngredientList client={client} recipeDetails={recipeDetails} />
-        {recipeDetails?.description ? (
-          <IonGrid>
-            <h2>Zubereitung</h2>
-            {documentToReactComponents(recipeDetails.description)}
-          </IonGrid>
-        ) : (
-          ''
-        )}
+    <IonPage className='recipe'>
+      <IonContent fullscreen>
+        <IonCard>
+          <div className='img-container'>
+            {recipeDetails?.image ? (
+              <IonImg
+                alt={recipeDetails?.image?.fields.file.fileName}
+                src={recipeDetails?.image?.fields.file.url}
+              />
+            ) : (
+              <IonImg src={'./assets/placeholder.png'} />
+            )}
+            {recipeDetails?.vegetarian && <IonIcon size='small' icon={leafOutline} />}
+          </div>
+          <IonCardHeader>
+            <IonCardTitle>{recipeDetails?.title}</IonCardTitle>
+            <section className='badges'>
+              <IonChip color='primary'>
+                <IonIcon icon={timeOutline}></IonIcon>
+                <IonLabel>{recipeDetails?.duration}</IonLabel>
+              </IonChip>
+              <IonChip color='primary'>
+                <IonIcon icon={restaurantOutline}></IonIcon>
+                <IonLabel>{recipeDetails?.category}</IonLabel>
+              </IonChip>
+            </section>
+          </IonCardHeader>
+          <IonCardContent>
+            <IngredientList client={client} recipeDetails={recipeDetails} />
+            {recipeDetails?.description ? (
+              <>
+                <IonCardTitle class='ion-padding-top'>Zubereitung</IonCardTitle>
+                {documentToReactComponents(recipeDetails.description)}
+              </>
+            ) : (
+              ''
+            )}
+          </IonCardContent>
+        </IonCard>
+        <IonFab vertical='bottom' horizontal='start' slot='fixed'>
+          <IonFabButton routerDirection='back' routerLink='/home' id='filer-modal-trigger'>
+            <IonIcon icon={chevronBackOutline} />
+          </IonFabButton>
+        </IonFab>
         <ShareButton id={recipeId} recipe={recipeDetails} />
       </IonContent>
-      <IonFooter>
-        <IonToolbar>
-          <IonButtons slot='start'>
-            <IonBackButton default-href='\' color='primary' />
-          </IonButtons>
-        </IonToolbar>
-      </IonFooter>
     </IonPage>
   );
 };

@@ -1,7 +1,8 @@
-import { IonCol, IonGrid, IonItem, IonLabel, IonList, IonRow } from '@ionic/react';
+import { IonCardTitle, IonCol, IonGrid, IonItem, IonLabel, IonList, IonRow } from '@ionic/react';
 import { ContentfulClientApi } from 'contentful';
 import { useEffect, useState } from 'react';
 import { IIngredientFields, IRecipeFields } from '../../@types/generated/contentful';
+import './IngredientList.css';
 
 interface IProps {
   client: ContentfulClientApi;
@@ -49,12 +50,12 @@ const IngredientList: React.FC<IProps> = (props) => {
 
   return (
     <>
-      <h2>Zutaten</h2>
-      <IonList>
+      <IonCardTitle className='ion-padding-top'>Zutaten</IonCardTitle>
+      <IonList className='ion-padding-top ion-padding-bottom'>
         {ingredients?.map((item, index) => (
           <IonItem key={index}>
             <IonLabel>
-              <IonGrid>
+              <IonGrid className='ion-no-padding'>
                 <IonRow>
                   <IonCol size='4'>{item.amount}</IonCol>
                   <IonCol size='8'>{item.title}</IonCol>
