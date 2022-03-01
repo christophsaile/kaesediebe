@@ -1,3 +1,7 @@
 ion-modal {
   --border-radius: 8px;
 }
+
+ion-modal ion-toolbar {
+  --border-color: var(--ion-color-primary);
+}

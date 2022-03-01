@@ -3,12 +3,12 @@
   --ion-padding-half: calc(var(--ion-padding) / 2);
   --ion-margin: 16px;
   --ion-margin-half: calc(var(--ion-margin) / 2);
-  --ion-background-color: #fcebb7;
-  --ion-background-color-rgb: 252, 235, 183;
+  --ion-background-color: #f3f4f7;
+  --ion-background-color-rgb: 243, 244, 247;
   --ion-max-width: 992px;
-  --colors: #ffab24;
+  /* --colors: #ffab24;
   --colors2: #558374;
-  --colors3: #fcebb7;
+  --colors3: #fcebb7; */
 }
 
 ion-icon.xs {

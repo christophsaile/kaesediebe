@@ -49,12 +49,12 @@ const Home: React.FC<IProps> = (props) => {
   }, [filters, props.client]);
 
   return (
-    <IonPage>
+    <IonPage className='home'>
       <IonContent fullscreen>
         <IonHeader className='ion-no-border ion-padding'>
           <IonImg src='/assets/icon/icon_transparent.png' />
         </IonHeader>
-        <IonList className='home_grid'>
+        <IonList>
           {recipies?.map((item) => {
             return <RecipeItem data={item.fields} id={item.sys.id} key={item.sys.id} />;
           })}

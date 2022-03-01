@@ -1,4 +1,4 @@
-.home_grid {
+.home ion-list {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -7,7 +7,7 @@
   padding: var(--ion-padding-half) 0 64px;
 }
 
-ion-header {
+.home ion-header {
   width: 200px;
   margin: auto;
 }

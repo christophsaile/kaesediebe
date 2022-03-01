@@ -1,15 +1,21 @@
 import {
+  IonButton,
+  IonButtons,
   IonCheckbox,
   IonContent,
   IonFab,
   IonFabButton,
+  IonHeader,
   IonIcon,
   IonItem,
   IonLabel,
   IonList,
+  IonListHeader,
   IonModal,
+  IonTitle,
+  IonToolbar,
 } from '@ionic/react';
-import { filterOutline } from 'ionicons/icons';
+import { filterOutline, closeCircleOutline } from 'ionicons/icons';
 import { useEffect, useState, Dispatch, SetStateAction } from 'react';
 import { IFilterList } from '../../pages/Home/Home';
 import './Filter.css';
@@ -57,6 +63,14 @@ const Filter: React.FC<Props> = (props) => {
         </IonFabButton>
       </IonFab>
       <IonModal showBackdrop={true} isOpen={showModal} initialBreakpoint={0.4}>
+        <IonHeader>
+          <IonToolbar color='primary'>
+            <IonTitle>Rezeptfilter</IonTitle>
+            <IonButtons slot='end'>
+              <IonButton onClick={() => setShowModal(false)}>Fertig</IonButton>
+            </IonButtons>
+          </IonToolbar>
+        </IonHeader>
         <IonContent scrollY={false} className='ion-padding'>
           <IonList>
             {filterModal.map(({ val }, index) => {

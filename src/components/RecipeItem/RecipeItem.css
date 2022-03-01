@@ -6,7 +6,6 @@ ion-card.ri {
   margin-bottom: var(--ion-margin-half);
   margin-left: var(--ion-margin);
   padding-bottom: 40px;
-  background-color: var(--ion-color-light);
 }
 
 ion-card.ri:nth-child(even) {
