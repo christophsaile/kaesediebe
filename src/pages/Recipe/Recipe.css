@@ -1,5 +1,7 @@
 .recipe ion-card {
+  margin: auto;
   margin-bottom: 74px;
+  max-width: var(--ion-max-width);
 }
 
 .recipe .img-container {
