@@ -62,8 +62,7 @@ ion-card.ri:nth-child(even) {
   position: absolute;
   bottom: 0;
   left: 0;
-  padding: var(--ion-padding-half);
-  padding-top: 0;
+  padding: 0 0 var(--ion-padding-half) var(--ion-padding-half);
 }
 
 .ri .badges ion-chip {
@@ -84,4 +83,5 @@ ion-card.ri:nth-child(even) {
 
 .ri .badges ion-icon {
   margin-inline: 0 2px;
+  font-size: 15px;
 }
