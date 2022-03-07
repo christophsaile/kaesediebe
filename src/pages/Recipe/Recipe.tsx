@@ -45,7 +45,7 @@ const Recipe: React.FC<IProps> = (props) => {
 
   return (
     <IonPage className='recipe'>
-      <IonContent className='ion-padding' fullscreen>
+      <IonContent className='ion-padding fade' fullscreen>
         <IonCard>
           <div className='img-container'>
             {recipeDetails?.image ? (

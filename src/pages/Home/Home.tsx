@@ -1,4 +1,13 @@
-import { IonContent, IonHeader, IonPage, IonList, IonImg } from '@ionic/react';
+import {
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonList,
+  IonImg,
+  IonFooter,
+  IonToolbar,
+  IonTitle,
+} from '@ionic/react';
 import { useEffect, useState } from 'react';
 import { IRecipeFields } from '../../@types/generated/contentful';
 import { ContentfulClientApi, Entry } from 'contentful';
@@ -50,7 +59,7 @@ const Home: React.FC<IProps> = (props) => {
 
   return (
     <IonPage className='home'>
-      <IonContent fullscreen>
+      <IonContent className='fade' fullscreen>
         <IonHeader className='ion-no-border ion-padding'>
           <IonImg alt='logo' src='/assets/icon/icon_transparent.png' />
         </IonHeader>
@@ -60,6 +69,11 @@ const Home: React.FC<IProps> = (props) => {
           })}
         </IonList>
         <Filter setFilterList={setFilters} />
+        <IonFooter className='ion-no-border'>
+          <IonToolbar color='light'>
+            <IonTitle size='small'>🧀 made by Chris & Pauline</IonTitle>
+          </IonToolbar>
+        </IonFooter>
       </IonContent>
     </IonPage>
   );
