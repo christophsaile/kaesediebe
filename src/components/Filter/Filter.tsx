@@ -10,12 +10,11 @@ import {
   IonItem,
   IonLabel,
   IonList,
-  IonListHeader,
   IonModal,
   IonTitle,
   IonToolbar,
 } from '@ionic/react';
-import { filterOutline, closeCircleOutline } from 'ionicons/icons';
+import { filterOutline } from 'ionicons/icons';
 import { useEffect, useState, Dispatch, SetStateAction } from 'react';
 import { IFilterList } from '../../pages/Home/Home';
 import './Filter.css';

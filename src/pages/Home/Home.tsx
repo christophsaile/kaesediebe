@@ -52,7 +52,7 @@ const Home: React.FC<IProps> = (props) => {
     <IonPage className='home'>
       <IonContent fullscreen>
         <IonHeader className='ion-no-border ion-padding'>
-          <IonImg src='/assets/icon/icon_transparent.png' />
+          <IonImg alt='logo' src='/assets/icon/icon_transparent.png' />
         </IonHeader>
         <IonList>
           {recipies?.map((item) => {

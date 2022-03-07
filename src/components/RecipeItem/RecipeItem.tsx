@@ -25,7 +25,7 @@ const RecipeItem: React.FC<Props> = (props) => {
         {image ? (
           <IonImg alt={image.fields.file.fileName} src={image.fields.file.url} />
         ) : (
-          <IonImg src={'./assets/placeholder.png'} />
+          <IonImg alt='placeholder image' src={'./assets/placeholder.png'} />
         )}
         {vegetarian && <IonIcon size='small' icon={leafOutline} />}
       </div>
