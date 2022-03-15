@@ -7,6 +7,7 @@ import {
   IonFooter,
   IonToolbar,
   IonTitle,
+  IonToast,
 } from '@ionic/react';
 import { useEffect, useState } from 'react';
 import { IRecipeFields } from '../../@types/generated/contentful';
@@ -14,6 +15,7 @@ import { ContentfulClientApi, Entry } from 'contentful';
 import RecipeItem from '../../components/RecipeItem/RecipeItem';
 import './Home.css';
 import Filter from '../../components/Filter/Filter';
+import { wifiOutline } from 'ionicons/icons';
 
 interface IProps {
   client: ContentfulClientApi;
@@ -27,6 +29,7 @@ export interface IFilterList {
 const Home: React.FC<IProps> = (props) => {
   const [recipies, setRecipies] = useState<Entry<IRecipeFields>[]>();
   const [filters, setFilters] = useState<IFilterList[]>([]);
+  const [showToast, setShowToast] = useState(false);
 
   useEffect(() => {
     const fetchRecipes = (filter?: IFilterList[]) => {
@@ -49,7 +52,9 @@ const Home: React.FC<IProps> = (props) => {
         .then((entries) => {
           setRecipies(entries.items);
         })
-        .catch(console.error);
+        .catch((error) => {
+          setShowToast(true);
+        });
     };
 
     if (filters[0]) {
@@ -74,6 +79,16 @@ const Home: React.FC<IProps> = (props) => {
             <IonTitle size='small'>🧀 made by Chris & Pauline</IonTitle>
           </IonToolbar>
         </IonFooter>
+        <IonToast
+          color='danger'
+          isOpen={showToast}
+          onDidDismiss={() => {
+            setShowToast(false);
+          }}
+          icon={wifiOutline}
+          message='Keine Internetverbindung'
+          duration={5000}
+        />
       </IonContent>
     </IonPage>
   );
