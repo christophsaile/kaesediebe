@@ -41,7 +41,7 @@ const ShareButton: React.FC<IProps> = (props) => {
             <IonIcon icon={mailOutline}></IonIcon>
           </IonFabButton>
           <IonFabButton
-            href={`https://wa.me/?text=Schau%20dir%20das%20Nudelauflauf%20Rezept%20an%20${url}`}
+            href={`https://wa.me/?text=Schau%20dir%20das%20${recipe?.title}%20Rezept%20hier%20an:%20${url}`}
           >
             <IonIcon icon={logoWhatsapp}></IonIcon>
           </IonFabButton>
