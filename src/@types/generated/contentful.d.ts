@@ -29,6 +29,9 @@ export interface IRecipeFields {
   /** Title */
   title: string;
 
+  /** Slug */
+  slug: string;
+
   /** Duration */
   duration: "Gering" | "Hoch";
 

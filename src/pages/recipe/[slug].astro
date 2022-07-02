@@ -1,0 +1,32 @@
+---
+import { client } from "../../lib/contentfulClient";
+
+export async function getStaticPaths() {
+  const data = await client.getEntries({
+    content_type: 'recipe',
+  })
+    .then((entries) => entries.items)
+    .catch(() => []);
+
+  return data.map((recipe) => {
+    return {
+      params: { slug: recipe.fields.slug },
+      props: { recipe }
+    }
+  })
+}
+
+const { recipe } = Astro.props;
+---
+
+<html>
+
+<head>
+  <title>My Homepage</title>
+</head>
+
+<body>
+  <h1>{recipe.fields.title}</h1>
+</body>
+
+</html>
