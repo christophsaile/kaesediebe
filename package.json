@@ -6,12 +6,20 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "build-types": "contentful-typescript-codegen --output src/@types/generated/contentful.d.ts"
   },
   "devDependencies": {
     "@astrojs/solid-js": "^0.2.0",
     "@astrojs/tailwind": "^0.2.1",
     "astro": "^1.0.0-beta.55",
+    "contentful": "^9.1.32",
+    "contentful-management": "^10.6.3",
+    "contentful-typescript-codegen": "^3.2.3",
+    "dotenv": "^16.0.1",
     "solid-js": "^1.4.4"
+  },
+  "dependencies": {
+    "@contentful/rich-text-types": "^15.12.1"
   }
 }
