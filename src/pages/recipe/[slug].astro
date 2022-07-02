@@ -1,32 +1,29 @@
 ---
+import BaseLayout from "../../layouts/baseLayout.astro";
 import { client } from "../../lib/contentfulClient";
 
 export async function getStaticPaths() {
-  const data = await client.getEntries({
-    content_type: 'recipe',
-  })
-    .then((entries) => entries.items)
-    .catch(() => []);
+	const data = await client.getEntries({
+		content_type: 'recipe',
+	})
+		.then((entries) => entries.items)
+		.catch(() => []);
 
-  return data.map((recipe) => {
-    return {
-      params: { slug: recipe.fields.slug },
-      props: { recipe }
-    }
-  })
+	return data.map((recipe) => {
+		return {
+			params: { slug: recipe.fields.slug },
+			props: { recipe }
+		}
+	})
 }
-
+const { slug } = Astro.params
 const { recipe } = Astro.props;
+
+const title = recipe.fields.title;
+const description = recipe.fields.title;
+const permalink = `https://kaesediebe.netlify.app/recipe/${slug}`;
 ---
 
-<html>
-
-<head>
-  <title>My Homepage</title>
-</head>
-
-<body>
-  <h1>{recipe.fields.title}</h1>
-</body>
-
-</html>
+<BaseLayout title={title} description={description} permalink={permalink}>
+	<h1>{recipe.fields.title}</h1>
+</BaseLayout>
