@@ -15,6 +15,17 @@ const { title, description, permalink } = Astro.props;
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width" />
 	<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+	<meta name="color-scheme" content="light dark" />
+	<meta name="theme-color" content="#f3f4f7" />
+
+	<!-- PWA -->
+	<!-- <link rel="manifest" href="%PUBLIC_URL%/manifest.json" /> -->
+	<link rel="apple-touch-icon" sizes="180x180" href="/assets/icon/apple-touch-icon.png" />
+	<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon//favicon-32x32.png" />
+	<link rel="icon" type="image/png" sizes="16x16" href="/assets/icon//favicon-16x16.png" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-title" content="KäseDiebe" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="default" />
 
 	<!-- Primary Meta Tags -->
 	<title>{title}</title>
@@ -34,9 +45,12 @@ const { title, description, permalink } = Astro.props;
 	<meta property="twitter:title" content={title} />
 	<meta property="twitter:description" content={description} />
 	<meta property="twitter:image" content="https://astro.build/social.png?v=1" />
+
+	<!-- Teams -->
+	<meta name="msapplication-TileColor" content="#da532c" />
 </head>
 
-<body>
+<body class="max-w-xl mx-auto">
 	<slot />
 </body>
 

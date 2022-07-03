@@ -1,0 +1,25 @@
+---
+// @ts-ignore
+import type { IRecipeFields } from "../types/generated/contentful.d.ts";
+
+export interface CardProps {
+	data: IRecipeFields
+}
+
+const { category, duration, image, title, vegetarian } = (Astro.props as CardProps).data;
+---
+
+<div class="card bg-base-100 shadow-xl">
+	<figure><img src={image?.fields.file.url} alt={image?.fields.file.fileName} /></figure>
+	<div class="card-body">
+		<h2 class="card-title">
+			Shoes!
+			<div class="badge badge-secondary">NEW</div>
+		</h2>
+		<p>If a dog chews shoes whose shoes does he choose?</p>
+		<div class="card-actions justify-end">
+			<div class="badge badge-outline">Fashion</div>
+			<div class="badge badge-outline">Products</div>
+		</div>
+	</div>
+</div>

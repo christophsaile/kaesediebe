@@ -7,7 +7,7 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "build-types": "contentful-typescript-codegen --output src/@types/generated/contentful.d.ts"
+    "build-types": "contentful-typescript-codegen --output src/types/generated/contentful.d.ts"
   },
   "devDependencies": {
     "@astrojs/solid-js": "^0.2.0",
