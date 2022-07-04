@@ -20,7 +20,7 @@ const permalink = 'https://www.kaesediebe.netlify.app';
 	<header>
 		<img class="w-48 p-4 mx-auto" src="/assets/icon/icon_transparent.png"/>
 	</header>
-	<main class="grid grid-cols-1 gap-4">
+	<main class="grid gap-6">
 		{data.map((entry) => {
 			return <Card data={entry.fields} />
 		})}
