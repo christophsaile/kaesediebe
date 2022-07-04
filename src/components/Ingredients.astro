@@ -1,0 +1,45 @@
+---
+// @ts-ignore
+import type { IIngredientFields } from "../types/generated/contentful.d.ts";
+
+export interface IIngredientsProps {
+	data: IIngredientFields
+}
+
+const { data } = Astro.props as IIngredientsProps
+---
+
+<div class="overflow-x-auto w-full">
+	<table class="table w-full">
+		<!-- head -->
+		<thead>
+			<tr>
+				<th></th>
+				<th>Menge</th>
+				<th>Zutat</th>
+			</tr>
+		</thead>
+		<!-- body -->
+		<tbody>
+			{data.map((elem: { amount: string, title: string }) =>
+			<tr>
+				<th>
+					<label>
+						<input type="checkbox" class="checkbox" />
+					</label>
+				</th>
+				<td>{elem.amount}</td>
+				<td>{elem.title}</td>
+			</tr>
+			)}
+		</tbody>
+		<!-- foot -->
+		<tfoot>
+			<tr>
+				<th></th>
+				<th>Menge</th>
+				<th>Zutat</th>
+			</tr>
+		</tfoot>
+	</table>
+</div>
