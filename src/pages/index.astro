@@ -1,9 +1,9 @@
 ---
-import BaseLayout from '../layouts/baseLayout.astro'
-import Card from '../components/card.astro';
-import { client } from "../lib/contentfulClient";
+import BaseLayout from '@layouts/baseLayout.astro'
+import Card from '@components/card.astro';
+import { client } from "@lib/contentfulClient";
 // @ts-ignore
-import type { IRecipeFields } from "../types/generated/contentful.d.ts";
+import type { IRecipeFields } from "@types/generated/contentful.d.ts";
 
 const data = await client.getEntries<IRecipeFields>({
 	content_type: 'recipe',

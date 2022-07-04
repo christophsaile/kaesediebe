@@ -1,10 +1,10 @@
 ---
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
-import BaseLayout from "../../layouts/baseLayout.astro";
-import Ingredients from "../../components/Ingredients.astro";
-import { client } from "../../lib/contentfulClient";
+import BaseLayout from "@layouts/baseLayout.astro";
+import Ingredients from "@components/Ingredients.astro";
+import { client } from "@lib/contentfulClient";
 // @ts-ignore
-import type { IRecipeFields, IIngredientFields } from "../../types/generated/contentful.d.ts";
+import type { IRecipeFields, IIngredientFields } from "@types/generated/contentful.d.ts";
 
 interface IIngredientsUnresolved {
 	amount: string,
@@ -31,10 +31,10 @@ const { recipe } = Astro.props;
 const permalink = `https://kaesediebe.netlify.app/recipe/${slug}`;
 const { title, duration, vegetarian, category, ingredients, description, image } = recipe.fields as IRecipeFields
 
-const getAllIngredientIds: string[] = ingredients?.map((elem: IIngredientsUnresolved) => elem.ingredientId);
+const getIngredientIds: string[] = ingredients?.map((elem: IIngredientsUnresolved) => elem.ingredientId);
 const ingredientList: IIngredientFields = await client.getEntries<IIngredientFields>({
 	content_type: 'ingredient',
-	'sys.id[in]': getAllIngredientIds.join(),
+	'sys.id[in]': getIngredientIds.join(),
 }).then(entries => ingredients.map((elem: IIngredientsUnresolved) => {
 	const itemName = entries.items.find((items) => items.sys.id === elem.ingredientId);
 	return { amount: elem.amount, title: itemName?.fields.title };
