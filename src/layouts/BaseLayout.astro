@@ -1,57 +1,70 @@
 ---
 export interface Props {
-	title: string;
-	description: string;
-	permalink: string;
+  title: string;
+  description: string;
+  permalink: string;
 }
 
 const { title, description, permalink } = Astro.props;
 ---
 
-<html lang="de">
+<html lang='de'>
+  <head>
+    <!-- Global Metadata -->
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width' />
+    <link rel='icon' type='image/x-icon' href='/favicon.ico' />
+    <meta name='color-scheme' content='light dark' />
+    <meta name='theme-color' content='#f3f4f7' />
 
-<head>
-	<!-- Global Metadata -->
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width" />
-	<link rel="icon" type="image/x-icon" href="/favicon.ico" />
-	<meta name="color-scheme" content="light dark" />
-	<meta name="theme-color" content="#f3f4f7" />
+    <!-- PWA -->
+    <!-- <link rel="manifest" href="%PUBLIC_URL%/manifest.json" /> -->
+    <link
+      rel='apple-touch-icon'
+      sizes='180x180'
+      href='/assets/icon/apple-touch-icon.png'
+    />
+    <link
+      rel='icon'
+      type='image/png'
+      sizes='32x32'
+      href='/assets/icon//favicon-32x32.png'
+    />
+    <link
+      rel='icon'
+      type='image/png'
+      sizes='16x16'
+      href='/assets/icon//favicon-16x16.png'
+    />
+    <meta name='apple-mobile-web-app-capable' content='yes' />
+    <meta name='apple-mobile-web-app-title' content='KäseDiebe' />
+    <meta name='apple-mobile-web-app-status-bar-style' content='default' />
 
-	<!-- PWA -->
-	<!-- <link rel="manifest" href="%PUBLIC_URL%/manifest.json" /> -->
-	<link rel="apple-touch-icon" sizes="180x180" href="/assets/icon/apple-touch-icon.png" />
-	<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon//favicon-32x32.png" />
-	<link rel="icon" type="image/png" sizes="16x16" href="/assets/icon//favicon-16x16.png" />
-	<meta name="apple-mobile-web-app-capable" content="yes" />
-	<meta name="apple-mobile-web-app-title" content="KäseDiebe" />
-	<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name='title' content={title} />
+    <meta name='description' content={description} />
 
-	<!-- Primary Meta Tags -->
-	<title>{title}</title>
-	<meta name="title" content={title} />
-	<meta name="description" content={description} />
+    <!-- Open Graph / Facebook -->
+    <meta property='og:type' content='website' />
+    <meta property='og:url' content={permalink} />
+    <meta property='og:title' content={title} />
+    <meta property='og:description' content={description} />
+    <meta property='og:image' content='https://astro.build/social.png?v=1' />
 
-	<!-- Open Graph / Facebook -->
-	<meta property="og:type" content="website" />
-	<meta property="og:url" content={permalink} />
-	<meta property="og:title" content={title} />
-	<meta property="og:description" content={description} />
-	<meta property="og:image" content="https://astro.build/social.png?v=1" />
+    <!-- Twitter -->
+    <meta property='twitter:card' content='summary_large_image' />
+    <meta property='twitter:url' content={permalink} />
+    <meta property='twitter:title' content={title} />
+    <meta property='twitter:description' content={description} />
+    <meta property='twitter:image' content='https://astro.build/social.png?v=1'
+    />
 
-	<!-- Twitter -->
-	<meta property="twitter:card" content="summary_large_image" />
-	<meta property="twitter:url" content={permalink} />
-	<meta property="twitter:title" content={title} />
-	<meta property="twitter:description" content={description} />
-	<meta property="twitter:image" content="https://astro.build/social.png?v=1" />
+    <!-- Teams -->
+    <meta name='msapplication-TileColor' content='#da532c' />
+  </head>
 
-	<!-- Teams -->
-	<meta name="msapplication-TileColor" content="#da532c" />
-</head>
-
-<body class="max-w-xl mx-auto px-2">
-	<slot />
-</body>
-
+  <body class='max-w-xl mx-auto px-2'>
+    <slot></slot>
+  </body>
 </html>

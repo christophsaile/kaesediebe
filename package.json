@@ -7,6 +7,7 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+		"lint": "npx prettier --write src/**/*",
     "build-types": "contentful-typescript-codegen --output src/types/generated/contentful.d.ts"
   },
   "devDependencies": {
@@ -17,7 +18,9 @@
     "contentful-management": "^10.6.3",
     "contentful-typescript-codegen": "^3.2.3",
     "dotenv": "^16.0.1",
-    "solid-js": "^1.4.4"
+    "solid-js": "^1.4.4",
+    "prettier": "^2.7.1",
+    "prettier-plugin-astro": "^0.1.1"
   },
   "dependencies": {
     "@contentful/rich-text-html-renderer": "^15.13.1",
