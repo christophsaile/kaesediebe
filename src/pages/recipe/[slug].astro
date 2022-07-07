@@ -65,7 +65,22 @@ const htmlDescription = documentToHtmlString(description);
 ---
 
 <BaseLayout title={title} description={title} permalink={permalink}>
-	<main class='mt-2 mb-8 px-2'>
+	<main class='grid gap-6 mt-4 mb-8 mx-4'>
+		<a href='/'>
+			<button class='btn glass btn-circle fixed bottom-4 left-4 z-20'>
+				<svg
+					clip-rule='evenodd'
+					fill-rule='evenodd'
+					stroke-linejoin='round'
+					stroke-miterlimit='2'
+					viewBox='0 0 24 24'
+					xmlns='http://www.w3.org/2000/svg'
+					><path
+						d='m13.789 7.155c.141-.108.3-.157.456-.157.389 0 .755.306.755.749v8.501c0 .445-.367.75-.755.75-.157 0-.316-.05-.457-.159-1.554-1.203-4.199-3.252-5.498-4.258-.184-.142-.29-.36-.29-.592 0-.23.107-.449.291-.591 1.299-1.002 3.945-3.044 5.498-4.243z'
+					></path>
+				</svg>
+			</button>
+		</a>
 		<div class='card bg-base-100 shadow-xl'>
 			{image ? (
 				<img src={image?.fields.file.url} alt={image?.fields.file.fileName} />
@@ -73,16 +88,23 @@ const htmlDescription = documentToHtmlString(description);
 				<img src="assets/placeholder.png" alt="Platzhalter Bild" />
 			)}
 			<div class='card-body p-4'>
-				<h2 class='card-title'>{title}</h2>
-				<div class='card-actions justify-end'>
-					{vegetarian && <div class="badge badge-outline">Veggi</div>}
+				<h2 class='card-title inline-block'>
+					{title}
+					{vegetarian && <div class="badge badge-secondary">Veggi</div>}
+				</h2>
+				<div>
 					<div class='badge badge-outline'>{category}</div>
 					<div class='badge badge-outline'>{duration}</div>
 				</div>
 			</div>
 		</div>
 		<Ingredients data={ingredientList} />
-		<div set:html={htmlDescription}></div>
+		<div class="card bg-base-100 shadow-xl">
+			<div class="card-body px-4 py-4">
+				<h2 class="card-title">Zubereitung</h2>
+				<div set:html={htmlDescription}></div>
+			</div>
+		</div>
 	</main>
 	<BaseFooter />
 </BaseLayout>

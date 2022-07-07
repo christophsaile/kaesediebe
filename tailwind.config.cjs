@@ -1,10 +1,20 @@
 /** @type {import('tailwindcss').Config} */
+const plugin = require('tailwindcss/plugin');
+
 module.exports = {
 	content: ['./src/**/*.{astro,html,js,jsx,md,svelte,ts,tsx,vue}'],
 	theme: {
 		extend: {},
 	},
-	plugins: [require('daisyui')],
+	plugins: [
+		require('daisyui'),
+		plugin(function ({ addBase, config }) {
+			addBase({
+				ol: { listStyle: 'decimal', paddingLeft: '1.5rem' },
+				li: { paddingTop: '1rem' },
+			});
+		}),
+	],
 	daisyui: {
 		themes: [
 			{
