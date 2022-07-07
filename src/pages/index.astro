@@ -6,26 +6,28 @@ import { client } from '@lib/contentfulClient';
 import type { IRecipeFields } from '@types/generated/contentful.d.ts';
 
 const data = await client
-  .getEntries<IRecipeFields>({
-    content_type: 'recipe',
-  })
-  .then((entries) => entries.items)
-  .catch(() => []);
+	.getEntries<IRecipeFields>({
+		content_type: 'recipe',
+	})
+	.then((entries) => entries.items)
+	.catch(() => []);
 
 const title = 'Käsediebe Foodblog';
 const description =
-  'Käsediebe ist ein Foodblog in dem Christoph und Pauline ihre Rezepte vorstellen';
+	'Käsediebe ist ein Foodblog in dem Christoph und Pauline ihre Rezepte vorstellen';
 const permalink = 'https://www.kaesediebe.netlify.app';
 ---
 
 <BaseLayout title={title} description={description} permalink={permalink}>
-  <header>
-    <img class='w-48 p-4 mx-auto' src='/assets/icon/icon_transparent.png' />
-  </header>
-  <main class='grid gap-6'>
-    {data.map((entry) => {
-      return <Card data={entry.fields} />
-    })}
-  </main>
-  <footer>made with 🧀 by Christoph & Pauline</footer>
+	<header class='mb-8'>
+		<img class='w-48 p-4 mx-auto' src='/assets/icon/icon_transparent.png' />
+	</header>
+	<main class='grid gap-6'>
+		{data.map((entry) => <Card data={entry.fields} />)}
+	</main>
+	<footer class='footer footer-center p-4 bg-base-300 text-base-content'>
+		<div>
+			<p>made with 🧀 by Christoph & Pauline</p>
+		</div>
+	</footer>
 </BaseLayout>

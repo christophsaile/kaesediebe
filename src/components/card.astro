@@ -3,30 +3,30 @@
 import type { IRecipeFields } from '@types/generated/contentful.d.ts';
 
 export interface ICardProps {
-  data: IRecipeFields;
+	data: IRecipeFields;
 }
 
 const { category, duration, image, title, vegetarian, slug } = (
-  Astro.props as ICardProps
+	Astro.props as ICardProps
 ).data;
 ---
 
 <a href={`recipe/${slug}`}>
-  <div class='card card-side bg-base-100 shadow-xl'>
-    <figure class='w-2/5 flex-none'>
-      {image ? (
-        <img src={image?.fields.file.url} alt={image?.fields.file.fileName} />
-      ) : (
-        <img src="assets/placeholder.png" alt="Platzhalter Bild" />
-      )}
-    </figure>
-    <div class='card-body p-4'>
-      <h2 class='card-title'>{title}</h2>
-      <div class='card-actions justify-end'>
-        {vegetarian && <div class="badge badge-outline">Veggi</div>}
-        <div class='badge badge-outline'>{category}</div>
-        <div class='badge badge-outline'>{duration}</div>
-      </div>
-    </div>
-  </div>
+	<div class='card card-side bg-base-100 shadow-xl'>
+		<figure class='w-2/5 flex-none'>
+			{image ? (
+				<img src={image?.fields.file.url} alt={image?.fields.file.fileName} />
+			) : (
+				<img src="assets/placeholder.png" alt="Platzhalter Bild" />
+			)}
+		</figure>
+		<div class='card-body p-4'>
+			<h2 class='card-title'>{title}</h2>
+			<div class='card-actions justify-end'>
+				{vegetarian && <div class="badge badge-outline">Veggi</div>}
+				<div class='badge badge-outline'>{category}</div>
+				<div class='badge badge-outline'>{duration}</div>
+			</div>
+		</div>
+	</div>
 </a>
