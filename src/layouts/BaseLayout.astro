@@ -8,7 +8,7 @@ export interface Props {
 const { title, description, permalink } = Astro.props;
 ---
 
-<html lang='de'>
+<html lang='de' data-theme="kaesediebe">
 	<head>
 		<!-- Global Metadata -->
 		<meta charset='utf-8' />
@@ -64,7 +64,7 @@ const { title, description, permalink } = Astro.props;
 		<meta name='msapplication-TileColor' content='#da532c' />
 	</head>
 
-	<body class='max-w-xl mx-auto px-2'>
+	<body class='max-w-xl mx-auto'>
 		<slot></slot>
 	</body>
 </html>

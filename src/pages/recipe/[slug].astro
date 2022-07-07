@@ -8,6 +8,7 @@ import type {
 	IIngredientFields,
 	// @ts-ignore
 } from '@types/generated/contentful.d.ts';
+import BaseFooter from '@layouts/BaseFooter.astro';
 
 interface IIngredientsUnresolved {
 	amount: string;
@@ -64,21 +65,24 @@ const htmlDescription = documentToHtmlString(description);
 ---
 
 <BaseLayout title={title} description={title} permalink={permalink}>
-	<div class='card bg-base-100 shadow-xl'>
-		{image ? (
-			<img src={image?.fields.file.url} alt={image?.fields.file.fileName} />
-		) : (
-			<img src="assets/placeholder.png" alt="Platzhalter Bild" />
-		)}
-		<div class='card-body p-4'>
-			<h2 class='card-title'>{title}</h2>
-			<div class='card-actions justify-end'>
-				{vegetarian && <div class="badge badge-outline">Veggi</div>}
-				<div class='badge badge-outline'>{category}</div>
-				<div class='badge badge-outline'>{duration}</div>
+	<main class='mt-2 mb-8 px-2'>
+		<div class='card bg-base-100 shadow-xl'>
+			{image ? (
+				<img src={image?.fields.file.url} alt={image?.fields.file.fileName} />
+			) : (
+				<img src="assets/placeholder.png" alt="Platzhalter Bild" />
+			)}
+			<div class='card-body p-4'>
+				<h2 class='card-title'>{title}</h2>
+				<div class='card-actions justify-end'>
+					{vegetarian && <div class="badge badge-outline">Veggi</div>}
+					<div class='badge badge-outline'>{category}</div>
+					<div class='badge badge-outline'>{duration}</div>
+				</div>
 			</div>
 		</div>
-	</div>
-	<Ingredients data={ingredientList} />
-	<div set:html={htmlDescription}></div>
+		<Ingredients data={ingredientList} />
+		<div set:html={htmlDescription}></div>
+	</main>
+	<BaseFooter />
 </BaseLayout>
