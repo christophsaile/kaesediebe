@@ -1,9 +1,9 @@
 ---
-// @ts-ignore
-import Card from '@components/Card.astro';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import BaseFooter from '@layouts/BaseFooter.astro';
 import { client } from '@lib/contentfulClient';
+// @ts-ignore
+import Card from '@components/Card.astro';
 // @ts-ignore
 import type { IRecipeFields } from '@types/generated/contentful.d.ts';
 
@@ -22,7 +22,7 @@ const permalink = 'https://www.kaesediebe.netlify.app';
 
 <BaseLayout title={title} description={description} permalink={permalink}>
 	<header>
-		<img class='w-48 p-4 mx-auto' src='/assets/icon/icon_transparent.png' />
+		<img class='w-48 p-4 mx-auto' src='/assets/icon/icon_transparent.png' alt="logo" />
 	</header>
 	<main class='grid gap-6 my-8 px-2'>
 		{data.map((entry) => <Card data={entry.fields} />)}

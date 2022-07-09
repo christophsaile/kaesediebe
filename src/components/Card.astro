@@ -5,14 +5,17 @@ export interface ICardProps {
 	data: IRecipeFields;
 }
 
-const { data } = Astro.props as ICardProps
+const { data } = Astro.props as ICardProps;
 ---
 
-<div class='card card-side bg-base-100 shadow-xl'>
-	<a href={`recipe/${data.slug}`}>
+<a href={`recipe/${data.slug}`}>
+	<div class='card card-side bg-base-100 shadow-xl'>
 		<figure class='w-2/5 flex-none'>
 			{data.image ? (
-				<img src={data.image?.fields.file.url} alt={data.image?.fields.file.fileName} />
+				<img
+					src={data.image?.fields.file.url}
+					alt={data.image?.fields.file.fileName}
+				/>
 			) : (
 				<img src="assets/placeholder.png" alt="Platzhalter Bild" />
 			)}
@@ -43,5 +46,5 @@ const { data } = Astro.props as ICardProps
 				</button>
 			</div>
 		</div>
-	</a>
-</div>
+	</div>
+</a>
