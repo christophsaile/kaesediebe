@@ -1,7 +1,8 @@
 ---
+// @ts-ignore
+import Card from '@components/Card.astro';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import BaseFooter from '@layouts/BaseFooter.astro';
-import Card from '@components/Card.astro';
 import { client } from '@lib/contentfulClient';
 // @ts-ignore
 import type { IRecipeFields } from '@types/generated/contentful.d.ts';
@@ -24,9 +25,7 @@ const permalink = 'https://www.kaesediebe.netlify.app';
 		<img class='w-48 p-4 mx-auto' src='/assets/icon/icon_transparent.png' />
 	</header>
 	<main class='grid gap-6 my-8 px-2'>
-		{data.map((entry) => {
-			return <Card data={entry.fields} />
-		})}
+		{data.map((entry) => <Card data={entry.fields} />)}
 	</main>
 	<BaseFooter />
 </BaseLayout>

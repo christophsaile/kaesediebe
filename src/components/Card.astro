@@ -1,33 +1,30 @@
 ---
 // @ts-ignore
 import type { IRecipeFields } from '@types/generated/contentful.d.ts';
-
 export interface ICardProps {
 	data: IRecipeFields;
 }
 
-const { category, duration, image, title, vegetarian, slug } = (
-	Astro.props as ICardProps
-).data;
+const { data } = Astro.props as ICardProps
 ---
 
-<a href={`recipe/${slug}`}>
-	<div class='card card-side bg-base-100 shadow-xl'>
+<div class='card card-side bg-base-100 shadow-xl'>
+	<a href={`recipe/${data.slug}`}>
 		<figure class='w-2/5 flex-none'>
-			{image ? (
-				<img src={image?.fields.file.url} alt={image?.fields.file.fileName} />
+			{data.image ? (
+				<img src={data.image?.fields.file.url} alt={data.image?.fields.file.fileName} />
 			) : (
 				<img src="assets/placeholder.png" alt="Platzhalter Bild" />
 			)}
 		</figure>
 		<div class='card-body p-4'>
 			<h2 class='card-title inline-block'>
-				{title}
-				{vegetarian && <div class="badge badge-secondary">Veggi</div>}
+				{data.title}
+				{data.vegetarian && <div class="badge badge-secondary">Veggi</div>}
 			</h2>
 			<div>
-				<div class='badge badge-outline'>{category}</div>
-				<div class='badge badge-outline'>{duration}</div>
+				<div class='badge badge-outline'>{data.category}</div>
+				<div class='badge badge-outline'>{data.duration}</div>
 			</div>
 			<div>
 				<button class='btn glass btn-sm btn-circle absolute bottom-4 right-4'>
@@ -46,5 +43,5 @@ const { category, duration, image, title, vegetarian, slug } = (
 				</button>
 			</div>
 		</div>
-	</div>
-</a>
+	</a>
+</div>
