@@ -1,0 +1,45 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import BaseFooter from '@layouts/BaseFooter.astro';
+// @ts-ignore
+import Card from '@components/Card.astro';
+import { client } from '@lib/contentfulClient';
+import type { IRecipeFields } from '@customTypes/generated/contentful';
+import Pagination from '@components/Pagination.astro';
+
+export async function getStaticPaths({ paginate }) {
+	const data = await client
+		.getEntries<IRecipeFields>({
+			content_type: 'recipe',
+		})
+		.then((entries) => entries.items)
+		.catch(() => []);
+
+	return paginate(data, { pageSize: 10 });
+}
+
+const { page } = Astro.props;
+const title = 'Käsediebe Foodblog';
+const description =
+	'Käsediebe ist ein Foodblog in dem Christoph und Pauline ihre Rezepte vorstellen';
+const permalink = 'https://www.kaesediebe.netlify.app';
+---
+
+<BaseLayout
+	title={`${title}${page.currentPage > 1 ? ' - ' + page.currentPage : ''}`}
+	description={description}
+	permalink={`${permalink}${page.currentPage > 1 && '/' + page.currentPage}`}
+>
+	<header>
+		<img
+			class='w-48 p-4 mx-auto'
+			src='/assets/icon/icon_transparent.png'
+			alt='logo'
+		/>
+	</header>
+	<main class='grid gap-6 my-8 px-2'>
+		{page.data.map((entry) => <Card data={entry.fields} />)}
+		<Pagination currentPage={page.currentPage} totalPages={page.lastPage} />
+	</main>
+	<BaseFooter />
+</BaseLayout>
