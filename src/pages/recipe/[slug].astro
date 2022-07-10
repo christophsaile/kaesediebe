@@ -66,7 +66,7 @@ const htmlDescription = documentToHtmlString(description);
 <BaseLayout title={title} description={title} permalink={permalink}>
 	<header>
 		<nav>
-			<a href='/'>
+			<a href='javascript:history.back()'>
 				<button class='btn glass btn-circle fixed bottom-4 left-3 z-20'>
 					<svg
 						clip-rule='evenodd'
@@ -86,14 +86,26 @@ const htmlDescription = documentToHtmlString(description);
 	<main class='grid gap-6 mt-4 mb-8 mx-4'>
 		<div class='card bg-base-100 shadow-xl'>
 			{image ? (
-				<img src={image?.fields.file.url} alt={image?.fields.file.fileName} />
+				<img
+					class='w-full'
+					width='340'
+					height='340'
+					src={image?.fields.file.url}
+					alt={image?.fields.file.fileName}
+				/>
 			) : (
-				<img src="assets/placeholder.png" alt="Platzhalter Bild" />
+				<img
+					class='w-full'
+					width='340'
+					height='340'
+					src='assets/placeholder.png'
+					alt='Platzhalter Bild'
+				/>
 			)}
 			<div class='card-body p-4'>
 				<h2 class='card-title inline-block'>
 					{title}
-					{vegetarian && <div class="badge badge-secondary">Veggi</div>}
+					{vegetarian && <div class='badge badge-secondary'>Veggi</div>}
 				</h2>
 				<div>
 					<div class='badge badge-outline'>{category}</div>

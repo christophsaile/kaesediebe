@@ -1,6 +1,6 @@
 {
-  "short_name": "KäseDiebe",
-  "name": "KäseDiebe",
+  "short_name": "Käsediebe",
+  "name": "Käsediebe",
   "icons": [
     {
       "src": "/assets/icon/android-chrome-192x192.png",
@@ -27,7 +27,7 @@
       "purpose": "maskable"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
   "theme_color": "#f3f4f7",

@@ -18,7 +18,10 @@ const { title, description, permalink } = Astro.props;
 		<meta name='theme-color' content='#f3f4f7' />
 
 		<!-- PWA -->
-		<!-- <link rel="manifest" href="%PUBLIC_URL%/manifest.json" /> -->
+		<script type='module' src='/pwabuilder-sw-register.js'>
+
+		</script>
+		<link rel='manifest' href='/manifest.json' />
 		<link
 			rel='apple-touch-icon'
 			sizes='180x180'

@@ -12,11 +12,18 @@ const { data } = Astro.props as ICardProps;
 		<figure class='w-2/5 flex-none'>
 			{data.image ? (
 				<img
+					width="140"
+					height="140"
 					src={data.image?.fields.file.url}
 					alt={data.image?.fields.file.fileName}
 				/>
 			) : (
-				<img src="assets/placeholder.png" alt="Platzhalter Bild" />
+				<img
+					width="140"
+					height="140"
+					src="assets/placeholder.png"
+					alt="Platzhalter Bild"
+				/>
 			)}
 		</figure>
 		<div class='card-body p-4'>
