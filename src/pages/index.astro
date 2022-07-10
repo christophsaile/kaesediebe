@@ -4,8 +4,7 @@ import BaseFooter from '@layouts/BaseFooter.astro';
 import { client } from '@lib/contentfulClient';
 // @ts-ignore
 import Card from '@components/Card.astro';
-// @ts-ignore
-import type { IRecipeFields } from '@types/generated/contentful.d.ts';
+import type { IRecipeFields } from '@customTypes/generated/contentful';
 
 const data = await client
 	.getEntries<IRecipeFields>({

@@ -1,9 +1,8 @@
 ---
-// @ts-ignore
-import type { IIngredientFields } from '@types/generated/contentful.d.ts';
+import type { IIngredientFields } from '@customTypes/generated/contentful';
 
 export interface IIngredientsProps {
-	data: IIngredientFields;
+	data: IIngredientFields[];
 }
 
 const { data } = Astro.props as IIngredientsProps;
