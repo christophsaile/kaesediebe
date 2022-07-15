@@ -1,11 +1,11 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
-import BaseFooter from '@layouts/BaseFooter.astro';
 // @ts-ignore
 import Card from '@components/Card.astro';
 import { client } from '@lib/contentfulClient';
 import type { IRecipeFields } from '@customTypes/generated/contentful';
 import Pagination from '@components/Pagination.astro';
+import BaseHeader from '@layouts/BaseHeader.astro';
 
 export async function getStaticPaths({ paginate }) {
 	const data = await client
@@ -30,18 +30,9 @@ const permalink = 'https://www.kaesediebe.netlify.app';
 	description={description}
 	permalink={`${permalink}${page.currentPage > 1 && '/' + page.currentPage}`}
 >
-	<header>
-		<img
-			class='w-48 p-4 mx-auto'
-			src='/assets/icon/icon_transparent.png'
-			alt='logo'
-			width='160'
-			height='87'
-		/>
-	</header>
-	<main class='grid gap-6 my-8 px-2'>
+	<BaseHeader arrowBack={false} />
+	<main class='grid gap-6 max-w-xl mx-auto mb-24 p-4'>
 		{page.data.map((entry) => <Card data={entry.fields} />)}
 		<Pagination currentPage={page.currentPage} totalPages={page.lastPage} />
 	</main>
-	<BaseFooter />
 </BaseLayout>

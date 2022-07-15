@@ -7,7 +7,7 @@ import type {
 	IRecipeFields,
 	IIngredientFields,
 } from '@customTypes/generated/contentful';
-import BaseFooter from '@layouts/BaseFooter.astro';
+import BaseHeader from '@layouts/BaseHeader.astro';
 
 interface IIngredientsUnresolved {
 	amount: string;
@@ -64,48 +64,30 @@ const htmlDescription = documentToHtmlString(description);
 ---
 
 <BaseLayout title={title} description={title} permalink={permalink}>
-	<header>
-		<nav>
-			<a href='javascript:history.back()'>
-				<button class='btn glass btn-circle fixed bottom-4 left-3 z-20'>
-					<svg
-						clip-rule='evenodd'
-						fill-rule='evenodd'
-						stroke-linejoin='round'
-						stroke-miterlimit='2'
-						viewBox='0 0 24 24'
-						xmlns='http://www.w3.org/2000/svg'
-						><path
-							d='m13.789 7.155c.141-.108.3-.157.456-.157.389 0 .755.306.755.749v8.501c0 .445-.367.75-.755.75-.157 0-.316-.05-.457-.159-1.554-1.203-4.199-3.252-5.498-4.258-.184-.142-.29-.36-.29-.592 0-.23.107-.449.291-.591 1.299-1.002 3.945-3.044 5.498-4.243z'
-						></path>
-					</svg>
-				</button>
-			</a>
-		</nav>
-	</header>
-	<main class='grid gap-6 mt-4 mb-8 mx-4'>
+	<BaseHeader arrowBack={true} />
+	<main class='grid gap-6 max-w-xl mx-auto p-4'>
 		<div class='card bg-base-100 shadow-xl'>
 			{image ? (
 				<img
-					class='w-full'
-					width='340'
-					height='340'
+					class="w-full"
+					width="340"
+					height="340"
 					src={image?.fields.file.url}
 					alt={image?.fields.file.fileName}
 				/>
 			) : (
 				<img
-					class='w-full'
-					width='340'
-					height='340'
-					src='assets/placeholder.png'
-					alt='Platzhalter Bild'
+					class="w-full"
+					width="340"
+					height="340"
+					src="assets/placeholder.png"
+					alt="Platzhalter Bild"
 				/>
 			)}
 			<div class='card-body p-4'>
 				<h2 class='card-title inline-block'>
 					{title}
-					{vegetarian && <div class='badge badge-secondary'>Veggi</div>}
+					{vegetarian && <div class="badge badge-secondary">Veggi</div>}
 				</h2>
 				<div>
 					<div class='badge badge-outline'>{category}</div>
@@ -121,5 +103,4 @@ const htmlDescription = documentToHtmlString(description);
 			</div>
 		</div>
 	</main>
-	<BaseFooter />
 </BaseLayout>

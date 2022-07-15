@@ -1,0 +1,12 @@
+---
+import Navbar from '@components/Navbar.astro';
+export interface IBaseHeader {
+	arrowBack: boolean;
+}
+
+const { arrowBack } = Astro.props as IBaseHeader;
+---
+
+<header class='max-w-xl mx-auto'>
+	<Navbar arrowBack={arrowBack} />
+</header>

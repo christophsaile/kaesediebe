@@ -1,11 +1,11 @@
 ---
-export interface Props {
+export interface IBaseLayout {
 	title: string;
 	description: string;
 	permalink: string;
 }
 
-const { title, description, permalink } = Astro.props;
+const { title, description, permalink } = Astro.props as IBaseLayout;
 ---
 
 <html lang='de' data-theme='kaesediebe'>
@@ -67,7 +67,7 @@ const { title, description, permalink } = Astro.props;
 		<meta name='msapplication-TileColor' content='#da532c' />
 	</head>
 
-	<body class='max-w-xl mx-auto'>
+	<body>
 		<slot></slot>
 	</body>
 </html>
