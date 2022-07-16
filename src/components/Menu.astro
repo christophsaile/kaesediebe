@@ -1,13 +1,58 @@
 ---
 import BaseFooter from '@layouts/BaseFooter.astro';
+import Background from './Background.astro';
 ---
-<input type="checkbox" id="menu" class="modal-toggle" />
-<div class="modal">
-  <div class="modal-box relative">
-    <label for="menu" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-    <h3 class="text-lg font-bold">Kategorien</h3>
-    <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
-		<BaseFooter />
-  </div>
-</div>
 
+<input type='checkbox' id='menu' class='modal-toggle' />
+<div class='modal'>
+	<div
+		class='w-full h-screen p-4 bg-glas bg-white relative flex flex-col justify-center items-center'
+	>
+		<Background />
+		<label for='menu' class='btn btn-sm btn-circle absolute right-4 top-4'>
+			<svg
+				xmlns='http://www.w3.org/2000/svg'
+				class='h-6 w-6'
+				fill='none'
+				viewBox='0 0 24 24'
+				stroke='currentColor'
+				stroke-width='2'
+			>
+				<path
+					stroke-linecap='round'
+					stroke-linejoin='round'
+					d='M6 18L18 6M6 6l12 12'></path>
+			</svg>
+		</label>
+		<div class='w-10/12'>
+			<ul>
+				<li class='pt-0'>
+					<a href='/'><h2 class='text-4xl font-bold'>Home</h2></a>
+				</li>
+				<li class='pt-6'>
+					<h2 class='text-4xl font-bold'>Kategorien</h2>
+					<ul>
+						<li class='pt-6'>
+							<a class='text-2xl' href='category/potatos'>Katroffeln</a>
+						</li>
+						<li class='pt-6'>
+							<a class='text-2xl' href='category/noodels'>Nudeln</a>
+						</li>
+						<li class='pt-6'>
+							<a class='text-2xl' href='category/rice'>Reis</a>
+						</li>
+						<li class='pt-6'>
+							<a class='text-2xl' href='category/other'>Sonstiges</a>
+						</li>
+					</ul>
+				</li>
+				<li class='pt-6'>
+					<a href='favorites'><h2 class='text-4xl font-bold'>Favortiven</h2></a>
+				</li>
+			</ul>
+		</div>
+		<div class='absolute bottom-0 left-0 right-0'>
+			<BaseFooter />
+		</div>
+	</div>
+</div>

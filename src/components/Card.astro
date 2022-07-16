@@ -29,11 +29,7 @@ const { data } = Astro.props as ICardProps;
 		<div class='card-body p-4'>
 			<h2 class='card-title inline-block'>
 				{data.title}
-				{data.vegetarian && (
-					<div class="badge badge-secondary">
-						Veggi
-					</div>
-				)}
+				{data.vegetarian && <div class="badge badge-secondary">Veggi</div>}
 			</h2>
 			<div>
 				<div class='badge'>{data.category}</div>

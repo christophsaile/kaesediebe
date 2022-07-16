@@ -1,5 +1,6 @@
 ---
-import Menu from "@components/Menu.astro";
+import Menu from '@components/Menu.astro';
+import Background from '@components/Background.astro';
 export interface IBaseLayout {
 	title: string;
 	description: string;
@@ -69,6 +70,7 @@ const { title, description, permalink } = Astro.props as IBaseLayout;
 	</head>
 
 	<body>
+		<Background />
 		<slot></slot>
 		<Menu />
 	</body>
