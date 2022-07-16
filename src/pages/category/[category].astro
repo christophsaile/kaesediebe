@@ -1,0 +1,45 @@
+---
+import { client } from '@lib/contentfulClient';
+import type { IRecipeFields } from '@customTypes/generated/contentful';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import BaseHeader from '@layouts/BaseHeader.astro';
+// @ts-ignore
+import Card from '@components/Card.astro';
+
+export async function getStaticPaths() {
+	const data = ['Kartoffeln', 'Reis', 'Nudeln', 'Sonstiges'];
+
+	return data.map((category) => {
+		return {
+			params: { category: category.toLowerCase() },
+		};
+	});
+}
+const { category } = Astro.params;
+const categoryName = category[0].toUpperCase() + (category as string).slice(1);
+
+const entries = await client
+	.getEntries<IRecipeFields>({
+		content_type: 'recipe',
+		'fields.category': categoryName,
+	})
+	.then((entries) => entries.items)
+	.catch(() => []);
+
+const title = 'Käsediebe Foodblog';
+const description =
+	'Käsediebe ist ein Foodblog in dem Christoph und Pauline ihre Rezepte vorstellen';
+const permalink = 'https://www.kaesediebe.netlify.app';
+---
+
+<BaseLayout
+	title={`${title} - ${categoryName}`}
+	description={description}
+	permalink={`${permalink}/${category}`}
+>
+	<BaseHeader arrowBack={true} />
+	<main class='grid gap-6 max-w-xl mx-auto mb-24 p-4'>
+		<h2 class='text-4xl font-bold'>{categoryName}</h2>
+		{entries.map((entry) => <Card data={entry.fields} />)}
+	</main>
+</BaseLayout>

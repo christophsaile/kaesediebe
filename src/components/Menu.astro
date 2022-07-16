@@ -4,11 +4,11 @@ import Background from './Background.astro';
 ---
 
 <input type='checkbox' id='menu' class='modal-toggle' />
-<div class='modal'>
+<div class='modal bg-white'>
+	<Background />
 	<div
-		class='w-full h-screen p-4 bg-glas bg-white relative flex flex-col justify-center items-center'
+		class='w-full h-screen p-4 relative flex flex-col justify-center items-center'
 	>
-		<Background />
 		<label for='menu' class='btn btn-sm btn-circle absolute right-4 top-4'>
 			<svg
 				xmlns='http://www.w3.org/2000/svg'
@@ -33,21 +33,23 @@ import Background from './Background.astro';
 					<h2 class='text-4xl font-bold'>Kategorien</h2>
 					<ul>
 						<li class='pt-6'>
-							<a class='text-2xl' href='category/potatos'>Katroffeln</a>
+							<a class='text-2xl' href='category/kartoffeln'>Katroffeln</a>
 						</li>
 						<li class='pt-6'>
-							<a class='text-2xl' href='category/noodels'>Nudeln</a>
+							<a class='text-2xl' href='category/nudeln'>Nudeln</a>
 						</li>
 						<li class='pt-6'>
-							<a class='text-2xl' href='category/rice'>Reis</a>
+							<a class='text-2xl' href='category/reis'>Reis</a>
 						</li>
 						<li class='pt-6'>
-							<a class='text-2xl' href='category/other'>Sonstiges</a>
+							<a class='text-2xl' href='category/sonstiges'>Sonstiges</a>
 						</li>
 					</ul>
 				</li>
 				<li class='pt-6'>
-					<a href='favorites'><h2 class='text-4xl font-bold'>Favortiven</h2></a>
+					<a href='/favorites'
+						><h2 class='text-4xl font-bold'>Favortiven</h2>
+					</a>
 				</li>
 			</ul>
 		</div>

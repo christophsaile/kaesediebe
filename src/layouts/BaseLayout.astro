@@ -19,10 +19,12 @@ const { title, description, permalink } = Astro.props as IBaseLayout;
 		<meta name='color-scheme' content='light dark' />
 		<meta name='theme-color' content='#f3f4f7' />
 
-		<!-- PWA -->
-		<script type='module' src='/pwabuilder-sw-register.js'>
+		<base href='/' />
 
-		</script>
+		<!-- PWA -->
+		<!-- <script type='module' src='/pwabuilder-sw-register.js'> -->
+
+		<!-- </script> -->
 		<link rel='manifest' href='/manifest.json' />
 		<link
 			rel='apple-touch-icon'

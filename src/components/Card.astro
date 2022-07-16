@@ -1,10 +1,10 @@
 ---
 import type { IRecipeFields } from '@customTypes/generated/contentful';
-export interface ICardProps {
+export interface ICard {
 	data: IRecipeFields;
 }
 
-const { data } = Astro.props as ICardProps;
+const { data } = Astro.props as ICard;
 ---
 
 <a href={`recipe/${data.slug}`}>
