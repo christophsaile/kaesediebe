@@ -28,7 +28,7 @@ const entries = await client
 
 const title = 'Käsediebe Foodblog';
 const description =
-	'Käsediebe ist ein Foodblog in dem Christoph und Pauline ihre Rezepte vorstellen';
+	'Käsediebe ist ein Foodblog in dem Christoph und Pauline ihre Rezepte vorstellen.';
 const permalink = 'https://www.kaesediebe.netlify.app';
 ---
 
@@ -40,6 +40,8 @@ const permalink = 'https://www.kaesediebe.netlify.app';
 	<BaseHeader arrowBack={true} />
 	<main class='grid gap-6 max-w-xl mx-auto mb-24 p-4'>
 		<h2 class='text-4xl font-bold'>{categoryName}</h2>
-		{entries.map((entry) => <Card data={entry.fields} />)}
+		{entries.map((entry, index) => (
+			<Card data={entry.fields} cardNumber={index} />
+		))}
 	</main>
 </BaseLayout>
