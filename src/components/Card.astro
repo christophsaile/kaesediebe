@@ -6,6 +6,7 @@ export interface ICard {
 }
 
 const { data, cardNumber } = Astro.props as ICard;
+const condition = cardNumber > 5 ? true : false;
 ---
 
 <a href={`recipe/${data.slug}`}>
@@ -13,7 +14,7 @@ const { data, cardNumber } = Astro.props as ICard;
 		<figure class='w-2/5 flex-none'>
 			{data.image ? (
 				<img
-					{...(cardNumber === 6 ? { loading: 'lazy' } : {})}
+					{...(condition ? { loading: 'lazy' } : {})}
 					width="140"
 					height="140"
 					src={data.image?.fields.file.url}
