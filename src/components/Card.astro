@@ -12,6 +12,7 @@ const { data } = Astro.props as ICard;
 		<figure class='w-2/5 flex-none'>
 			{data.image ? (
 				<img
+					loading="lazy"
 					width="140"
 					height="140"
 					src={data.image?.fields.file.url}
@@ -19,6 +20,7 @@ const { data } = Astro.props as ICard;
 				/>
 			) : (
 				<img
+					loading="lazy"
 					width="140"
 					height="140"
 					src="assets/placeholder.png"

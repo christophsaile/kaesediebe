@@ -69,6 +69,7 @@ const htmlDescription = documentToHtmlString(description);
 		<div class='card bg-base-100 shadow-xl'>
 			{image ? (
 				<img
+					loading="lazy"
 					class="w-full"
 					width="340"
 					height="340"
@@ -77,6 +78,7 @@ const htmlDescription = documentToHtmlString(description);
 				/>
 			) : (
 				<img
+					loading="lazy"
 					class="w-full"
 					width="340"
 					height="340"
