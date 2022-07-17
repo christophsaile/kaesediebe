@@ -21,10 +21,6 @@ const { title, description, permalink } = Astro.props as IBaseLayout;
 
 		<base href='/' />
 
-		<!-- PWA -->
-		<script type='module' src='/sw.js'>
-
-		</script>
 		<link rel='manifest' href='/manifest.json' />
 		<link rel='apple-touch-icon' href='icons/apple-icon-180.png' />
 
@@ -173,14 +169,19 @@ const { title, description, permalink } = Astro.props as IBaseLayout;
 		<meta property='og:url' content={permalink} />
 		<meta property='og:title' content={title} />
 		<meta property='og:description' content={description} />
-		<meta property='og:image' content='https://kaese-diebe.netlify.app/assets/logo.png' />
+		<meta
+			property='og:image'
+			content='https://kaese-diebe.netlify.app/assets/logo.png'
+		/>
 
 		<!-- Twitter -->
 		<meta property='twitter:card' content='summary_large_image' />
 		<meta property='twitter:url' content={permalink} />
 		<meta property='twitter:title' content={title} />
 		<meta property='twitter:description' content={description} />
-		<meta property='twitter:image' content='https://kaese-diebe.netlify.app/assets/logo.png'
+		<meta
+			property='twitter:image'
+			content='https://kaese-diebe.netlify.app/assets/logo.png'
 		/>
 
 		<!-- Teams -->
@@ -191,5 +192,24 @@ const { title, description, permalink } = Astro.props as IBaseLayout;
 		<Background />
 		<slot></slot>
 		<Menu />
+		<!-- PWA -->
+		<script>
+			// Don't register the service worker
+			// until the page has fully loaded
+			window.addEventListener('load', () => {
+				// Is service worker available?
+				if ('serviceWorker' in navigator) {
+					navigator.serviceWorker
+						.register('/sw.js')
+						.then(() => {
+							console.log('Service worker registered!');
+						})
+						.catch((error) => {
+							console.warn('Error registering service worker:');
+							console.warn(error);
+						});
+				}
+			});
+		</script>
 	</body>
 </html>

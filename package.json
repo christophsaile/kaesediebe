@@ -5,9 +5,10 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "astro build && npm run sw",
     "preview": "astro preview",
 		"lint": "npx prettier --write src/**/*",
+		"sw":  "npx workbox-cli generateSW workbox-config.js ",
     "build-types": "contentful-typescript-codegen --output src/types/generated/contentful.ts"
   },
   "devDependencies": {
