@@ -70,16 +70,16 @@ const htmlDescription = documentToHtmlString(description);
 			{image ? (
 				<img
 					class="w-full"
-					width="340"
-					height="340"
-					src={image?.fields.file.url + '?w=416&h=416'}
+					width="400"
+					height="400"
+					src={image?.fields.file.url + '?w=416&h=416&fm=webp'}
 					alt={image?.fields.file.fileName}
 				/>
 			) : (
 				<img
 					class="w-full"
-					width="340"
-					height="340"
+					width="400"
+					height="400"
 					src="assets/placeholder.png"
 					alt="Platzhalter Bild"
 				/>

@@ -15,15 +15,15 @@ const condition = cardNumber > 5 ? true : false;
 			{data.image ? (
 				<img
 					{...(condition ? { loading: 'lazy' } : {})}
-					width="140"
-					height="140"
-					src={data.image?.fields.file.url + '?w=167&h=167'}
+					width="150"
+					height="150"
+					src={data.image?.fields.file.url + '?w=167&h=167&fm=webp'}
 					alt={data.image?.fields.file.fileName}
 				/>
 			) : (
 				<img
-					width="140"
-					height="140"
+					width="150"
+					height="150"
 					src="assets/placeholder.png"
 					alt="Platzhalter Bild"
 				/>
