@@ -1,0 +1,43 @@
+---
+import type { IRecipeFields } from '@customTypes/generated/contentful';
+export interface ICard {
+	data: IRecipeFields;
+	cardNumber: number;
+}
+
+const { data, cardNumber } = Astro.props as ICard;
+const condition = cardNumber > 5 ? true : false;
+---
+
+<a href={`recipe/${data.slug}`}>
+	<div class='card card-side bg-base-100 shadow-xl'>
+		<figure class='w-2/5 flex-none'>
+			{data.image ? (
+				<img
+					{...(condition ? { loading: 'lazy' } : {})}
+					width="150"
+					height="150"
+					src={data.image?.fields.file.url + '?w=350&h=350&fm=webp'}
+					alt={data.image?.fields.file.fileName}
+				/>
+			) : (
+				<img
+					width="150"
+					height="150"
+					src="assets/placeholder.png"
+					alt="Platzhalter Bild"
+				/>
+			)}
+		</figure>
+		<div class='card-body p-4'>
+			<h2 class='card-title inline-block' style='hyphens: auto'>
+				{data.title}
+				{data.vegetarian && <div class="badge badge-secondary">Veggi</div>}
+			</h2>
+			<div>
+				<div class='badge'>{data.category}</div>
+				<div class='badge'>{data.duration}</div>
+			</div>
+		</div>
+	</div>
+</a>

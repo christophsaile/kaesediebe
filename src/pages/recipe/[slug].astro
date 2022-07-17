@@ -1,0 +1,106 @@
+---
+import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Ingredients from '@components/Ingredients.astro';
+import { client } from '@lib/contentfulClient';
+import type {
+	IRecipeFields,
+	IIngredientFields,
+} from '@customTypes/generated/contentful';
+import BaseHeader from '@layouts/BaseHeader.astro';
+
+interface IIngredientsUnresolved {
+	amount: string;
+	ingredientId: string;
+}
+
+export async function getStaticPaths() {
+	const data = await client
+		.getEntries<IRecipeFields>({
+			content_type: 'recipe',
+		})
+		.then((entries) => entries.items)
+		.catch(() => []);
+
+	return data.map((recipe) => {
+		return {
+			params: { slug: recipe.fields.slug },
+			props: { recipe },
+		};
+	});
+}
+
+const { slug } = Astro.params;
+const { recipe } = Astro.props;
+const permalink = `https://kaesediebe.netlify.app/recipe/${slug}`;
+const {
+	title,
+	duration,
+	vegetarian,
+	category,
+	ingredients,
+	description,
+	image,
+} = recipe.fields as IRecipeFields;
+
+const getIngredientIds: string[] = ingredients?.map(
+	(elem: IIngredientsUnresolved) => elem.ingredientId
+);
+const ingredientList: IIngredientFields = await client
+	.getEntries<IIngredientFields>({
+		content_type: 'ingredient',
+		'sys.id[in]': getIngredientIds.join(),
+	})
+	.then((entries) =>
+		ingredients.map((elem: IIngredientsUnresolved) => {
+			const itemName = entries.items.find(
+				(items) => items.sys.id === elem.ingredientId
+			);
+			return { amount: elem.amount, title: itemName?.fields.title };
+		})
+	);
+
+const htmlDescription = documentToHtmlString(description);
+---
+
+<BaseLayout title={title} description={title} permalink={permalink}>
+	<BaseHeader arrowBack={true} />
+	<main class='grid gap-6 max-w-md mx-auto mb-24 p-4'>
+		<div class='card bg-base-100 shadow-xl'>
+			{image ? (
+				<img
+					class="w-full"
+					width="400"
+					height="400"
+					src={image?.fields.file.url + '?w=500&h=500&fm=webp'}
+					alt={image?.fields.file.fileName}
+				/>
+			) : (
+				<img
+					class="w-full"
+					width="400"
+					height="400"
+					src="assets/placeholder.png"
+					alt="Platzhalter Bild"
+				/>
+			)}
+			<div class='card-body p-4'>
+				<h2 class='card-title inline-block'>
+					{title}
+					{vegetarian && <div class="badge badge-secondary">Veggi</div>}
+				</h2>
+				<div>
+					<div class='badge'>{category}</div>
+					<div class='badge'>{duration}</div>
+				</div>
+			</div>
+		</div>
+		<Ingredients data={ingredientList} />
+		<div class='card bg-base-100 shadow-xl'>
+			<div class='card-body px-4 py-4'>
+				<h2 class='card-title'>Zubereitung</h2>
+				<div set:html={htmlDescription}></div>
+			</div>
+		</div>
+	</main>
+</BaseLayout>
