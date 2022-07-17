@@ -1,7 +1,7 @@
 module.exports = {
 	globDirectory: 'dist/',
 	globPatterns: [
-		'**/*.{html,css,png,ico,js,json}'
+		'**/*.{html,css,png,ico,js,json,webp}'
 	],
 	swDest: 'dist/sw.js',
 	ignoreURLParametersMatching: [
