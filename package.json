@@ -9,6 +9,7 @@
     "preview": "astro preview",
 		"lint": "npx prettier --write src/**/*",
 		"sw":  "npx workbox-cli generateSW workbox-config.js ",
+		"pwa-assets": "npx pwa-asset-generator logo.png ./icons -b '#f3f4f7' -w",
     "build-types": "contentful-typescript-codegen --output src/types/generated/contentful.ts"
   },
   "devDependencies": {
