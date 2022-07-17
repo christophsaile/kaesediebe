@@ -65,14 +65,14 @@ const htmlDescription = documentToHtmlString(description);
 
 <BaseLayout title={title} description={title} permalink={permalink}>
 	<BaseHeader arrowBack={true} />
-	<main class='grid gap-6 max-w-xl mx-auto mb-24 p-4'>
+	<main class='grid gap-6 max-w-md mx-auto mb-24 p-4'>
 		<div class='card bg-base-100 shadow-xl'>
 			{image ? (
 				<img
 					class="w-full"
 					width="340"
 					height="340"
-					src={image?.fields.file.url}
+					src={image?.fields.file.url + '?w=400&h=400'}
 					alt={image?.fields.file.fileName}
 				/>
 			) : (

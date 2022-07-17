@@ -17,7 +17,7 @@ const condition = cardNumber > 5 ? true : false;
 					{...(condition ? { loading: 'lazy' } : {})}
 					width="140"
 					height="140"
-					src={data.image?.fields.file.url}
+					src={data.image?.fields.file.url + '?w=150&h=150'}
 					alt={data.image?.fields.file.fileName}
 				/>
 			) : (
@@ -30,7 +30,7 @@ const condition = cardNumber > 5 ? true : false;
 			)}
 		</figure>
 		<div class='card-body p-4'>
-			<h2 class='card-title inline-block' style="hyphens: auto">
+			<h2 class='card-title inline-block' style='hyphens: auto'>
 				{data.title}
 				{data.vegetarian && <div class="badge badge-secondary">Veggi</div>}
 			</h2>

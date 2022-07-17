@@ -38,7 +38,7 @@ const permalink = 'https://www.kaesediebe.netlify.app';
 	permalink={`${permalink}/${category}`}
 >
 	<BaseHeader arrowBack={true} />
-	<main class='grid gap-6 max-w-xl mx-auto mb-24 p-4'>
+	<main class='grid gap-6 max-w-md mx-auto mb-24 p-4'>
 		<h2 class='text-4xl font-bold'>{categoryName}</h2>
 		{entries.map((entry, index) => (
 			<Card data={entry.fields} cardNumber={index} />
