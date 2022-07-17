@@ -1,5 +1,7 @@
 ---
+import Badges from './Badges.astro';
 import type { IRecipeFields } from '@customTypes/generated/contentful';
+
 export interface ICard {
 	data: IRecipeFields;
 	cardNumber: number;
@@ -34,10 +36,7 @@ const condition = cardNumber > 5 ? true : false;
 				{data.title}
 				{data.vegetarian && <div class="badge badge-secondary">Veggi</div>}
 			</h2>
-			<div>
-				<div class='badge'>{data.category}</div>
-				<div class='badge'>{data.duration}</div>
-			</div>
+			<Badges duration={data.duration} category={data.category} />
 		</div>
 	</div>
 </a>

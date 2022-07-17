@@ -8,6 +8,7 @@ import type {
 	IIngredientFields,
 } from '@customTypes/generated/contentful';
 import BaseHeader from '@layouts/BaseHeader.astro';
+import Badges from '@components/Badges.astro';
 
 interface IIngredientsUnresolved {
 	amount: string;
@@ -89,10 +90,7 @@ const htmlDescription = documentToHtmlString(description);
 					{title}
 					{vegetarian && <div class="badge badge-secondary">Veggi</div>}
 				</h2>
-				<div>
-					<div class='badge'>{category}</div>
-					<div class='badge'>{duration}</div>
-				</div>
+				<Badges duration={duration} category={category} />
 			</div>
 		</div>
 		<Ingredients data={ingredientList} />
