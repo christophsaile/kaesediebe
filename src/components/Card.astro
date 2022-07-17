@@ -17,7 +17,7 @@ const condition = cardNumber > 5 ? true : false;
 					{...(condition ? { loading: 'lazy' } : {})}
 					width="150"
 					height="150"
-					src={data.image?.fields.file.url + '?w=167&h=167&fm=webp'}
+					src={data.image?.fields.file.url + '?w=350&h=350&fm=webp'}
 					alt={data.image?.fields.file.fileName}
 				/>
 			) : (
