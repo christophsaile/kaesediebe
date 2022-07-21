@@ -13,7 +13,8 @@ import Background from './Background.astro';
 <div class='modal bg-white'>
 	<Background />
 	<div
-		class='w-full h-screen p-4 relative flex flex-col justify-center items-center'
+		class='w-full min-h-screen p-4 relative flex flex-col justify-center items-center'
+		style='min-height: -webkit-fill-available;'
 	>
 		<label for='menu' class='btn btn-sm btn-circle absolute right-4 top-4'>
 			<svg

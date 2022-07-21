@@ -8,7 +8,7 @@ const { arrowBack } = Astro.props as INavbar;
 
 <div
 	class='navbar mx-auto fixed bottom-0 bg-base-100 z-20 px-4 shadow-2xl'
-	style='margin-bottom: env(safe-area-inset-bottom);'
+	style='padding-bottom: calc(8px + env(safe-area-inset-bottom));'
 >
 	<div class='flex-none w-12'>
 		{arrowBack && (
