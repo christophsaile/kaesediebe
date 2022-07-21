@@ -13,7 +13,7 @@ const { arrowBack } = Astro.props as INavbar;
 	<div class='flex-none w-12'>
 		{arrowBack && (
 			<a class="flex" href="javascript:history.back()">
-				<button class="btn btn-square btn-ghost">
+				<button aria-label="zurück" class="btn btn-square btn-ghost">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						class="h-6 w-6"
