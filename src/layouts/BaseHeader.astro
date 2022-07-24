@@ -2,11 +2,12 @@
 import Navbar from '@components/Navbar.astro';
 export interface IBaseHeader {
 	arrowBack: boolean;
+	share: boolean;
 }
 
-const { arrowBack } = Astro.props as IBaseHeader;
+const { arrowBack, share } = Astro.props as IBaseHeader;
 ---
 
 <header>
-	<Navbar arrowBack={arrowBack} />
+	<Navbar arrowBack={arrowBack} share={share} />
 </header>
