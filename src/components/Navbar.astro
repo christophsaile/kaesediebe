@@ -8,7 +8,7 @@ const { arrowBack, share } = Astro.props as INavbar;
 ---
 
 <script>
-	document.querySelector('#share').addEventListener('click', async () => {
+	document.querySelector('#share')?.addEventListener('click', async () => {
 		const shareData = {
 			title: document.title,
 			text: document.title,
@@ -19,9 +19,9 @@ const { arrowBack, share } = Astro.props as INavbar;
 		} catch (err) {
 			navigator.clipboard.writeText(window.location.href);
 			const alert = document.querySelector('#copyAlert');
-			alert.classList.remove('hidden');
+			alert?.classList.remove('hidden');
 			setTimeout(function () {
-				alert.classList.add('hidden');
+				alert?.classList.add('hidden');
 			}, 2500);
 		}
 	});

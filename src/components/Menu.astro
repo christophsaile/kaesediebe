@@ -4,7 +4,7 @@ import Background from './Background.astro';
 ---
 
 <script>
-	document.querySelector('#menu').addEventListener('change', () => {
+	document.querySelector('#menu')?.addEventListener('change', () => {
 		document.querySelector('body').classList.toggle('overflow-hidden');
 	});
 </script>
