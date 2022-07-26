@@ -27,7 +27,7 @@ const Like: Component<ILike> = (props) => {
 	};
 
 	return (
-		<span class="absolute bottom-3 right-3">
+		<span class="absolute bottom-3 right-3 cursor-pointer">
 			<svg
 				onClick={(e: Event) => handleClick(e)}
 				xmlns="http://www.w3.org/2000/svg"
