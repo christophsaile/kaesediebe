@@ -31,7 +31,24 @@ const permalink = 'https://www.kaesediebe.netlify.app';
 	permalink={`${permalink}${page.currentPage > 1 && '/' + page.currentPage}`}
 >
 	<BaseHeader arrowBack={false} />
-	<main class='grid gap-6 max-w-md mx-auto mb-16 p-4'>
+	<main class='grid gap-6 max-w-md mx-auto mb-16 p-4 pt-8'>
+		<div class='flex gap-2 items-center'>
+			<svg
+				xmlns='http://www.w3.org/2000/svg'
+				class='h-6 w-6'
+				fill='none'
+				viewBox='0 0 24 24'
+				stroke='currentColor'
+				stroke-width='2'
+			>
+				<path
+					stroke-linecap='round'
+					stroke-linejoin='round'
+					d='M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z'
+				></path>
+			</svg>
+			<h2 class='text-4xl font-bold'>Rezepte</h2>
+		</div>
 		{page.data.map((entry, index: number) => (
 			<Card data={entry.fields} cardNumber={index}>
 				<Like data={entry.fields} client:only="solid-js" />

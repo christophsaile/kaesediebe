@@ -9,6 +9,7 @@ import type {
 	IIngredientFields,
 } from '@customTypes/generated/contentful';
 import BaseHeader from '@layouts/BaseHeader.astro';
+import Like from '@components/Like';
 
 interface IIngredientsUnresolved {
 	amount: string;
@@ -85,17 +86,18 @@ const htmlDescription = documentToHtmlString(description);
 					alt="Platzhalter Bild"
 				/>
 			)}
-			<div class='card-body p-4'>
+			<div class='card-body p-4 pb-8'>
 				<h2 class='card-title inline-block'>
 					{title}
 					{vegetarian && <span class="badge badge-secondary ml-1">Veggi</span>}
 				</h2>
 				<Badges duration={duration} category={category} />
+				<Like data={recipe.fields} client:only='solid-js' />
 			</div>
 		</div>
 		<Ingredients data={ingredientList} />
 		<div class='card bg-base-100 shadow-xl'>
-			<div class='card-body px-4 py-4'>
+			<div class='card-body p-4 pb-8'>
 				<h2 class='card-title'>Zubereitung</h2>
 				<div set:html={htmlDescription}></div>
 			</div>

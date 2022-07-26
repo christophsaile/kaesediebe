@@ -4,6 +4,7 @@ import type { IRecipeFields } from '@customTypes/generated/contentful';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import BaseHeader from '@layouts/BaseHeader.astro';
 import Card from '@components/Card';
+import Like from '@components/Like';
 
 export async function getStaticPaths() {
 	const data = ['Kartoffeln', 'Reis', 'Nudeln', 'Sonstiges'];
@@ -37,7 +38,7 @@ const permalink = 'https://www.kaesediebe.netlify.app';
 	permalink={`${permalink}/${category}`}
 >
 	<BaseHeader arrowBack={true} />
-	<main class='grid gap-6 max-w-md mx-auto mb-16 p-4'>
+	<main class='grid gap-6 max-w-md mx-auto mb-16 p-4 pt-8'>
 		<div class='flex gap-2 items-center'>
 			<svg
 				class='h-6 w-6'
@@ -52,7 +53,9 @@ const permalink = 'https://www.kaesediebe.netlify.app';
 			<h2 class='text-4xl font-bold'>{categoryName}</h2>
 		</div>
 		{entries.map((entry, index: number) => (
-			<Card data={entry.fields} cardNumber={index} />
+			<Card data={entry.fields} cardNumber={index}>
+				<Like data={entry.fields} client:only="solid-js" />
+			</Card>
 		))}
 	</main>
 </BaseLayout>

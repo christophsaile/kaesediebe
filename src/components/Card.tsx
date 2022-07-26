@@ -32,11 +32,11 @@ const Card: ParentComponent<ICard> = (props) => {
 						/>
 					)}
 				</figure>
-				<div class="card-body p-4">
+				<div class="card-body p-3">
 					<h2 class="card-title inline-block" style="hyphens: auto">
-						{data.title}
+						<span class="mr-1">{data.title}</span>
 						{data.vegetarian && (
-							<span class="badge badge-secondary ml-1">Veggi</span>
+							<span class="badge badge-secondary">Veggi</span>
 						)}
 					</h2>
 					<Badges duration={data.duration} category={data.category} />
