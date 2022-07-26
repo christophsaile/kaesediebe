@@ -1,11 +1,11 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
-// @ts-ignore
-import Card from '@components/Card.astro';
+import Card from '@components/Card';
 import { client } from '@lib/contentfulClient';
 import type { IRecipeFields } from '@customTypes/generated/contentful';
 import Pagination from '@components/Pagination.astro';
 import BaseHeader from '@layouts/BaseHeader.astro';
+import Like from '@components/Like';
 
 export async function getStaticPaths({ paginate }) {
 	const data = await client
@@ -32,8 +32,10 @@ const permalink = 'https://www.kaesediebe.netlify.app';
 >
 	<BaseHeader arrowBack={false} />
 	<main class='grid gap-6 max-w-md mx-auto mb-16 p-4'>
-		{page.data.map((entry, index) => (
-			<Card data={entry.fields} cardNumber={index} />
+		{page.data.map((entry, index: number) => (
+			<Card data={entry.fields} cardNumber={index}>
+				<Like data={entry.fields} client:only="solid-js" />
+			</Card>
 		))}
 		<Pagination currentPage={page.currentPage} totalPages={page.lastPage} />
 	</main>

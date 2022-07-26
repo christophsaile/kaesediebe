@@ -3,8 +3,7 @@ import { client } from '@lib/contentfulClient';
 import type { IRecipeFields } from '@customTypes/generated/contentful';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import BaseHeader from '@layouts/BaseHeader.astro';
-// @ts-ignore
-import Card from '@components/Card.astro';
+import Card from '@components/Card';
 
 export async function getStaticPaths() {
 	const data = ['Kartoffeln', 'Reis', 'Nudeln', 'Sonstiges'];
@@ -52,7 +51,7 @@ const permalink = 'https://www.kaesediebe.netlify.app';
 			</svg>
 			<h2 class='text-4xl font-bold'>{categoryName}</h2>
 		</div>
-		{entries.map((entry, index) => (
+		{entries.map((entry, index: number) => (
 			<Card data={entry.fields} cardNumber={index} />
 		))}
 	</main>
