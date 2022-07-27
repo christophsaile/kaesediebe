@@ -1,5 +1,4 @@
 ---
-import Menu from '@components/Menu.astro';
 import Background from '@components/Background.astro';
 export interface IBaseLayout {
 	title: string;
@@ -220,7 +219,6 @@ const { title, description, permalink } = Astro.props as IBaseLayout;
 	<body>
 		<Background />
 		<slot></slot>
-		<Menu />
 		<!-- PWA -->
 		<script>
 			// Don't register the service worker
