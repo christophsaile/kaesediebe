@@ -38,7 +38,11 @@ const { arrowBack, share, close } = Astro.props as INavbar;
 >
 	<div class='flex-none w-12'>
 		{arrowBack && (
-			<a class="flex btn btn-square btn-ghost" aria-label="zurück" href="javascript:history.back()">
+			<a
+				class="flex btn btn-square btn-ghost"
+				aria-label="zurück"
+				href="javascript:history.back()"
+			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					class="h-6 w-6"
@@ -57,7 +61,7 @@ const { arrowBack, share, close } = Astro.props as INavbar;
 		)}
 	</div>
 	<div class='flex-1 justify-center'>
-		<a aria-label="Startseite" href='#'>
+		<a aria-label='Startseite' href='#'>
 			<img
 				class='mx-auto h-12'
 				src='/assets/logo.png'
@@ -132,7 +136,11 @@ const { arrowBack, share, close } = Astro.props as INavbar;
 			</a>
 		)}
 		{!close && !share && (
-			<a href="/menu" aria-label="Menu" class="btn btn-square btn-ghost btn-modal">
+			<a
+				href="/menu"
+				aria-label="Menu"
+				class="btn btn-square btn-ghost btn-modal"
+			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					class="h-6 w-6"

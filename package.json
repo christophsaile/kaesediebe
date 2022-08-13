@@ -7,22 +7,22 @@
     "start": "astro dev --host",
     "build": "astro build && npm run sw",
     "preview": "astro preview",
-		"lint": "npx prettier --write src/**/*",
-		"sw":  "npx workbox-cli generateSW workbox-config.js ",
-		"pwa-assets": "npx pwa-asset-generator logo.png ./icons -b '#f3f4f7' -w",
+    "lint": "npx prettier --write src/**/*",
+    "sw": "npx workbox-cli generateSW workbox-config.js ",
+    "pwa-assets": "npx pwa-asset-generator logo.png ./icons -b '#f3f4f7' -w",
     "build-types": "contentful-typescript-codegen --output src/types/generated/contentful.ts"
   },
   "devDependencies": {
     "@astrojs/solid-js": "^0.2.0",
     "@astrojs/tailwind": "^0.2.1",
-    "astro": "^1.0.0-beta.55",
     "contentful": "^9.1.32",
     "contentful-management": "^10.6.3",
     "contentful-typescript-codegen": "^3.2.3",
     "dotenv": "^16.0.1",
-    "solid-js": "^1.4.4",
     "prettier": "^2.7.1",
-    "prettier-plugin-astro": "^0.1.1"
+    "prettier-plugin-astro": "^0.1.1",
+    "solid-js": "^1.4.4",
+		"astro": "^1.0.4"
   },
   "dependencies": {
     "@contentful/rich-text-html-renderer": "^15.13.1",

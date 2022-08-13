@@ -20,7 +20,7 @@ const Card: ParentComponent<ICard> = (props) => {
 							{...(condition() ? { loading: 'lazy' } : {})}
 							width="150"
 							height="150"
-							src={data.image?.fields.file.url + '?w=350&h=350&fm=webp'}
+							src={data.image?.fields.file.url + '?w=400&h=400&fm=webp'}
 							alt={data.image?.fields.file.fileName}
 						/>
 					) : (
