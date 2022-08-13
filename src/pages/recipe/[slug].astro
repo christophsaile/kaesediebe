@@ -71,7 +71,7 @@ const htmlDescription = documentToHtmlString(description);
 		<div class='card bg-base-100 shadow-xl'>
 			{image ? (
 				<img
-					class="w-full"
+					class="w-full bg-neutral"
 					width="400"
 					height="400"
 					src={image?.fields.file.url + '?fm=webp'}
@@ -79,7 +79,7 @@ const htmlDescription = documentToHtmlString(description);
 				/>
 			) : (
 				<img
-					class="w-full"
+					class="w-full bg-neutral"
 					width="400"
 					height="400"
 					src="assets/placeholder.png"

@@ -14,7 +14,7 @@ const Card: ParentComponent<ICard> = (props) => {
 	return (
 		<a href={`recipe/${data.slug}`}>
 			<div class="card card-side bg-base-100 shadow-xl">
-				<figure class="w-2/5 flex-none">
+				<figure class="w-2/5 flex-none bg-neutral">
 					{data.image ? (
 						<img
 							{...(condition() ? { loading: 'lazy' } : {})}

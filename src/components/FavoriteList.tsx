@@ -19,7 +19,7 @@ const FavoriteList: Component = () => {
 								fill="none"
 								viewBox="0 0 24 24"
 								stroke="currentColor"
-								stroke-width={2}
+								stroke-width={1}
 							>
 								<path
 									stroke-linecap="round"
