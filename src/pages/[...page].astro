@@ -51,7 +51,7 @@ const permalink = 'https://www.kaesediebe.netlify.app';
 		</div>
 		{page.data.map((entry, index: number) => (
 			<Card data={entry.fields} cardNumber={index}>
-				<Like data={entry.fields} client:only="solid-js" />
+				<Like data={entry.fields} client:idle />
 			</Card>
 		))}
 		<Pagination currentPage={page.currentPage} totalPages={page.lastPage} />
