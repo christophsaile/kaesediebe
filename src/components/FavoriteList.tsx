@@ -1,20 +1,14 @@
-import { Component, createSignal } from 'solid-js';
+import { Component, createSignal, For } from 'solid-js';
 import { getItemFromStorage } from '@utils/localStorage';
 import Card from '@components/Card';
 import Like from '@components/Like';
 
 const FavoriteList: Component = () => {
 	const [favorites] = createSignal<any[]>(getItemFromStorage('favorites'));
-
 	return (
-		<>
-			{favorites().length ? (
-				favorites().map((entry, index) => (
-					<Card data={entry} cardNumber={index}>
-						<Like data={entry} />
-					</Card>
-				))
-			) : (
+		<For
+			each={favorites()}
+			fallback={
 				<div class="toast toast-center">
 					<div class="alert alert-success">
 						<div class="inline">
@@ -37,8 +31,14 @@ const FavoriteList: Component = () => {
 						</div>
 					</div>
 				</div>
+			}
+		>
+			{(entry, index) => (
+				<Card data={entry} cardNumber={index()}>
+					<Like data={entry} />
+				</Card>
 			)}
-		</>
+		</For>
 	);
 };
 
