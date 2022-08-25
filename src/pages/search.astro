@@ -3,14 +3,14 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import BaseHeader from '@layouts/BaseHeader.astro';
 import FavoriteList from '@components/FavoriteList';
 
-const title = 'Käsediebe Foodblog - Favoriten';
+const title = 'Käsediebe Foodblog - Suche';
 const description =
 	'Käsediebe ist ein Foodblog in dem Christoph und Pauline ihre Rezepte vorstellen.';
-const permalink = 'https://www.kaesediebe.netlify.app/favorites';
+const permalink = 'https://www.kaesediebe.netlify.app/search';
 ---
 
 <BaseLayout title={title} description={description} permalink={permalink}>
-	<BaseHeader arrowBack />
+	<BaseHeader close />
 	<main class='grid gap-6 max-w-md mx-auto mb-24 p-4 pt-8'>
 		<div class='flex gap-2 items-center'>
 			<svg
@@ -18,17 +18,18 @@ const permalink = 'https://www.kaesediebe.netlify.app/favorites';
 				class='h-6 w-6'
 				fill='none'
 				viewBox='0 0 24 24'
+				stroke-width='1.5'
 				stroke='currentColor'
-				stroke-width='2'
+				class='w-6 h-6'
 			>
 				<path
 					stroke-linecap='round'
 					stroke-linejoin='round'
-					d='M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z'
+					d='M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z'
 				></path>
 			</svg>
-			<h2 class='text-4xl font-bold'>Favoriten</h2>
+			<h2 class='text-4xl font-bold'>Suche</h2>
 		</div>
-		<FavoriteList client:only={'solid-js'} />
+		<h2>Something is Cooking ... :)</h2>
 	</main>
 </BaseLayout>

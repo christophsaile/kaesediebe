@@ -4,11 +4,19 @@ export interface IBaseHeader {
 	arrowBack: boolean;
 	share: boolean;
 	close: boolean;
+	search: boolean;
+	menu: boolean;
 }
 
-const { arrowBack, share, close } = Astro.props as IBaseHeader;
+const { arrowBack, share, close, search, menu } = Astro.props as IBaseHeader;
 ---
 
 <header>
-	<Navbar arrowBack={arrowBack} share={share} close={close} />
+	<Navbar
+		arrowBack={arrowBack}
+		share={share}
+		close={close}
+		search={search}
+		menu={menu}
+	/>
 </header>

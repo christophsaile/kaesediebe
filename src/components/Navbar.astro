@@ -3,9 +3,11 @@ export interface INavbar {
 	arrowBack: boolean;
 	share: boolean;
 	close: boolean;
+	search: boolean;
+	menu: boolean;
 }
 
-const { arrowBack, share, close } = Astro.props as INavbar;
+const { arrowBack, share, close, search, menu } = Astro.props as INavbar;
 ---
 
 <script>
@@ -55,6 +57,25 @@ const { arrowBack, share, close } = Astro.props as INavbar;
 						stroke-linecap="round"
 						stroke-linejoin="round"
 						d="M15 19l-7-7 7-7"
+					/>
+				</svg>
+			</a>
+		)}
+		{search && (
+			<a class="flex btn btn-square btn-ghost" aria-label="Suche" href="/search">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					class="h-6 w-6"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke-width="1.5"
+					stroke="currentColor"
+					class="w-6 h-6"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
 					/>
 				</svg>
 			</a>
@@ -135,7 +156,7 @@ const { arrowBack, share, close } = Astro.props as INavbar;
 				</svg>
 			</a>
 		)}
-		{!close && !share && (
+		{menu && (
 			<a
 				href="/menu"
 				aria-label="Menu"

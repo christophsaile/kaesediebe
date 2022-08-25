@@ -66,7 +66,7 @@ const htmlDescription = documentToHtmlString(description);
 ---
 
 <BaseLayout title={title} description={title} permalink={permalink}>
-	<BaseHeader arrowBack={true} share={true} />
+	<BaseHeader arrowBack share />
 	<main class='grid gap-6 max-w-md mx-auto mb-24 p-4'>
 		<div class='card bg-base-100 shadow-xl'>
 			{image ? (
@@ -75,7 +75,7 @@ const htmlDescription = documentToHtmlString(description);
 					width="400"
 					height="400"
 					src={image?.fields.file.url + '?fm=webp'}
-					alt={image?.fields.file.fileName}
+					alt={image?.fields.title}
 				/>
 			) : (
 				<img

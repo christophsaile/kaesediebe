@@ -21,7 +21,7 @@ const Card: ParentComponent<ICard> = (props) => {
 							width="150"
 							height="150"
 							src={data.image?.fields.file.url + '?w=350&h=350&fm=webp'}
-							alt={data.image?.fields.file.fileName}
+							alt={data.image?.fields.title}
 						/>
 					) : (
 						<img
