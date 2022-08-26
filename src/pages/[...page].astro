@@ -8,14 +8,11 @@ import BaseHeader from '@layouts/BaseHeader.astro';
 import Like from '@components/Like';
 
 export async function getStaticPaths({ paginate }) {
-	const data = await client
-		.getEntries<IRecipeFields>({
-			content_type: 'recipe',
-		})
-		.then((entries) => entries.items)
-		.catch(() => []);
+	const { items } = await client.getEntries<IRecipeFields>({
+		content_type: 'recipe',
+	});
 
-	return paginate(data, { pageSize: 10 });
+	return paginate(items, { pageSize: 10 });
 }
 
 const { page } = Astro.props;

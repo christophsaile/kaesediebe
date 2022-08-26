@@ -1,7 +1,8 @@
-require('dotenv').config();
+const dotenv = require('dotenv');
 const contentfulManagement = require('contentful-management');
 
 module.exports = function () {
+	dotenv.config()
   const contentfulClient = contentfulManagement.createClient({
     accessToken: process.env.CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN,
   });

@@ -17,14 +17,12 @@ interface IIngredientsUnresolved {
 }
 
 export async function getStaticPaths() {
-	const data = await client
+	const { items } = await client
 		.getEntries<IRecipeFields>({
 			content_type: 'recipe',
 		})
-		.then((entries) => entries.items)
-		.catch(() => []);
 
-	return data.map((recipe) => {
+	return items.map((recipe) => {
 		return {
 			params: { slug: recipe.fields.slug },
 			props: { recipe },
