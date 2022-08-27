@@ -1,12 +1,14 @@
 ---
 import Background from '@components/Background.astro';
+import { SITE } from 'src/config';
 export interface IBaseLayout {
 	title: string;
-	description: string;
 	permalink: string;
 }
 
-const { title, description, permalink } = Astro.props as IBaseLayout;
+const { title, permalink } = Astro.props as IBaseLayout;
+const completeTitle = SITE.title + title;
+const description = SITE.description;
 ---
 
 <html lang='de' data-theme='kaesediebe'>
@@ -162,14 +164,14 @@ const { title, description, permalink } = Astro.props as IBaseLayout;
 		/>
 
 		<!-- Primary Meta Tags -->
-		<title>{title}</title>
-		<meta name='title' content={title} />
+		<title>{completeTitle}</title>
+		<meta name='title' content={completeTitle} />
 		<meta name='description' content={description} />
 
 		<!-- Open Graph / Facebook -->
 		<meta property='og:type' content='website' />
 		<meta property='og:url' content={permalink} />
-		<meta property='og:title' content={title} />
+		<meta property='og:title' content={completeTitle} />
 		<meta property='og:description' content={description} />
 		<meta
 			property='og:image'
@@ -179,7 +181,7 @@ const { title, description, permalink } = Astro.props as IBaseLayout;
 		<!-- Twitter -->
 		<meta property='twitter:card' content='summary_large_image' />
 		<meta property='twitter:url' content={permalink} />
-		<meta property='twitter:title' content={title} />
+		<meta property='twitter:title' content={completeTitle} />
 		<meta property='twitter:description' content={description} />
 		<meta
 			property='twitter:image'

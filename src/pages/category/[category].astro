@@ -5,6 +5,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import BaseHeader from '@layouts/BaseHeader.astro';
 import Card from '@components/Card';
 import Like from '@components/Like';
+import { SITE } from 'src/config';
 
 export async function getStaticPaths() {
 	const data = ['Kartoffeln', 'Reis', 'Nudeln', 'Sonstiges'];
@@ -26,16 +27,13 @@ const entries = await client
 	.then((entries) => entries.items)
 	.catch(() => []);
 
-const title = 'Käsediebe Foodblog';
-const description =
-	'Käsediebe ist ein Foodblog in dem Christoph und Pauline ihre Rezepte vorstellen.';
-const permalink = 'https://www.kaesediebe.netlify.app';
+const title = ` - ${categoryName}`;
+const permalink = `${SITE.url}/${category}`
 ---
 
 <BaseLayout
-	title={`${title} - ${categoryName}`}
-	description={description}
-	permalink={`${permalink}/${category}`}
+	title={title}
+	permalink={permalink}
 >
 	<BaseHeader arrowBack />
 	<main class='grid gap-6 max-w-md mx-auto mb-16 p-4 pt-8'>

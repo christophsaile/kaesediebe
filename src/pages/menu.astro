@@ -2,14 +2,13 @@
 import BaseLayout from '@layouts/BaseLayout.astro';
 import BaseHeader from '@layouts/BaseHeader.astro';
 import Background from '@components/Background.astro';
+import { SITE } from 'src/config';
 
-const title = 'Käsediebe Foodblog - Menu';
-const description =
-	'Käsediebe ist ein Foodblog in dem Christoph und Pauline ihre Rezepte vorstellen.';
-const permalink = 'https://www.kaesediebe.netlify.app/menu';
+const title = ' - Menü';
+const permalink = `${SITE.url}/menu`;
 ---
 
-<BaseLayout title={title} description={description} permalink={permalink}>
+<BaseLayout title={title} permalink={permalink}>
 	<BaseHeader close search />
 	<main
 		class='absolute bottom-0 top-0 left-0 right-0 flex flex-col justify-center items-center p-4'

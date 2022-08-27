@@ -2,14 +2,13 @@
 import BaseLayout from '@layouts/BaseLayout.astro';
 import BaseHeader from '@layouts/BaseHeader.astro';
 import FavoriteList from '@components/FavoriteList';
+import { SITE } from 'src/config';
 
-const title = 'Käsediebe Foodblog - Favoriten';
-const description =
-	'Käsediebe ist ein Foodblog in dem Christoph und Pauline ihre Rezepte vorstellen.';
-const permalink = 'https://www.kaesediebe.netlify.app/favorites';
+const title = ' - Favoriten';
+const permalink = `${SITE.url}/favorites`;
 ---
 
-<BaseLayout title={title} description={description} permalink={permalink}>
+<BaseLayout title={title} permalink={permalink}>
 	<BaseHeader arrowBack />
 	<main class='grid gap-6 max-w-md mx-auto mb-24 p-4 pt-8'>
 		<div class='flex gap-2 items-center'>

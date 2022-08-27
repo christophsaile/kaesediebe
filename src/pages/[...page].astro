@@ -6,27 +6,26 @@ import type { IRecipeFields } from '@customTypes/generated/contentful';
 import Pagination from '@components/Pagination.astro';
 import BaseHeader from '@layouts/BaseHeader.astro';
 import Like from '@components/Like';
+import { PAGE_SIZE, SITE } from 'src/config';
 
 export async function getStaticPaths({ paginate }) {
 	const { items } = await client.getEntries<IRecipeFields>({
 		content_type: 'recipe',
 	});
 
-	return paginate(items, { pageSize: 10 });
+	return paginate(items, { pageSize: PAGE_SIZE });
 }
 
 const { page } = Astro.props;
-const title = 'Käsediebe Foodblog';
-const description =
-	'Käsediebe ist ein Foodblog in dem Christoph und Pauline ihre Rezepte vorstellen.';
-const permalink = 'https://www.kaesediebe.netlify.app';
+const title = `${
+	page.currentPage > 1 ? ' - ' + page.currentPage : ' - Foodblog'
+}`;
+const permalink = `${SITE.url}${
+	page.currentPage > 1 ? '/' + page.currentPage : ''
+}`;
 ---
 
-<BaseLayout
-	title={`${title}${page.currentPage > 1 ? ' - ' + page.currentPage : ''}`}
-	description={description}
-	permalink={`${permalink}${page.currentPage > 1 && '/' + page.currentPage}`}
->
+<BaseLayout title={title} permalink={permalink}>
 	<BaseHeader menu search />
 	<main class='grid gap-6 max-w-md mx-auto mb-16 p-4 pt-8'>
 		<div class='flex gap-2 items-center'>

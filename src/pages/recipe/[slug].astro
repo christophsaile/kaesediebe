@@ -10,6 +10,7 @@ import type {
 } from '@customTypes/generated/contentful';
 import BaseHeader from '@layouts/BaseHeader.astro';
 import Like from '@components/Like';
+import { SITE } from 'src/config';
 
 interface IIngredientsUnresolved {
 	amount: string;
@@ -32,7 +33,7 @@ export async function getStaticPaths() {
 
 const { slug } = Astro.params;
 const { recipe } = Astro.props;
-const permalink = `https://kaesediebe.netlify.app/recipe/${slug}`;
+const permalink = `${SITE.url}/recipe/${slug}`;
 const {
 	title,
 	duration,
@@ -63,7 +64,7 @@ const ingredientList: IIngredientFields = await client
 const htmlDescription = documentToHtmlString(description);
 ---
 
-<BaseLayout title={title} description={title} permalink={permalink}>
+<BaseLayout title={` - ${title}`} permalink={permalink}>
 	<BaseHeader arrowBack share />
 	<main class='grid gap-6 max-w-md mx-auto mb-24 p-4'>
 		<div class='card bg-base-100 shadow-xl'>
