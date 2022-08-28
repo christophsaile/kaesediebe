@@ -1,11 +1,11 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
-import Card from '@components/Card';
 import { client } from '@lib/contentfulClient';
 import type { IRecipeFields } from '@customTypes/generated/contentful';
-import Pagination from '@components/Pagination.astro';
 import BaseHeader from '@layouts/BaseHeader.astro';
-import Like from '@components/Like';
+import Card from '@components/solidjs/Card';
+import Pagination from '@components/astro/Pagination.astro';
+import Like from '@components/solidjs/Like';
 import { PAGE_SIZE, SITE } from 'src/config';
 
 export async function getStaticPaths({ paginate }) {

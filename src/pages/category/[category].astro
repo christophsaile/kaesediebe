@@ -3,8 +3,8 @@ import { client } from '@lib/contentfulClient';
 import type { IRecipeFields } from '@customTypes/generated/contentful';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import BaseHeader from '@layouts/BaseHeader.astro';
-import Card from '@components/Card';
-import Like from '@components/Like';
+import Card from '@components/solidjs/Card';
+import Like from '@components/solidjs/Like';
 import { SITE } from 'src/config';
 
 export async function getStaticPaths() {
@@ -28,13 +28,10 @@ const entries = await client
 	.catch(() => []);
 
 const title = ` - ${categoryName}`;
-const permalink = `${SITE.url}/${category}`
+const permalink = `${SITE.url}/${category}`;
 ---
 
-<BaseLayout
-	title={title}
-	permalink={permalink}
->
+<BaseLayout title={title} permalink={permalink}>
 	<BaseHeader arrowBack />
 	<main class='grid gap-6 max-w-md mx-auto mb-16 p-4 pt-8'>
 		<div class='flex gap-2 items-center'>

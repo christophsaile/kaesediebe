@@ -1,7 +1,8 @@
+/** @jsxImportSource solid-js */
 import { Component, createSignal, For } from 'solid-js';
 import { getItemFromStorage } from '@utils/localStorage';
-import Card from '@components/Card';
-import Like from '@components/Like';
+import Card from '@components/solidjs/Card';
+import Like from '@components/solidjs/Like';
 
 const FavoriteList: Component = () => {
 	const [favorites] = createSignal<any[]>(getItemFromStorage('favorites'));

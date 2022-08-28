@@ -1,3 +1,4 @@
+/** @jsxImportSource solid-js */
 import { Component, createSignal } from 'solid-js';
 import { IRecipeFields } from '@customTypes/generated/contentful';
 import {

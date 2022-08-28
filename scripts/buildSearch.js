@@ -5,6 +5,7 @@
 	dotenv.config();
 
 	const {
+		PURBLIC_ALGOLIA_INDEX,
 		PUBLIC_ALGOLIA_APP_ID,
 		ALGOLIA_SEARCH_ADMIN_KEY,
 		CONTENTFUL_SPACE_ID: space,
@@ -16,7 +17,7 @@
 		ALGOLIA_SEARCH_ADMIN_KEY
 	);
 
-	const algoliaIndex = algoliaClient.initIndex('recipes');
+	const algoliaIndex = algoliaClient.initIndex(PURBLIC_ALGOLIA_INDEX);
 
 	const ctfClient = createClient({
 		space,
@@ -51,10 +52,8 @@
 		);
 
 		const transformedAlgoliaData = items.map((recipe, index) => ({
+			url: `/recipe/${recipe.fields.slug}`,
 			title: recipe.fields.title,
-			slug: recipe.fields.slug,
-			duration: recipe.fields.duration,
-			vegetarian: recipe.fields.vegetarian,
 			category: recipe.fields.category,
 			ingredients: getIngredientList[index],
 			image: `${recipe.fields.image?.fields.file.url}?w=350&h=350&fm=webp`,

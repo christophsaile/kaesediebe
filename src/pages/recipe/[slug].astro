@@ -1,15 +1,15 @@
 ---
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
-import BaseLayout from '@layouts/BaseLayout.astro';
-import Ingredients from '@components/Ingredients.astro';
-import Badges from '@components/Badges.jsx';
-import { client } from '@lib/contentfulClient';
 import type {
 	IRecipeFields,
 	IIngredientFields,
 } from '@customTypes/generated/contentful';
+import { client } from '@lib/contentfulClient';
+import BaseLayout from '@layouts/BaseLayout.astro';
 import BaseHeader from '@layouts/BaseHeader.astro';
-import Like from '@components/Like';
+import Ingredients from '@components/astro/Ingredients.astro';
+import Badges from '@components/solidjs/Badges';
+import Like from '@components/solidjs/Like';
 import { SITE } from 'src/config';
 
 interface IIngredientsUnresolved {
@@ -18,10 +18,9 @@ interface IIngredientsUnresolved {
 }
 
 export async function getStaticPaths() {
-	const { items } = await client
-		.getEntries<IRecipeFields>({
-			content_type: 'recipe',
-		})
+	const { items } = await client.getEntries<IRecipeFields>({
+		content_type: 'recipe',
+	});
 
 	return items.map((recipe) => {
 		return {
@@ -67,7 +66,7 @@ const htmlDescription = documentToHtmlString(description);
 <BaseLayout title={` - ${title}`} permalink={permalink}>
 	<BaseHeader arrowBack share />
 	<main class='grid gap-6 max-w-md mx-auto mb-24 p-4'>
-		<div class='card bg-base-100 shadow-xl'>
+		<article class='card bg-base-100 shadow-xl'>
 			{image ? (
 				<img
 					class="w-full bg-neutral"
@@ -93,7 +92,7 @@ const htmlDescription = documentToHtmlString(description);
 				<Badges duration={duration} category={category} />
 				<Like data={recipe.fields} client:idle />
 			</div>
-		</div>
+		</article>
 		<Ingredients data={ingredientList} />
 		{description && (
 			<div class="card bg-base-100 shadow-xl">

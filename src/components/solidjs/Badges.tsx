@@ -1,3 +1,4 @@
+/** @jsxImportSource solid-js */
 import { Component } from 'solid-js';
 
 export interface IBadges {
