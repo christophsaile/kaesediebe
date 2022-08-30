@@ -22,8 +22,8 @@ const Search = ({ env }: ISearch) => {
 				autoFocus
 				placeholder="Suche nach Rezepten ..."
 				classNames={{
-					root: 'fixed bottom-20 left-0 right-0 mx-4',
-					form: '!h-12 !bg-transparent before:!hidden',
+					root: 'fixed bottom-20 left-0 right-0 px-4',
+					form: '!h-12 !bg-transparent before:!hidden max-w-md mx-auto',
 					input:
 						'!rounded-xl !bg-base-100 focus:!border-current !border-neutral-focus !shadow-lg !text-current !caret-current placeholder:!text-neutral-focus',
 					resetIcon: '!fill-current',
