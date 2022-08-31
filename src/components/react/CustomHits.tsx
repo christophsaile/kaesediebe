@@ -43,10 +43,7 @@ export default function CustomHits(props: UseHitsProps) {
 									)}
 								</figure>
 								<div className="card-body p-2 gap-1">
-									<h2
-										className="card-title leading-6 inline-block"
-										style={{ hyphens: 'auto' }}
-									>
+									<h2 className="card-title leading-6 inline-block [hyphens:auto] [-webkit-hyphens:auto]">
 										<Highlight
 											attribute="title"
 											hit={hit}
@@ -55,7 +52,7 @@ export default function CustomHits(props: UseHitsProps) {
 											}}
 										/>
 									</h2>
-									<p style={{ hyphens: 'auto' }} className="text-xs">
+									<p className="text-xs [hyphens:auto] [-webkit-hyphens:auto]">
 										<Highlight
 											attribute="ingredients"
 											hit={hit}
