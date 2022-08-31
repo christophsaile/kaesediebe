@@ -10,7 +10,7 @@ export default function CustomHits(props: UseHitsProps) {
 	const validQuery = results.query?.length >= 2;
 
 	return (
-		<section className="grid gap-4 mb-8">
+		<section className="grid gap-4">
 			{hits.length === 0 && validQuery && (
 				<div className="toast toast-center">
 					<div className="alert alert-error shadow-lg">
