@@ -18,7 +18,7 @@
     "@astrojs/solid-js": "^0.2.0",
     "@astrojs/tailwind": "^0.2.1",
     "@types/react": "^18.0.17",
-    "astro": "1.0.3",
+    "astro": "^1.2.2",
     "contentful": "^9.1.32",
     "contentful-management": "^10.6.3",
     "contentful-typescript-codegen": "^3.2.3",
