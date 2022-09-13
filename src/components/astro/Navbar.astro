@@ -1,4 +1,6 @@
 ---
+import BackButton from '@components/solidjs/BackButton';
+
 export interface INavbar {
 	arrowBack: boolean;
 	share: boolean;
@@ -40,11 +42,7 @@ const { arrowBack, share, close, search, menu } = Astro.props as INavbar;
 >
 	<div class='flex-none w-12'>
 		{arrowBack && (
-			<a
-				class="flex btn btn-square btn-ghost"
-				aria-label="zurück"
-				href="javascript:history.back()"
-			>
+			<BackButton client:only="solid-js">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					class="h-6 w-6"
@@ -59,7 +57,7 @@ const { arrowBack, share, close, search, menu } = Astro.props as INavbar;
 						d="M15 19l-7-7 7-7"
 					/>
 				</svg>
-			</a>
+			</BackButton>
 		)}
 		{search && (
 			<a
@@ -139,11 +137,7 @@ const { arrowBack, share, close, search, menu } = Astro.props as INavbar;
 			</Fragment>
 		)}
 		{close && (
-			<a
-				href="javascript:history.back()"
-				class="btn btn-square btn-ghost btn-modal"
-				aria-label="zurück"
-			>
+			<BackButton client:only="solid-js">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					class="h-6 w-6"
@@ -158,7 +152,7 @@ const { arrowBack, share, close, search, menu } = Astro.props as INavbar;
 						d="M6 18L18 6M6 6l12 12"
 					/>
 				</svg>
-			</a>
+			</BackButton>
 		)}
 		{menu && (
 			<a
