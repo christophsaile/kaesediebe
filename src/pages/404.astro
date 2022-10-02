@@ -1,0 +1,26 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import BaseHeader from '@layouts/BaseHeader.astro';
+import { SITE } from 'src/config';
+
+const title = ' - 404';
+const permalink = `${SITE.url}/404`;
+---
+
+<BaseLayout title={title} permalink={permalink}>
+	<BaseHeader arrowBack />
+	<main class='grid gap-6 max-w-md mx-auto mb-24 p-4 pt-8'>
+		<div class='toast toast-center'>
+			<div class='alert alert-error shadow-lg'>
+				<div>
+					<span>
+						<b>Deine Seite konnte leider nicht gefunden werden.</b>
+						<br />
+						Nicht aufgeben – überprüfe die Rechtschreibung oder gehe zurück auf die
+						letzte Seite.
+					</span>
+				</div>
+			</div>
+		</div>
+	</main>
+</BaseLayout>
