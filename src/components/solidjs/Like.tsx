@@ -1,14 +1,14 @@
 /** @jsxImportSource solid-js */
 import { Component, createSignal } from 'solid-js';
-import { IRecipeFields } from '@customTypes/generated/contentful';
 import {
 	addItemToStorage,
 	removeItemFromStorage,
 	isItemInStorage,
 } from '@utils/localStorage';
+import { IRecipeFieldsSubset } from '@customTypes/types';
 
 export interface ILike {
-	data: IRecipeFields;
+	data: IRecipeFieldsSubset;
 }
 
 const Like: Component<ILike> = (props) => {

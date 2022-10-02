@@ -1,11 +1,12 @@
 ---
 import { client } from '@lib/contentfulClient';
-import type { IRecipeFields } from '@customTypes/generated/contentful';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import BaseHeader from '@layouts/BaseHeader.astro';
 import Card from '@components/solidjs/Card';
 import Like from '@components/solidjs/Like';
 import { SITE } from 'src/config';
+import { IRecipeFieldsSubset } from '@customTypes/types';
+import { IRecipeFields } from '@customTypes/generated/contentful';
 
 export async function getStaticPaths() {
 	const data = ['Kartoffeln', 'Reis', 'Nudeln', 'Sonstiges'];
@@ -47,10 +48,23 @@ const permalink = `${SITE.url}/${category}`;
 			</svg>
 			<h2 class='text-4xl font-bold'>{categoryName}</h2>
 		</div>
-		{entries.map((entry, index: number) => (
-			<Card data={entry.fields} cardNumber={index}>
-				<Like data={entry.fields} client:only="solid-js" />
-			</Card>
-		))}
+		{entries.map((entry, index: number) => {
+			const { title, slug, duration, vegetarian, category, image } =
+				entry.fields
+			const data: IRecipeFieldsSubset = {
+				title,
+				slug,
+				duration,
+				vegetarian,
+				category,
+				imgUrl: image?.fields.file.url,
+				imgAlt: image?.fields.title,
+			}
+			return (
+				<Card data={data} cardNumber={index}>
+					<Like data={data} client:idle />
+				</Card>
+			)
+		})}
 	</main>
 </BaseLayout>

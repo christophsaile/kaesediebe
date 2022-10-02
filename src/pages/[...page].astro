@@ -7,6 +7,7 @@ import Card from '@components/solidjs/Card';
 import Pagination from '@components/astro/Pagination.astro';
 import Like from '@components/solidjs/Like';
 import { PAGE_SIZE, SITE } from 'src/config';
+import { IRecipeFieldsSubset } from '@customTypes/types';
 
 export async function getStaticPaths({ paginate }) {
 	const { items } = await client.getEntries<IRecipeFields>({
@@ -45,11 +46,24 @@ const permalink = `${SITE.url}${
 			</svg>
 			<h2 class='text-4xl font-bold'>Rezepte</h2>
 		</div>
-		{page.data.map((entry, index: number) => (
-			<Card data={entry.fields} cardNumber={index}>
-				<Like data={entry.fields} client:idle />
-			</Card>
-		))}
+		{page.data.map((entry, index: number) => {
+			const { title, slug, duration, vegetarian, category, image } =
+				entry.fields
+			const data: IRecipeFieldsSubset = {
+				title,
+				slug,
+				duration,
+				vegetarian,
+				category,
+				imgUrl: image?.fields.file.url,
+				imgAlt: image?.fields.title,
+			}
+			return (
+				<Card data={data} cardNumber={index}>
+					<Like data={data} client:idle />
+				</Card>
+			)
+		})}
 		<Pagination currentPage={page.currentPage} totalPages={page.lastPage} />
 	</main>
 </BaseLayout>

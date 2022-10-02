@@ -3,9 +3,12 @@ import { Component, createSignal, For } from 'solid-js';
 import { getItemFromStorage } from '@utils/localStorage';
 import Card from '@components/solidjs/Card';
 import Like from '@components/solidjs/Like';
+import { IRecipeFieldsSubset } from '@customTypes/types';
 
 const FavoriteList: Component = () => {
-	const [favorites] = createSignal<any[]>(getItemFromStorage('favorites'));
+	const [favorites] = createSignal<IRecipeFieldsSubset[]>(
+		getItemFromStorage('favorites')
+	);
 	return (
 		<For
 			each={favorites()}

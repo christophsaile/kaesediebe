@@ -1,10 +1,10 @@
 /** @jsxImportSource solid-js */
 import { ParentComponent, createSignal } from 'solid-js';
 import Badges from '@components/solidjs/Badges';
-import type { IRecipeFields } from '@customTypes/generated/contentful';
+import { IRecipeFieldsSubset } from '@customTypes/types';
 
 export interface ICard {
-	data: IRecipeFields;
+	data: IRecipeFieldsSubset;
 	cardNumber?: number;
 }
 
@@ -16,13 +16,13 @@ const Card: ParentComponent<ICard> = (props) => {
 		<a href={`recipe/${data.slug}`}>
 			<article class="card card-side bg-base-100 shadow-xl">
 				<figure class="w-2/5 flex-none bg-neutral">
-					{data.image ? (
+					{data.imgUrl ? (
 						<img
 							{...(condition() ? { loading: 'lazy' } : {})}
 							width="150"
 							height="150"
-							src={data.image?.fields.file.url + '?w=350&h=350&fm=webp'}
-							alt={data.image?.fields.title}
+							src={data.imgUrl + '?w=350&h=350&fm=webp'}
+							alt={data.imgAlt}
 						/>
 					) : (
 						<img
