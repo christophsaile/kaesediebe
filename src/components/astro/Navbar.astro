@@ -37,10 +37,10 @@ const { arrowBack, share, close, search, menu } = Astro.props as INavbar;
 </script>
 
 <div
-	class='navbar mx-auto fixed bottom-0 bg-base-100 z-20 px-4 shadow-2xl'
+	class='navbar mx-auto fixed bottom-0 bg-base-100 z-20 px-4 shadow-2xl grid grid-cols-[48px_1fr_48px]'
 	style='padding-bottom: calc(8px + env(safe-area-inset-bottom));'
 >
-	<div class='flex-none w-12'>
+	<div>
 		{arrowBack && (
 			<BackButton client:only="solid-js">
 				<svg
@@ -63,7 +63,7 @@ const { arrowBack, share, close, search, menu } = Astro.props as INavbar;
 			<a
 				class="flex btn btn-square btn-ghost"
 				aria-label="Suche"
-				href="/search"
+				href="/search/"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -83,7 +83,7 @@ const { arrowBack, share, close, search, menu } = Astro.props as INavbar;
 			</a>
 		)}
 	</div>
-	<div class='flex-1 justify-center'>
+	<div class='justify-center'>
 		<a aria-label='Startseite' href='#'>
 			<img
 				class='mx-auto h-12'
@@ -94,7 +94,7 @@ const { arrowBack, share, close, search, menu } = Astro.props as INavbar;
 			/>
 		</a>
 	</div>
-	<div class='flex-none'>
+	<div>
 		{share && (
 			<Fragment>
 				<button id="share" aria-label="teilen" class="btn btn-square btn-ghost">
@@ -156,7 +156,7 @@ const { arrowBack, share, close, search, menu } = Astro.props as INavbar;
 		)}
 		{menu && (
 			<a
-				href="/menu"
+				href="/menu/"
 				aria-label="Menu"
 				class="btn btn-square btn-ghost btn-modal"
 			>

@@ -28,7 +28,7 @@ export default function CustomHits(props: UseHitsProps) {
 			{hits.length > 0 && validQuery && (
 				<>
 					{hits.map((hit) => (
-						<a key={hit.objectID} href={hit.url as string}>
+						<a key={hit.objectID} href={`${hit.url as string}/`}>
 							<article className="card card-side bg-base-100 shadow-xl">
 								<figure className="w-2/5 flex-none bg-neutral">
 									{(hit.image as string) ? (

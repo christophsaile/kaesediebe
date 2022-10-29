@@ -10,7 +10,7 @@ const { currentPage, totalPages } = Astro.props as IPagination;
 <div class='btn-group justify-center'>
 	{Array.from({ length: totalPages }, (_, i) => i + 1).map((elem) => (
 		<a
-			href={`${elem === 1 ? '/' : '/' + elem}`}
+			href={`${elem === 1 ? '/' : '/' + elem}/`}
 			class={`btn ${elem === currentPage ? 'btn-active' : ''}`}
 		>
 			{elem}

@@ -13,7 +13,7 @@ const Card: ParentComponent<ICard> = (props) => {
 	const [condition] = createSignal(cardNumber > 5 ? true : false);
 
 	return (
-		<a href={`recipe/${data.slug}`}>
+		<a href={`recipe/${data.slug}/`}>
 			<article class="card card-side bg-base-100 shadow-xl">
 				<figure class="w-2/5 flex-none bg-neutral">
 					{data.imgUrl ? (
