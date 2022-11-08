@@ -23,6 +23,7 @@ const categoryName = category[0].toUpperCase() + (category as string).slice(1);
 const entries = await client
 	.getEntries<IRecipeFields>({
 		content_type: 'recipe',
+		order: '-sys.createdAt',
 		'fields.category': categoryName,
 	})
 	.then((entries) => entries.items)
