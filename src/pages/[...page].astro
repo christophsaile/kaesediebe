@@ -12,7 +12,7 @@ import { IRecipeFieldsSubset } from '@customTypes/types';
 export async function getStaticPaths({ paginate }) {
 	const { items } = await client.getEntries<IRecipeFields>({
 		content_type: 'recipe',
-		order: '-sys.createdAt'
+		order: '-sys.createdAt',
 	});
 
 	return paginate(items, { pageSize: PAGE_SIZE });

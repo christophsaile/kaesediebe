@@ -26,7 +26,11 @@ const Badges: Component<IBadges> = (props) => {
 				</svg>
 				{category}
 			</div>
-			<div class="badge flex items-center gap-1">
+			<div
+				class={`badge flex items-center gap-1 ${
+					duration === 'Hoch' ? 'badge-error' : 'badge-warning'
+				}`}
+			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					class="h-4 w-4"

@@ -11,7 +11,7 @@ const { currentPage, totalPages } = Astro.props as IPagination;
 	{Array.from({ length: totalPages }, (_, i) => i + 1).map((elem) => (
 		<a
 			href={`${elem === 1 ? '/' : '/' + elem + '/'}`}
-			class={`btn ${elem === currentPage ? 'btn-active' : ''}`}
+			class={`btn ${elem === currentPage ? 'btn-warning' : ''}`}
 		>
 			{elem}
 		</a>
