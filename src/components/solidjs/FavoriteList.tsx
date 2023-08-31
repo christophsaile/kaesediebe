@@ -12,7 +12,7 @@ const FavoriteList: Component = () => {
 		<For
 			each={favorites()}
 			fallback={
-				<div class="toast toast-center">
+				<div class="toast toast-center block relative p-0">
 					<div class="alert alert-success">
 						<div class="inline">
 							Füge ein Rezept deinen Favoriten hinzu indem du es mit einem
@@ -23,6 +23,7 @@ const FavoriteList: Component = () => {
 								viewBox="0 0 24 24"
 								stroke="currentColor"
 								stroke-width={1}
+								aria-label="herz"
 							>
 								<path
 									stroke-linecap="round"
