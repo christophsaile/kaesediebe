@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { type Component, createSignal, For } from 'solid-js';
 import { getItemFromStorage } from '@utils/localStorage';
 import Card from '@components/solidjs/Card';

@@ -1,42 +1,45 @@
 {
-  "name": "kaesediebe",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "build:search": "node ./scripts/buildSearch.js",
-    "build:types": "contentful-typescript-codegen --output src/types/generated/contentful.ts",
-    "build:pwa-assets": "npx pwa-asset-generator logo.png ./icons -b '#f3f4f7' -w",
-    "build:prod": "astro build && npm run sw && npm run build:search",
-    "preview": "astro preview",
-    "lint": "npx prettier --write src/**/*",
-    "sw": "npx workbox-cli generateSW workbox-config.js "
-  },
-  "devDependencies": {
-    "@astrojs/solid-js": "^3.0.0",
-    "@astrojs/tailwind": "^5.0.0",
-    "@types/react": "^18.2.21",
-    "astro": "^3.0.5",
-    "contentful": "^9.1.32",
-    "contentful-management": "^10.6.3",
-    "contentful-typescript-codegen": "^3.4.0",
-    "dotenv": "^16.3.1",
-    "prettier": "^3.0.3",
-    "prettier-plugin-astro": "^0.12.0",
-    "solid-js": "^1.7.11"
-  },
-  "dependencies": {
-    "@astrojs/react": "^3.0.0",
-    "@contentful/rich-text-html-renderer": "^15.13.1",
-    "@contentful/rich-text-types": "^15.12.1",
-    "@types/react-instantsearch-dom": "^6.12.3",
-    "algoliasearch": "^4.14.2",
-    "daisyui": "^2.17.0",
-    "instantsearch.css": "^7.4.5",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-instantsearch-hooks-web": "^6.32.0"
-  }
+	"name": "kaesediebe",
+	"version": "1.0.0",
+	"private": true,
+	"scripts": {
+		"astro": "astro",
+		"dev": "astro dev",
+		"start": "astro dev",
+		"build": "astro build",
+		"build:search": "node ./scripts/buildSearch.js",
+		"build:types": "contentful-typescript-codegen --output src/types/generated/contentful.ts",
+		"build:pwa-assets": "npx pwa-asset-generator logo.png ./icons -b '#f3f4f7' -w",
+		"build:prod": "astro build && npm run sw && npm run build:search",
+		"preview": "astro preview",
+		"lint": "prettier --write .",
+		"sw": "npx workbox-cli generateSW workbox-config.js "
+	},
+	"devDependencies": {
+		"@types/react": "^18.2.21",
+		"contentful": "^9.1.32",
+		"contentful-management": "^10.6.3",
+		"contentful-typescript-codegen": "^3.4.0",
+		"dotenv": "^16.3.1",
+		"prettier": "^3.0.3",
+		"prettier-plugin-astro": "^0.12.0"
+	},
+	"dependencies": {
+		"@astrojs/check": "^0.2.0",
+		"@astrojs/react": "^3.0.0",
+		"@astrojs/solid-js": "^3.0.0",
+		"@astrojs/tailwind": "^5.0.0",
+		"@contentful/rich-text-html-renderer": "^15.13.1",
+		"@contentful/rich-text-types": "^15.12.1",
+		"@types/react-instantsearch-dom": "^6.12.3",
+		"algoliasearch": "^4.14.2",
+		"astro": "^3.0.5",
+		"daisyui": "^2.17.0",
+		"instantsearch.css": "^7.4.5",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"react-instantsearch-hooks-web": "^6.32.0",
+		"solid-js": "^1.7.11",
+		"typescript": "^5.2.2"
+	}
 }

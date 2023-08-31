@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { type Component, createSignal } from 'solid-js';
 import {
 	addItemToStorage,

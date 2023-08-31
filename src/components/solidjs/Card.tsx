@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { type ParentComponent, createSignal } from 'solid-js';
 import Badges from '@components/solidjs/Badges';
 import { type IRecipeFieldsSubset } from '@customTypes/types';

@@ -1,11 +1,10 @@
 export const getItemFromStorage = (storage: string) => {
-  const item = localStorage.getItem(storage);
-  if (item === null) {
-    return []; // or any other default value you want to return for null
-  }
-  return JSON.parse(item);
+	const item = localStorage.getItem(storage);
+	if (item === null) {
+		return []; // or any other default value you want to return for null
+	}
+	return JSON.parse(item);
 };
-
 
 export const addItemToStorage = (
 	storage: string,

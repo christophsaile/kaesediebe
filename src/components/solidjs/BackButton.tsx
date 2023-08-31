@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { createSignal, type ParentComponent } from 'solid-js';
 import { SITE } from 'src/config';
 
