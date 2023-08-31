@@ -70,6 +70,8 @@ export interface IRecipe extends Entry<IRecipeFields> {
 
 export type CONTENT_TYPE = 'ingredient' | 'recipe';
 
+export type IEntry = IIngredient | IRecipe;
+
 export type LOCALE_CODE = 'en-US';
 
 export type CONTENTFUL_DEFAULT_LOCALE_CODE = 'en-US';
