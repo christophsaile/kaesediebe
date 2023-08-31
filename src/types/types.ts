@@ -4,6 +4,6 @@ export interface IRecipeFieldsSubset {
 	duration: 'Gering' | 'Hoch';
 	vegetarian: boolean;
 	category: 'Reis' | 'Nudeln' | 'Kartoffeln' | 'Sonstiges';
-	imgAlt: string;
-	imgUrl: string;
+	imgAlt?: string;
+	imgUrl?: string;
 }

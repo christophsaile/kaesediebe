@@ -5,8 +5,8 @@ import BaseHeader from '@layouts/BaseHeader.astro';
 import Card from '@components/solidjs/Card';
 import Like from '@components/solidjs/Like';
 import { SITE } from 'src/config';
-import { IRecipeFieldsSubset } from '@customTypes/types';
-import { IRecipeFields } from '@customTypes/generated/contentful';
+import { type IRecipeFieldsSubset } from '@customTypes/types';
+import { type IRecipeFields } from '@customTypes/generated/contentful';
 
 export async function getStaticPaths() {
 	const data = ['Kartoffeln', 'Reis', 'Nudeln', 'Sonstiges'];
@@ -18,7 +18,7 @@ export async function getStaticPaths() {
 	});
 }
 const { category } = Astro.params;
-const categoryName = category[0].toUpperCase() + (category as string).slice(1);
+const categoryName = category![0].toUpperCase() + (category as string).slice(1);
 
 const entries = await client
 	.getEntries<IRecipeFields>({
@@ -63,7 +63,7 @@ const permalink = `${SITE.url}/${category}`;
 			}
 			return (
 				<Card data={data} cardNumber={index}>
-					<Like data={data} client:idle />
+					<Like data={data} client:only="solid-js" />
 				</Card>
 			)
 		})}

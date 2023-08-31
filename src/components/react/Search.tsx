@@ -1,7 +1,7 @@
 /** @jsxImportSource react */
 import algoliasearch from 'algoliasearch/lite';
 import { InstantSearch, SearchBox } from 'react-instantsearch-hooks-web';
-import CustomHits from './CustomHits';
+import CustomHits from '@components/react/CustomHits';
 import 'instantsearch.css/themes/satellite.css';
 
 type ISearch = {

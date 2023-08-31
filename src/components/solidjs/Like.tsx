@@ -1,11 +1,11 @@
 /** @jsxImportSource solid-js */
-import { Component, createSignal } from 'solid-js';
+import { type Component, createSignal } from 'solid-js';
 import {
 	addItemToStorage,
 	removeItemFromStorage,
 	isItemInStorage,
 } from '@utils/localStorage';
-import { IRecipeFieldsSubset } from '@customTypes/types';
+import { type IRecipeFieldsSubset } from '@customTypes/types';
 
 export interface ILike {
 	data: IRecipeFieldsSubset;

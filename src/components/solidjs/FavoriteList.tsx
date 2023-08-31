@@ -1,13 +1,13 @@
 /** @jsxImportSource solid-js */
-import { Component, createSignal, For } from 'solid-js';
+import { type Component, createSignal, For } from 'solid-js';
 import { getItemFromStorage } from '@utils/localStorage';
 import Card from '@components/solidjs/Card';
 import Like from '@components/solidjs/Like';
-import { IRecipeFieldsSubset } from '@customTypes/types';
+import { type IRecipeFieldsSubset } from '@customTypes/types';
 
 const FavoriteList: Component = () => {
 	const [favorites] = createSignal<IRecipeFieldsSubset[]>(
-		getItemFromStorage('favorites')
+		getItemFromStorage('favorites'),
 	);
 	return (
 		<For

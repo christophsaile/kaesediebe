@@ -10,7 +10,7 @@ const permalink = `${SITE.url}/search`;
 const env = {
 	appId: import.meta.env.PUBLIC_ALGOLIA_APP_ID,
 	apiKey: import.meta.env.PUBLIC_ALGOLIA_SEARCH_API_KEY,
-	index: import.meta.env.PURBLIC_ALGOLIA_INDEX,
+	index: import.meta.env.PUBLIC_ALGOLIA_INDEX,
 };
 ---
 
@@ -34,6 +34,6 @@ const env = {
 			</svg>
 			<h2 class='text-4xl font-bold'>Suche</h2>
 		</div>
-		<Search client:load env={env} />
+		<Search client:only="react" env={env} />
 	</main>
 </BaseLayout>

@@ -1,13 +1,14 @@
 /** @jsxImportSource react */
 import {
 	useHits,
-	UseHitsProps,
+	type UseHitsProps,
 	Highlight,
 } from 'react-instantsearch-hooks-web';
 
 export default function CustomHits(props: UseHitsProps) {
 	const { hits, results } = useHits(props);
-	const validQuery = results.query?.length >= 2;
+	let validQuery = false;
+	if (results) validQuery = results.query?.length >= 2;
 
 	return (
 		<section className="grid gap-4">
