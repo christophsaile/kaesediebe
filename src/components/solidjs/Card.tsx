@@ -24,12 +24,7 @@ const Card: ParentComponent<ICard> = (props) => {
 							alt={data.imgAlt}
 						/>
 					) : (
-						<img
-							width="150"
-							height="150"
-							src="assets/placeholder.png"
-							alt="Platzhalter Bild"
-						/>
+						<img width="150" height="150" src="assets/placeholder.png" alt="" />
 					)}
 				</figure>
 				<div class="card-body p-3">
