@@ -1,19 +1,18 @@
-/** @jsxImportSource solid-js */
-import { Component, createSignal, For } from 'solid-js';
+import { type Component, createSignal, For } from 'solid-js';
 import { getItemFromStorage } from '@utils/localStorage';
 import Card from '@components/solidjs/Card';
 import Like from '@components/solidjs/Like';
-import { IRecipeFieldsSubset } from '@customTypes/types';
+import { type IRecipeFieldsSubset } from '@customTypes/types';
 
 const FavoriteList: Component = () => {
 	const [favorites] = createSignal<IRecipeFieldsSubset[]>(
-		getItemFromStorage('favorites')
+		getItemFromStorage('favorites'),
 	);
 	return (
 		<For
 			each={favorites()}
 			fallback={
-				<div class="toast toast-center">
+				<div class="toast toast-center block relative p-0">
 					<div class="alert alert-success">
 						<div class="inline">
 							Füge ein Rezept deinen Favoriten hinzu indem du es mit einem
@@ -24,6 +23,7 @@ const FavoriteList: Component = () => {
 								viewBox="0 0 24 24"
 								stroke="currentColor"
 								stroke-width={1}
+								aria-label="herz"
 							>
 								<path
 									stroke-linecap="round"

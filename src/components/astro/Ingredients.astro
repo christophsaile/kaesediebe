@@ -20,7 +20,7 @@ const { data } = Astro.props as IIngredientsProps;
 		</thead>
 		<!-- body -->
 		<tbody>
-			{data.map((elem: { amount: string, title: string }) => (
+			{data.map((elem: { amount?: string, title: string }) => (
 				<tr>
 					<th>
 						<label>

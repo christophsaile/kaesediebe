@@ -60,7 +60,7 @@ const ingredientList: IIngredientFields = await client
 		})
 	);
 
-const htmlDescription = documentToHtmlString(description);
+const htmlDescription = description && documentToHtmlString(description);
 ---
 
 <BaseLayout title={` - ${title}`} permalink={permalink}>
@@ -81,7 +81,7 @@ const htmlDescription = documentToHtmlString(description);
 					width="400"
 					height="400"
 					src="assets/placeholder.png"
-					alt="Platzhalter Bild"
+					alt=""
 				/>
 			)}
 			<div class='card-body p-4 pb-8'>
@@ -90,7 +90,7 @@ const htmlDescription = documentToHtmlString(description);
 					{vegetarian && <span class="badge badge-secondary ml-1">Veggi</span>}
 				</h2>
 				<Badges duration={duration} category={category} />
-				<Like data={recipe.fields} client:idle />
+				<Like data={recipe.fields} client:only="solid-js" />
 			</div>
 		</article>
 		<Ingredients data={ingredientList} />

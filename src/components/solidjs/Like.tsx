@@ -1,11 +1,10 @@
-/** @jsxImportSource solid-js */
-import { Component, createSignal } from 'solid-js';
+import { type Component, createSignal } from 'solid-js';
 import {
 	addItemToStorage,
 	removeItemFromStorage,
 	isItemInStorage,
 } from '@utils/localStorage';
-import { IRecipeFieldsSubset } from '@customTypes/types';
+import { type IRecipeFieldsSubset } from '@customTypes/types';
 
 export interface ILike {
 	data: IRecipeFieldsSubset;
@@ -28,15 +27,19 @@ const Like: Component<ILike> = (props) => {
 	};
 
 	return (
-		<span class="absolute bottom-3 right-3 cursor-pointer">
+		<button
+			onClick={(e: Event) => handleClick(e)}
+			class="absolute bottom-3 right-3 cursor-pointer"
+			aria-label={`${active() ? 'entfavorisieren' : 'favorisieren'}`}
+		>
 			<svg
-				onClick={(e: Event) => handleClick(e)}
 				xmlns="http://www.w3.org/2000/svg"
 				class={`h-6 w-6 ${active() ? 'fill-error' : ''}`}
 				fill="none"
 				viewBox="0 0 24 24"
 				stroke="currentColor"
 				stroke-width={1}
+				aria-hidden="true"
 			>
 				<path
 					stroke-linecap="round"
@@ -44,7 +47,7 @@ const Like: Component<ILike> = (props) => {
 					d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
 				/>
 			</svg>
-		</span>
+		</button>
 	);
 };
 

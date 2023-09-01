@@ -14,7 +14,7 @@
 
 	const algoliaClient = algoliasearch(
 		PUBLIC_ALGOLIA_APP_ID,
-		ALGOLIA_SEARCH_ADMIN_KEY
+		ALGOLIA_SEARCH_ADMIN_KEY,
 	);
 
 	const algoliaIndex = algoliaClient.initIndex(PURBLIC_ALGOLIA_INDEX);
@@ -42,13 +42,13 @@
 					ingredients.map(
 						(elem) =>
 							entries.items.find((items) => items.sys.id === elem.ingredientId)
-								?.fields.title
-					)
+								?.fields.title,
+					),
 				);
 		};
 
 		const getIngredientList = await Promise.all(
-			items.map(async (recipes) => getList(recipes.fields.ingredients))
+			items.map(async (recipes) => getList(recipes.fields.ingredients)),
 		);
 
 		const transformedAlgoliaData = items.map((recipe, index) => ({
@@ -61,7 +61,7 @@
 		}));
 
 		const indexedContent = await algoliaIndex.saveObjects(
-			transformedAlgoliaData
+			transformedAlgoliaData,
 		);
 
 		console.log('Indexed Content:', indexedContent);

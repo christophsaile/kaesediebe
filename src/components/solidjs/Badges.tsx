@@ -1,5 +1,4 @@
-/** @jsxImportSource solid-js */
-import { Component } from 'solid-js';
+import { type Component } from 'solid-js';
 
 export interface IBadges {
 	duration: string;
