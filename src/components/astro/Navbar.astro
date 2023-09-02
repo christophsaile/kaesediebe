@@ -36,7 +36,7 @@ const { arrowBack, share, close, search, menu } = Astro.props as INavbar;
 	});
 </script>
 
-<div
+<nav
 	class='navbar mx-auto fixed bottom-0 bg-base-100 z-20 px-4 shadow-2xl grid grid-cols-[48px_1fr_48px]'
 	style='padding-bottom: calc(8px + env(safe-area-inset-bottom));'
 >
@@ -88,7 +88,7 @@ const { arrowBack, share, close, search, menu } = Astro.props as INavbar;
 			<img
 				class='mx-auto h-12'
 				src='/assets/logo.png'
-				alt='logo'
+				alt=''
 				width='87'
 				height='48'
 			/>
@@ -157,7 +157,7 @@ const { arrowBack, share, close, search, menu } = Astro.props as INavbar;
 		{menu && (
 			<a
 				href="/menu/"
-				aria-label="Menu"
+				aria-label="Menü"
 				class="btn btn-square btn-ghost btn-modal"
 			>
 				<svg
@@ -180,4 +180,4 @@ const { arrowBack, share, close, search, menu } = Astro.props as INavbar;
 			<div class="btn btn-square btn-ghost btn-modal" />
 		)}
 	</div>
-</div>
+</nav>
