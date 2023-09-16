@@ -1,6 +1,6 @@
 import { type Component, createSignal, For } from 'solid-js';
 import { getItemFromStorage } from '@utils/localStorage';
-import Card from '@components/solidjs/Card';
+import Card from '@components/astro/Card.astro';
 import Like from '@components/solidjs/Like';
 import { type IRecipeFieldsSubset } from '@customTypes/types';
 

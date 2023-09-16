@@ -24,13 +24,13 @@
 		"prettier-plugin-astro": "^0.12.0"
 	},
 	"dependencies": {
-		"@astrojs/solid-js": "^3.0.0",
+		"@astrojs/solid-js": "^3.0.1",
 		"@astrojs/tailwind": "^5.0.0",
 		"@astrojs/vue": "^3.0.0",
 		"@contentful/rich-text-html-renderer": "^15.13.1",
 		"@contentful/rich-text-types": "^15.12.1",
-		"algoliasearch": "^4.19.1",
-		"astro": "^3.0.5",
+		"algoliasearch": "^4.20.0",
+		"astro": "^3.1.0",
 		"daisyui": "^2.17.0",
 		"instantsearch.css": "^8.0.0",
 		"solid-js": "^1.7.11",

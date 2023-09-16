@@ -1,12 +1,14 @@
 ---
+import { ViewTransitions } from 'astro:transitions';
 import Background from '@components/astro/Background.astro';
 import { SITE } from 'src/config';
 export interface IBaseLayout {
 	title: string;
 	permalink: string;
+	transition: boolean;
 }
 
-const { title, permalink } = Astro.props as IBaseLayout;
+const { title, permalink, transition } = Astro.props as IBaseLayout;
 const completeTitle = SITE.title + title;
 const description = SITE.description;
 ---
@@ -216,6 +218,7 @@ const description = SITE.description;
 				padding-bottom: calc(8px + env(safe-area-inset-bottom));
 			}
 		</style>
+		{transition && <ViewTransitions fallback='swap' />}
 	</head>
 
 	<body>

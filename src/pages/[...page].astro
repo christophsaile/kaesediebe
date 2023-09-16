@@ -3,7 +3,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import { client } from '@lib/contentfulClient';
 import type { IRecipeFields } from '@customTypes/generated/contentful';
 import BaseHeader from '@layouts/BaseHeader.astro';
-import Card from '@components/solidjs/Card';
+import Card from '@components/astro/Card.astro';
 import Pagination from '@components/astro/Pagination.astro';
 import Like from '@components/solidjs/Like';
 import { PAGE_SIZE, SITE } from 'src/config';
@@ -27,44 +27,44 @@ const permalink = `${SITE.url}${
 }`;
 ---
 
-<BaseLayout title={title} permalink={permalink}>
-	<BaseHeader menu search />
+<BaseLayout title={title} permalink={permalink} transition>
 	<main class='grid gap-6 max-w-md mx-auto mb-16 p-4 pt-8'>
 		<div class='flex gap-2 items-center'>
 			<svg
-				xmlns='http://www.w3.org/2000/svg'
-				class='h-6 w-6'
-				fill='none'
-				viewBox='0 0 24 24'
-				stroke='currentColor'
-				stroke-width='2'
+			xmlns='http://www.w3.org/2000/svg'
+			class='h-6 w-6'
+			fill='none'
+			viewBox='0 0 24 24'
+			stroke='currentColor'
+			stroke-width='2'
 			>
-				<path
-					stroke-linecap='round'
-					stroke-linejoin='round'
-					d='M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z'
-				></path>
-			</svg>
-			<h2 class='text-4xl font-bold'>Rezepte</h2>
-		</div>
-		{page.data.map((entry, index: number) => {
-			const { title, slug, duration, vegetarian, category, image } =
-				entry.fields
-			const data: IRecipeFieldsSubset = {
-				title,
-				slug,
-				duration,
-				vegetarian,
-				category,
-				imgUrl: image?.fields.file.url,
-				imgAlt: image?.fields.title,
-			}
-			return (
-				<Card data={data} cardNumber={index}>
-					<Like data={data} client:only="solid-js"  />
+			<path
+			stroke-linecap='round'
+			stroke-linejoin='round'
+			d='M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z'
+			></path>
+		</svg>
+		<h2 class='text-4xl font-bold'>Rezepte</h2>
+	</div>
+	{page.data.map((entry, index: number) => {
+		const { title, slug, duration, vegetarian, category, image } =
+		entry.fields
+		const data: IRecipeFieldsSubset = {
+			title,
+			slug,
+			duration,
+			vegetarian,
+			category,
+			imgUrl: image?.fields.file.url,
+			imgAlt: image?.fields.title,
+		}
+		return (
+			<Card data={data} cardNumber={index}>
+				<Like data={data} client:only="solid-js"  />
 				</Card>
-			)
-		})}
+				)
+			})}
 		<Pagination currentPage={page.currentPage} totalPages={page.lastPage} />
 	</main>
+	<BaseHeader menu search />
 </BaseLayout>

@@ -2,7 +2,7 @@
 import { client } from '@lib/contentfulClient';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import BaseHeader from '@layouts/BaseHeader.astro';
-import Card from '@components/solidjs/Card';
+import Card from '@components/astro/Card.astro';
 import Like from '@components/solidjs/Like';
 import { SITE } from 'src/config';
 import { type IRecipeFieldsSubset } from '@customTypes/types';
@@ -33,7 +33,7 @@ const title = ` - ${categoryName}`;
 const permalink = `${SITE.url}/${category}`;
 ---
 
-<BaseLayout title={title} permalink={permalink}>
+<BaseLayout title={title} permalink={permalink} transition>
 	<BaseHeader arrowBack />
 	<main class='grid gap-6 max-w-md mx-auto mb-16 p-4 pt-8'>
 		<div class='flex gap-2 items-center'>

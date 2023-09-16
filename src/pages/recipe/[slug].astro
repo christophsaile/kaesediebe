@@ -63,13 +63,13 @@ const ingredientList: IIngredientFields = await client
 const htmlDescription = description && documentToHtmlString(description);
 ---
 
-<BaseLayout title={` - ${title}`} permalink={permalink}>
+<BaseLayout title={` - ${title}`} permalink={permalink} transition>
 	<BaseHeader arrowBack share />
 	<main class='grid gap-6 max-w-md mx-auto mb-24 p-4'>
 		<article class='card bg-base-100 shadow-xl'>
 			{image ? (
 				<img
-					class="w-full bg-neutral"
+					class="w-full bg-neutral rounded-t-2xl"
 					width="400"
 					height="400"
 					src={image?.fields.file.url + '?fm=webp'}
@@ -77,7 +77,7 @@ const htmlDescription = description && documentToHtmlString(description);
 				/>
 			) : (
 				<img
-					class="w-full bg-neutral"
+					class="w-full bg-neutral rounded-t-2xl"
 					width="400"
 					height="400"
 					src="assets/placeholder.png"
