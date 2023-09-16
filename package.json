@@ -13,7 +13,7 @@
 		"build:prod": "astro build && npm run sw && npm run build:search",
 		"preview": "astro preview",
 		"lint": "prettier --write .",
-		"sw": "npx workbox-cli generateSW workbox-config.js "
+		"sw": "npx workbox-cli generateSW workbox-config.js"
 	},
 	"devDependencies": {
 		"contentful": "^9.1.32",
