@@ -8,7 +8,7 @@ const BackButton: ParentComponent = (props) => {
 	);
 
 	return (
-		<a class="flex btn btn-square btn-ghost" aria-label="zurück" href={link()}>
+		<a class="flex btn btn-square btn-ghost" aria-label="Zurück" href={link()}>
 			{props.children}
 		</a>
 	);

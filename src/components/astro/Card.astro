@@ -21,7 +21,7 @@ const { data, cardNumber } = Astro.props as ICardProps;
 						height="150"
 						class="rounded-l-2xl"
 						src={data.imgUrl + '?fm=webp'}
-						alt={data.imgAlt}
+						alt=""
 					/>
 				) : (
 					<img width="150" height="150" src="assets/placeholder.png" alt="" class="rounded-l-2xl"/>
@@ -31,7 +31,7 @@ const { data, cardNumber } = Astro.props as ICardProps;
 		<div class="card-body p-3">
 			<h2 class="card-title inline-block [hyphens:auto] [-webkit-hyphens:auto]">
 				<span class="mr-1">{data.title}</span>
-				{data.vegetarian && <span class="badge badge-secondary">Veggi</span>}
+				{data.vegetarian && <span class="badge badge-secondary" aria-label="Vegetarisches Gericht">Veggi</span>}
 			</h2>
 			<Badges duration={data.duration} category={data.category} />
 			<slot />

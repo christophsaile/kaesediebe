@@ -228,7 +228,7 @@ const description = SITE.description;
 		<script>
 			// Don't register the service worker
 			// until the page has fully loaded
-			window.addEventListener('load', () => {
+			import.meta.env.PROD && window.addEventListener('load', () => {
 				// Is service worker available?
 				if ('serviceWorker' in navigator) {
 					navigator.serviceWorker

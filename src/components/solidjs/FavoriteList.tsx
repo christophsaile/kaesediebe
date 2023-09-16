@@ -23,7 +23,7 @@ const FavoriteList: Component = () => {
 								viewBox="0 0 24 24"
 								stroke="currentColor"
 								stroke-width={1}
-								aria-label="herz"
+								aria-label="Herz"
 							>
 								<path
 									stroke-linecap="round"
