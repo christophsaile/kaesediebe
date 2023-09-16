@@ -3,7 +3,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import { client } from '@lib/contentfulClient';
 import type { IRecipeFields } from '@customTypes/generated/contentful';
 import BaseHeader from '@layouts/BaseHeader.astro';
-import Card from '@components/astro/Card.astro';
+import Card from '@components/solidjs/Card';
 import Pagination from '@components/astro/Pagination.astro';
 import Like from '@components/solidjs/Like';
 import { PAGE_SIZE, SITE } from 'src/config';
