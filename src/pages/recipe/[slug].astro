@@ -85,10 +85,10 @@ const htmlDescription = description && documentToHtmlString(description);
 				/>
 			)}
 			<div class='card-body p-4 pb-8'>
-				<h2 class='card-title inline-block'>
+				<h1 class='card-title inline-block'>
 					{title}
 					{vegetarian && <span class="badge badge-secondary ml-1">Veggi</span>}
-				</h2>
+				</h1>
 				<Badges duration={duration} category={category} />
 				<Like data={recipe.fields} client:only="solid-js" />
 			</div>
