@@ -28,6 +28,7 @@ const permalink = `${SITE.url}${
 ---
 
 <BaseLayout title={title} permalink={permalink} transition>
+	<BaseHeader menu search />
 	<main class='grid gap-6 max-w-md mx-auto mb-16 p-4 pt-8'>
 		<div class='flex gap-2 items-center'>
 			<svg
@@ -67,5 +68,4 @@ const permalink = `${SITE.url}${
 			})}
 		<Pagination currentPage={page.currentPage} totalPages={page.lastPage} />
 	</main>
-	<BaseHeader menu search />
 </BaseLayout>
