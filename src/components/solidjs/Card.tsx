@@ -11,7 +11,7 @@ const Card: ParentComponent<ICard> = (props) => {
 	const { data, cardNumber } = props;
 
 	return (
-		<a href={`recipe/${data.slug}/`}>
+		<a href={`recipe/${data.slug}/`} class='rounded-2xl'>
 			<article class="card card-side bg-base-100 shadow-xl">
 				<figure class="w-2/5 flex-none bg-neutral">
 					{data.imgUrl ? (

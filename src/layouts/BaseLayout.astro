@@ -207,7 +207,12 @@ const description = SITE.description;
 			name='msapplication-wide310x150logo'
 			content='icons/mstile-icon-558-270.png'
 		/>
-		<style>
+		<style is:global>
+			:focus-visible {
+				outline-offset: 2px !important;
+				outline: 3px solid rgb(0, 112, 255) !important;
+			}
+
 			html {
 				height: -webkit-fill-available;
 			}
