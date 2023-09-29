@@ -41,7 +41,6 @@ const Like: Component<ILike> = (props) => {
 				viewBox="0 0 24 24"
 				stroke="currentColor"
 				stroke-width={1}
-				aria-hidden="true"
 			>
 				<path
 					stroke-linecap="round"
