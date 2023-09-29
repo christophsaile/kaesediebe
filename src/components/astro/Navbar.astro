@@ -13,6 +13,7 @@ const { arrowBack, share, close, search, menu } = Astro.props as INavbar;
 ---
 
 <script>
+	function setClickListener() {
 	document.querySelector('#share')?.addEventListener('click', async () => {
 		const shareData = {
 			title: document.title,
@@ -34,6 +35,9 @@ const { arrowBack, share, close, search, menu } = Astro.props as INavbar;
 			}, 2500);
 		}
 	});
+}
+
+	document.addEventListener('astro:after-swap', setClickListener);
 </script>
 
 <nav
@@ -115,7 +119,7 @@ const { arrowBack, share, close, search, menu } = Astro.props as INavbar;
 				</button>
 				<div
 					id="copyAlert"
-					class="alert alert-success absolute left-4 right-4 w-auto bottom-4 shadow-lg hidden"
+					class="alert alert-success absolute left-4 right-4 w-auto bottom-20 shadow-lg hidden"
 				>
 					<div>
 						<svg
