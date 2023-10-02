@@ -27,7 +27,7 @@ const indexName = import.meta.env.PUBLIC_ALGOLIA_INDEX;
 				<ais-hits v-if="hits.length > 0 && query.length >= 2">
 					<div class="grid gap-4">
 						<template v-for="hit in hits" :key="hit.objectID">
-							<a :href="`${hit.url}`">
+							<a :href="`${hit.url}`" class="rounded-2xl">
 								<article class="card card-side bg-base-100 shadow-xl">
 									<figure class="w-2/5 flex-none bg-neutral">
 										<img
