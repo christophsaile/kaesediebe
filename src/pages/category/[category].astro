@@ -9,7 +9,7 @@ import { type IRecipeFieldsSubset } from '@customTypes/types';
 import { type IRecipeFields } from '@customTypes/generated/contentful';
 
 export async function getStaticPaths() {
-	const data = ['Kartoffeln', 'Reis', 'Nudeln', 'Sonstiges'];
+	const data = ['Kartoffeln', 'Reis', 'Nudeln', 'Backwaren', 'Sonstiges'];
 
 	return data.map((category) => {
 		return {
@@ -29,7 +29,15 @@ const entries = await client
 	.then((entries) => entries.items)
 	.catch(() => []);
 
-const categoryTitle = categoryName === 'Sonstiges' ? 'Sonstige Rezepte' : `Rezepte mit ${categoryName}`;
+const headlineMap = {
+	Kartoffeln: 'Rezepte mit Kartoffeln',
+	Reis: 'Rezepte mit Reis',
+	Nudeln: 'Rezepte mit Nudeln',
+	Backwaren: 'Backwaren',
+	Sonstiges: 'Sonstige Rezepte',
+};
+
+const categoryTitle = headlineMap[categoryName as keyof typeof headlineMap];
 const title = ` - ${categoryTitle}`;
 const permalink = `${SITE.url}/${category}`;
 ---

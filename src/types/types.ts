@@ -3,7 +3,7 @@ export interface IRecipeFieldsSubset {
 	slug: string;
 	duration: 'Gering' | 'Hoch';
 	vegetarian: boolean;
-	category: 'Reis' | 'Nudeln' | 'Kartoffeln' | 'Sonstiges';
+	category: 'Reis' | 'Nudeln' | 'Kartoffeln' | 'Backwaren' | 'Sonstiges';
 	imgAlt?: string;
 	imgUrl?: string;
 }

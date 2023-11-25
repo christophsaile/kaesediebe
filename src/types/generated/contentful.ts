@@ -39,7 +39,7 @@ export interface IRecipeFields {
 	vegetarian: boolean;
 
 	/** Category */
-	category: 'Reis' | 'Nudeln' | 'Kartoffeln' | 'Sonstiges';
+	category: 'Backwaren' | 'Kartoffeln' | 'Nudeln' | 'Reis' | 'Sonstiges';
 
 	/** Ingredients */
 	ingredients: Record<string, any>;
