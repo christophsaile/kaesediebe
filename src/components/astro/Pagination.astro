@@ -5,16 +5,44 @@ export interface IPagination {
 }
 
 const { currentPage, totalPages } = Astro.props as IPagination;
+const startPage = Math.max(currentPage - 3, 1);
+const endPage = Math.min(startPage + 3, totalPages);
 ---
 
-<nav aria-label="Pagination Navigation" class="mx-auto">
-	<ul class="btn-group">
+<nav aria-label='Pagination Navigation' class='mx-auto'>
+	<ul class='btn-group'>
 		{
-			Array.from({ length: totalPages }, (_, i) => i + 1).map((elem) => (
-				<li class="pt-0 px-1">
+			currentPage !== 1 && (
+				<li class='pt-0 px-1'>
+					<a
+						href={`${currentPage === 1 ? '/' : '/' + (currentPage - 1) + '/'}`}
+						class={`btn w-10 px-0`}
+						aria-label='Vorherige Seite'
+					>
+						<svg
+							xmlns='http://www.w3.org/2000/svg'
+							fill='none'
+							viewBox='0 0 24 24'
+							stroke-width='1.5'
+							stroke='currentColor'
+							class='w-6 h-6'
+						>
+							<path
+								stroke-linecap='round'
+								stroke-linejoin='round'
+								d='M15.75 19.5 8.25 12l7.5-7.5'
+							/>
+						</svg>
+					</a>
+				</li>
+			)
+		}
+		{
+			Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i).map((elem) => (
+				<li class='pt-0 px-1'>
 					<a
 						href={`${elem === 1 ? '/' : '/' + elem + '/'}`}
-						class={`btn ${elem === currentPage ? 'btn-warning' : ''}`}
+						class={`btn w-10 ${elem === currentPage ? 'btn-warning' : ''}`}
 						aria-label={`Seite ${elem}`}
 						aria-current={elem === currentPage ? 'true' : undefined}
 					>
@@ -22,6 +50,30 @@ const { currentPage, totalPages } = Astro.props as IPagination;
 					</a>
 				</li>
 			))
+		}
+		{
+			currentPage !== totalPages && (
+				<li class='pt-0 px-1'>
+					<a
+						href={`${
+							currentPage === totalPages ? '/' + totalPages + '/' : '/' + (currentPage + 1) + '/'
+						}`}
+						class={`btn w-10 px-0 `}
+						aria-label='Nächste Seite'
+					>
+						<svg
+							xmlns='http://www.w3.org/2000/svg'
+							fill='none'
+							viewBox='0 0 24 24'
+							stroke-width='1.5'
+							stroke='currentColor'
+							class='w-6 h-6'
+						>
+							<path stroke-linecap='round' stroke-linejoin='round' d='m8.25 4.5 7.5 7.5-7.5 7.5' />
+						</svg>
+					</a>
+				</li>
+			)
 		}
 	</ul>
 </nav>
