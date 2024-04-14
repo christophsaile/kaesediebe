@@ -34,8 +34,8 @@ const Card: ParentComponent<ICard> = (props) => {
 					)}
 				</figure>
 				<div class="card-body p-3">
-					<h2 class="card-title inline-block [hyphens:auto] [-webkit-hyphens:auto]">
-						<span class="mr-1">{data.title}</span>
+					<div class="card-title flex gap-1 flex-wrap [hyphens:auto] [-webkit-hyphens:auto]">
+						<h2>{data.title}</h2>
 						{data.vegetarian && (
 							<span
 								class="badge badge-secondary"
@@ -44,7 +44,7 @@ const Card: ParentComponent<ICard> = (props) => {
 								Veggi
 							</span>
 						)}
-					</h2>
+					</div>
 					<Badges duration={data.duration} category={data.category} />
 					{props.children}
 				</div>

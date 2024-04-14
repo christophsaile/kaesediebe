@@ -38,7 +38,7 @@ const Badges: Component<IBadges> = (props) => {
 					viewBox="0 0 24 24"
 					stroke="currentColor"
 					stroke-width="2"
-					aria-label="Dauer"
+					aria-label="Zubereitungsdauer"
 				>
 					<path
 						stroke-linecap="round"
