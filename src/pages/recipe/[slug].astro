@@ -11,6 +11,8 @@ import Ingredients from '@components/astro/Ingredients.astro';
 import Badges from '@components/solidjs/Badges';
 import Like from '@components/solidjs/Like';
 import { SITE } from 'src/config';
+import Image from 'astro/components/Image.astro';
+import placeholder from '../../assets/placeholder.png';
 
 interface IIngredientsUnresolved {
 	amount: string;
@@ -68,7 +70,7 @@ const htmlDescription = description && documentToHtmlString(description);
 	<main class='grid gap-6 max-w-md mx-auto mb-24 p-4'>
 		<article class='card bg-base-100 shadow-xl'>
 			{image ? (
-				<img
+				<Image
 					class="w-full bg-neutral rounded-t-2xl"
 					width="400"
 					height="400"
@@ -76,11 +78,11 @@ const htmlDescription = description && documentToHtmlString(description);
 					alt={image?.fields.title}
 				/>
 			) : (
-				<img
+				<Image
 					class="w-full bg-neutral rounded-t-2xl"
 					width="400"
 					height="400"
-					src="assets/placeholder.png"
+					src={placeholder}
 					alt=""
 				/>
 			)}

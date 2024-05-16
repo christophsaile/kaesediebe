@@ -1,6 +1,7 @@
 import { type ParentComponent } from 'solid-js';
 import Badges from '@components/solidjs/Badges';
 import { type IRecipeFieldsSubset } from '@customTypes/types';
+import placeholder from '../../assets/placeholder.png';
 
 export interface ICard {
 	data: IRecipeFieldsSubset;
@@ -27,7 +28,7 @@ const Card: ParentComponent<ICard> = (props) => {
 						<img
 							width="150"
 							height="150"
-							src="assets/placeholder.png"
+							src={placeholder.src}
 							alt=""
 							class="rounded-l-2xl"
 						/>

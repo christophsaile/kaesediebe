@@ -1,5 +1,7 @@
 ---
 import BackButton from '@components/solidjs/BackButton';
+import logo from '../../assets/logo.png';
+import Image from 'astro/components/Image.astro';
 
 export interface INavbar {
 	arrowBack: boolean;
@@ -91,9 +93,9 @@ const { arrowBack, share, close, search, menu } = Astro.props as INavbar;
 	</div>
 	<div class='justify-center'>
 		<a aria-label='Startseite' href='#'>
-			<img
+			<Image
 				class='mx-auto h-12'
-				src='/assets/logo.png'
+				src={logo}
 				alt=''
 				width='87'
 				height='48'
