@@ -220,14 +220,14 @@ const description = SITE.description;
 
 			html {
 				height: -webkit-fill-available;
+				background-color: white;
+				color: black
 			}
 			body {
 				min-height: 100vh;
 				/* mobile viewport bug fix */
 				min-height: -webkit-fill-available;
 				padding-bottom: calc(8px + env(safe-area-inset-bottom));
-				background-color: white;
-				color: black
 			}
 		</style>
 		{transition && <ViewTransitions fallback='swap' />}
