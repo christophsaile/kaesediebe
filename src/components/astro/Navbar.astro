@@ -94,11 +94,11 @@ const { arrowBack, share, close, search, menu } = Astro.props as INavbar;
 	<div class='justify-center'>
 		<a aria-label='Startseite' href='#'>
 			<Image
-				class='mx-auto h-12'
+				class='mx-auto h-12 w-auto'
 				src={logo}
 				alt=''
-				width='87'
-				height='48'
+				width={logo.width}
+				height={logo.height}
 			/>
 		</a>
 	</div>
