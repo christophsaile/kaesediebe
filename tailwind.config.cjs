@@ -8,12 +8,7 @@ module.exports = {
 	},
 	plugins: [
 		require('daisyui'),
-		plugin(function ({ addBase, config }) {
-			addBase({
-				ol: { listStyle: 'decimal', paddingLeft: '1.5rem' },
-				li: { paddingTop: '1rem' },
-			});
-		}),
+		require('@tailwindcss/typography'),
 	],
 	daisyui: {
 		themes: [

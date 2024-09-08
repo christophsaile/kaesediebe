@@ -16,6 +16,7 @@
 		"sw": "npx workbox-cli generateSW workbox-config.js"
 	},
 	"devDependencies": {
+		"@tailwindcss/typography": "^0.5.15",
 		"contentful": "^9.3.5",
 		"contentful-management": "^10.46.4",
 		"contentful-typescript-codegen": "^3.4.0",

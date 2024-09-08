@@ -100,7 +100,7 @@ const htmlDescription = description && documentToHtmlString(description);
 			<div class="card bg-base-100 shadow-xl">
 				<div class="card-body p-4 pb-8">
 					<h2 class="card-title">Zubereitung</h2>
-					<div set:html={htmlDescription} />
+					<div class="prose" set:html={htmlDescription} />
 				</div>
 			</div>
 		)}
