@@ -17,10 +17,7 @@ const description = SITE.description;
 	<head>
 		<!-- Global Metadata -->
 		<meta charset='utf-8' />
-		<meta
-			name='viewport'
-			content='width=device-width, initial-scale=1.0, viewport-fit=cover'
-		/>
+		<meta name='viewport' content='width=device-width, initial-scale=1.0, viewport-fit=cover' />
 		<link rel='icon' type='image/x-icon' href='/favicon.ico' />
 		<meta name='color-scheme' content='light dark' />
 		<meta name='theme-color' content='#f3f4f7' />
@@ -175,38 +172,20 @@ const description = SITE.description;
 		<meta property='og:url' content={permalink} />
 		<meta property='og:title' content={completeTitle} />
 		<meta property='og:description' content={description} />
-		<meta
-			property='og:image'
-			content='https://kaese-diebe.netlify.app/assets/logo.png'
-		/>
+		<meta property='og:image' content='https://kaese-diebe.netlify.app/assets/logo.png' />
 
 		<!-- Twitter -->
 		<meta property='twitter:card' content='summary_large_image' />
 		<meta property='twitter:url' content={permalink} />
 		<meta property='twitter:title' content={completeTitle} />
 		<meta property='twitter:description' content={description} />
-		<meta
-			property='twitter:image'
-			content='https://kaese-diebe.netlify.app/assets/logo.png'
-		/>
+		<meta property='twitter:image' content='https://kaese-diebe.netlify.app/assets/logo.png' />
 
 		<!-- Teams -->
-		<meta
-			name='msapplication-square70x70logo'
-			content='icons/mstile-icon-128.png'
-		/>
-		<meta
-			name='msapplication-square150x150logo'
-			content='icons/mstile-icon-270.png'
-		/>
-		<meta
-			name='msapplication-square310x310logo'
-			content='icons/mstile-icon-558.png'
-		/>
-		<meta
-			name='msapplication-wide310x150logo'
-			content='icons/mstile-icon-558-270.png'
-		/>
+		<meta name='msapplication-square70x70logo' content='icons/mstile-icon-128.png' />
+		<meta name='msapplication-square150x150logo' content='icons/mstile-icon-270.png' />
+		<meta name='msapplication-square310x310logo' content='icons/mstile-icon-558.png' />
+		<meta name='msapplication-wide310x150logo' content='icons/mstile-icon-558-270.png' />
 		<style is:global>
 			:focus-visible {
 				outline-offset: 2px !important;
@@ -221,7 +200,7 @@ const description = SITE.description;
 			html {
 				height: -webkit-fill-available;
 				background-color: white;
-				color: black
+				color: black;
 			}
 			body {
 				min-height: 100vh;
@@ -229,31 +208,39 @@ const description = SITE.description;
 				min-height: -webkit-fill-available;
 				padding-bottom: calc(8px + env(safe-area-inset-bottom));
 			}
+
+			.a11y-link::before {
+				position: absolute;
+				inset: 0;
+				display: block;
+				content: '';
+			}
 		</style>
 		{transition && <ViewTransitions fallback='swap' />}
 	</head>
 
 	<body>
 		<Background />
-		<slot></slot>
+		<slot />
 		<!-- PWA -->
 		<script>
 			// Don't register the service worker
 			// until the page has fully loaded
-			import.meta.env.PROD && window.addEventListener('load', () => {
-				// Is service worker available?
-				if ('serviceWorker' in navigator) {
-					navigator.serviceWorker
-						.register('/sw.js')
-						.then(() => {
-							console.log('Service worker registered!');
-						})
-						.catch((error) => {
-							console.warn('Error registering service worker:');
-							console.warn(error);
-						});
-				}
-			});
+			import.meta.env.PROD &&
+				window.addEventListener('load', () => {
+					// Is service worker available?
+					if ('serviceWorker' in navigator) {
+						navigator.serviceWorker
+							.register('/sw.js')
+							.then(() => {
+								console.log('Service worker registered!');
+							})
+							.catch((error) => {
+								console.warn('Error registering service worker:');
+								console.warn(error);
+							});
+					}
+				});
 
 			const style =
 				'font-size: 24px;' +
