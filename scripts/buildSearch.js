@@ -5,7 +5,7 @@
 	dotenv.config();
 
 	const {
-		PURBLIC_ALGOLIA_INDEX,
+		PUBLIC_ALGOLIA_INDEX,
 		PUBLIC_ALGOLIA_APP_ID,
 		ALGOLIA_SEARCH_ADMIN_KEY,
 		CONTENTFUL_SPACE_ID: space,
@@ -17,7 +17,7 @@
 		ALGOLIA_SEARCH_ADMIN_KEY,
 	);
 
-	const algoliaIndex = algoliaClient.initIndex(PURBLIC_ALGOLIA_INDEX);
+	const algoliaIndex = algoliaClient.initIndex(PUBLIC_ALGOLIA_INDEX);
 
 	const ctfClient = createClient({
 		space,
